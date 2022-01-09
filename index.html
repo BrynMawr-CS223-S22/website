@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.17">
+<title>Systems Programming</title>
+<link rel="stylesheet" href="style/front.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="article toc2 toc-left">
+<div id="header">
+<h1>CMSC 223: Systems Programming&#8201;&#8212;&#8201;Spring 2022</h1>
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_course_info">Course Info</a>
+<ul class="sectlevel2">
+<li><a href="#_meeting_times">Meeting Times</a></li>
+</ul>
+</li>
+<li><a href="#_text_and_tools">Text and Tools</a></li>
+<li><a href="#_schedule"><strong>Schedule</strong></a></li>
+<li><a href="#_grading_policies">Grading Policies</a>
+<ul class="sectlevel2">
+<li><a href="#_exam_and_quizzes">Exam and Quizzes</a></li>
+<li><a href="#_homeworks_and_exercises">Homeworks and exercises</a></li>
+<li><a href="#_late_policy">Late Policy</a></li>
+</ul>
+</li>
+<li><a href="#_academic_integrity">Academic Integrity</a></li>
+<li><a href="#_academic_accommodations">Academic Accommodations</a></li>
+<li><a href="#_external_links">External Links</a></li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>Instructor: <a href="https://www.cs.brynmawr.edu/~alinen">Aline Normoyle</a></p>
+</div>
+<div class="paragraph">
+<p><a href="#week01">Jump to week01 agenda</a></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_course_info">Course Info</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><strong>Welcome to CS223</strong>.</p>
+</div>
+<div class="sect2">
+<h3 id="_meeting_times">Meeting Times</h3>
+<table class="tableblock frame-all grid-all fit-content center">
+<colgroup>
+<col>
+<col>
+<col>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Activity</th>
+<th class="tableblock halign-left valign-top">Location</th>
+<th class="tableblock halign-left valign-top">Time</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Lecture</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Park 245</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Tuesday and Thursday 12:55 PM - 2:15 PM</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Lab</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Park 231</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Thursday 2:25 PM - 3:45 PM</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Office Hours - Prof. Normoyle</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Park 231/Park 242</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Thursday 4 PM - 5 PM</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Office Hours - Trang Dang</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Park 231</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TBA</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_text_and_tools">Text and Tools</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Dive into Systems</strong> by Suzanne J. Matthews, Tia Newhall, and Kevin C. Webb.  Available free online from <a href="https://diveintosystems.org/">Dive into Systems</a></p>
+</li>
+<li>
+<p><strong>Github Account</strong> Please go to <a href="https://github.com/">github.com</a> and register. You will be using github to submit assignments.</p>
+</li>
+<li>
+<p><strong>Slack</strong> Please go to <a href="https://slack.com/signin">slack.com</a>. Our workspace is BrynMawr-CS223-S22. You can ask questions and request one-on-one help over zoom using this course&#8217;s slack channel.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_schedule"><strong>Schedule</strong></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The syllabus may change during the semester. Please check here every week for updates
+on lecture content, worksheets, and assignments.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 11.1111%;">
+<col style="width: 22.2222%;">
+<col style="width: 66.6667%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Week</th>
+<th class="tableblock halign-left valign-top">Date</th>
+<th class="tableblock halign-left valign-top">Agenda</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Jan 18,20</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>Hello C</strong> <a id="week01"></a></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Read: <a href="https://diveintosystems.org/singlepage/">Chapter 1</a></p>
+</li>
+<li>
+<p>From Java to C</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Jan 25,27</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>C: Next Level</strong> <a id="week02"></a></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Read: <a href="https://diveintosystems.org/singlepage/">Chapter 2</a></p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Feb 1,3</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>Debugging</strong> <a id="week03"></a></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Read: <a href="https://diveintosystems.org/singlepage/">Chapter 3</a></p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">4</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Feb 8,10</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>Binary and Data Representation I</strong> <a id="week04"></a></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Read: <a href="https://diveintosystems.org/singlepage/">Chapter 4.1-4.3</a></p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Feb 15,17</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>Binary and Data Representation II</strong> <a id="week05"></a></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Read: <a href="https://diveintosystems.org/singlepage/">Chapter 4.4-4.9</a></p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">6</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Feb 22,24</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>Computer architecture I</strong> <a id="week06"></a></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Read: <a href="https://diveintosystems.org/singlepage/">Chapter 5.1-5.5</a></p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">7</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">March 1,3</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>Computer architecture II</strong> <a id="week07"></a></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Read: <a href="https://diveintosystems.org/singlepage/">Chapter 5.6-5.10</a></p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">8</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">March 8,10</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>Spring Break</strong> <a id="week08"></a></p>
+</div>
+<div class="paragraph">
+<p>No meetings this week!</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">9</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">March 15,17</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>Assembly</strong> <a id="week09"></a></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Read: <a href="https://diveintosystems.org/singlepage/">Chapter 6</a></p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">10</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">March 22,24</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>x86_64</strong> <a id="week10"></a></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Read: <a href="https://diveintosystems.org/singlepage/">Chapter 7</a></p>
+</li>
+<li>
+<p>Read: <a href="https://diveintosystems.org/singlepage/">Chapter 10</a></p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">11</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">March 29,31</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>Memory</strong> <a id="week11"></a></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Read: <a href="https://diveintosystems.org/singlepage/">Chapter 11</a></p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">12</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">April 5,7</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>Code optimization</strong> <a id="week12"></a></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">13</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">April 12,14</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>Operating system</strong> <a id="week13"></a></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Read: <a href="https://diveintosystems.org/singlepage/">Chapter 13</a></p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">14</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">April 19,21</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>Threads</strong> <a id="week14"></a></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Read: <a href="https://diveintosystems.org/singlepage/">Chapter 14</a></p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">15</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">April 26,28</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>C++</strong> <a id="week15"></a></p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_grading_policies">Grading Policies</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>All graded work will receive a grade, 4.0, 3.7, 3.3, 3.0, 2.7, 2.3, 2.0, 1.7,
+1.3, 1.0, or 0.0. At the end of the semester, final grades will be calculated
+as a weighted average of all grades according to the following weights:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">30%</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Final Exam</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">30%</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Assignments</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">25%</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Code jams</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">10%</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Lab participation</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5%</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Lecture participation</p></td>
+</tr>
+</tbody>
+</table>
+<div class="sect2">
+<h3 id="_exam_and_quizzes">Exam and Quizzes</h3>
+<div class="paragraph">
+<p>Quizzes will be given at the beginning of class on the days posted on the
+<a href="#_schedule">schedule</a>.</p>
+</div>
+<div class="paragraph">
+<p>There will be one final exam for the semester. Details and dates will be
+released during the semester.  Please read the section on
+<a href="#_accommodations">accomodations</a> if you are in need of extra time.  You
+must inform us of accommodations or conflicts at least 2 weeks in advance of
+the exam.</p>
+</div>
+<div class="paragraph">
+<p>Quizzes and exams will be open book. You will be given sample questions
+beforehand to help you study. <strong>Warning!</strong> Do not rely heavily on your notes
+for quizzes. You will need to have concepts memorized in order to finish
+within the time limit.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_homeworks_and_exercises">Homeworks and exercises</h3>
+<div class="paragraph">
+<p>This course features weekly lab exercises and assignments which are an important
+component of the class.</p>
+</div>
+<div class="paragraph">
+<p>Lab exercises will be passed out in lab. These exercises are intended to be short and
+will typically ask you to reproduce demos from class or tackle concepts you will need
+for your assignment. Lab execises should be handed in at the end of lab.</p>
+</div>
+<div class="paragraph">
+<p>Class exercises will be passed out in class. These exercises are intended to be
+short and will typically ask you to practice concepts from lecture.  Class
+execises should be handed in at the end of class.</p>
+</div>
+<div class="paragraph">
+<p>Assignments will be posted Saturdays and due Friday before midnight.  You are
+strongly encouraged to start early so that you can ask questions. See the
+syllabus for links to the assignments.</p>
+</div>
+<div class="paragraph">
+<p>You will submit your assignments electronically using <a href="www.dropbox.com">Dropbox</a>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_late_policy">Late Policy</h3>
+<div class="paragraph">
+<p>Because practice is so important for learning how to program, we will do frequent
+exercises, assignments, and quizzes throughout the term.</p>
+</div>
+<div class="paragraph">
+<p>The purpose of this work is to give you hands on experience with the topics
+from class. Most of this work will be due in lecture or labs. The
+weekly time commitment for this course is aimed to be 10 hours or less per week.</p>
+</div>
+<div class="paragraph">
+<p>No late work will be accepted. Why? Because it&#8217;s important that you do not
+fall behind in the material. <strong>It is better to submit incomplete work than to
+fall behind, or not submit work at all!</strong></p>
+</div>
+<div class="paragraph">
+<p>However, we realize that you may not be able to complete a deadline for any
+number of valid reasons. We also <strong>do not want you to feel compelled to come to
+class or lab in person if you feel sick in anyway</strong>.</p>
+</div>
+<div class="paragraph">
+<p>Below are our class policies for these cases:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 80%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Work type</th>
+<th class="tableblock halign-left valign-top">Policy</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Assignments</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Lowest grade dropped</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Quizzes</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Lowest grade dropped</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Class exercises</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Lowest two grades dropped</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Lab exercises</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Lowest two grades dropped</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Final</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Must be taken</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>If you need to miss class or lab, you can submit your exercises
+electronically by midnight on the day the exercises are assigned:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Either email the instructor with a photo of your work,</p>
+</li>
+<li>
+<p>or email a link to your work in your dropbox folder.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>If you need to miss more than one quiz, you must make arrangements ahead of
+time to take the quiz at another time. If you cannot give notice ahead of
+time because of a medical emergency, you will need to provide a doctor&#8217;s note
+to schedule a make-up quiz.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_academic_integrity">Academic Integrity</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>At Bryn Mawr, we assume students are trustworthy and work with honesty and
+integrity. <a href="https://www.brynmawr.edu/deans/academic-and-community-integrity">Look here for information about Bryn Mawr&#8217;s Honor Code.</a></p>
+</div>
+<div class="paragraph">
+<p>As you progress in this course, you will see that programming is a creative
+process, similar to writing. The same problem can be solved in
+multiple ways. It&#8217;s essential that you develop your own skills for developing
+algorithms and implementing them through programs.</p>
+</div>
+<div class="paragraph">
+<p><strong>Discussing ideas and approaches to problems with others on a general level is
+fine (in fact, we encourage you to discuss general strategies with each other),
+but you should never read anyone else&#8217;s code or let anyone else read your
+code.</strong>  All code you submit should be your own with the following permissible
+exceptions: code distributed in class, and code found in the course text book.
+In these cases, you should always include detailed comments that indicates on
+which parts of the assignment you received help, and what your sources were.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Please don&#8217;t hesitate to ask the awesome teaching assistants (TAs) for help. They provide TA hours most week nights and are excellent mentors!</p>
+</li>
+<li>
+<p>Please discuss the readings and associated topics with each other. Work together to understand the material. Reading groups to discuss the material are highly recommended&#8201;&#8212;&#8201;we will explore many ideas and it helps to have multiple people working together to understand them.</p>
+</li>
+<li>
+<p>It is fine to discuss the topics covered in the homeworks, to discuss approaches to problems, and to sketch out general solutions. However, you MUST write up the homework answers, solutions, and programs individually without sharing specific details, mathematical results, program code, etc.</p>
+</li>
+<li>
+<p>Under NO circumstances should you share computer code with another student.  Similarly, you are not permitted to use code found on the internet for any of your assignments.</p>
+</li>
+<li>
+<p>Exams, of course, must be your own individual work.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_academic_accommodations">Academic Accommodations</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>All classes will be recorded and close-captioned. Links to lectures will be
+posted on the class syllabus.</p>
+</div>
+<div class="paragraph">
+<p>Any student who has a disability-related need to record this class first must
+speak with the Director of Access Services, Deb Alder, as part of university
+policy. Class members need to be aware that this class may be recorded.</p>
+</div>
+<div class="paragraph">
+<p>To receive an accommodation for a course activity (such as more time on quizzes
+and exams), you must have an Accommodation Letter from the Office of Student
+Disability Services <strong>and</strong> you need to contact us to work out the details of
+your accommodation at least <strong>two weeks prior</strong> to the activity. Forms can be
+emailed to me, the instructor.</p>
+</div>
+<div class="paragraph">
+<p>You are also welcome to contact us privately to discuss your academic needs.
+However, all disability-related accommodations must be arranged, in advance,
+through Student Disability Services.</p>
+</div>
+<div class="paragraph">
+<p>Students needing academic accommodations for a disability must first register
+with Access Services. Students can call 610-526-7516 to make an appointment
+with the Director of Access Services, Deb Alder, or email her at
+<a href="mailto:dalder@brynmawr.edu">dalder@brynmawr.edu</a> to begin this confidential process.  Once registered,
+students should schedule an appointment with the professor as early in the
+semester as possible to share the verification form and make appropriate
+arrangements. Please note that accommodations are not retroactive and require
+advance notice to implement. More information can be obtained at the Access
+Services website. (<a href="http://www.brynmawr.edu/access-services/" class="bare">http://www.brynmawr.edu/access-services/</a>)</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_external_links">External Links</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Links that are related to the course may be posted here. If you have suggestions for links, let us know.</p>
+</div>
+<div class="ulist unstyled">
+<ul class="unstyled">
+<li>
+<p><a href="https://www.brynmawr.edu/academicsupport/academic-and-student-support-services">Academic Support, including help with math and quantitative skills!</a></p>
+</li>
+<li>
+<p>This site was generated with <a href="https://asciidoctor.org/docs/asciidoc-syntax-quick-reference/">asciidoctor</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2022-01-09 18:33:58 -0500
+</div>
+</div>
+</body>
+</html>

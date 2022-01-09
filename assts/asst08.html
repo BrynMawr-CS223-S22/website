@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.10">
+<title>Assignment 8: Word search</title>
+<link rel="stylesheet" href="../style/cs21.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="article toc2 toc-left">
+<div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_assignment_8_word_search">Assignment 8: Word search</a></li>
+<li><a href="#_description">1. Description</a></li>
+<li><a href="#_requirements">2. Requirements</a></li>
+<li><a href="#_starter_code">3. Starter code</a></li>
+<li><a href="#_what_to_hand_in">4. What to hand-in</a></li>
+<li><a href="#_submission_guidelines">5. Submission guidelines</a></li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_assignment_8_word_search">Assignment 8: Word search</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Due Friday, November 20, before midnight
+<strong>Extended! Due November 22, before midnight</strong></p>
+</div>
+<div class="paragraph">
+<p>The goals for this assignment are:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Define and use functions and objects</p>
+</li>
+<li>
+<p>Use binary and linear search</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_description">1. Description</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The goal of this assignment is to create a word search game.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="img/asst08-search.gif" alt="asst08 search" width="250">
+</div>
+</div>
+<div class="paragraph">
+<p>In this game, the user is given a 4x4 block of random characters from which they can spell out words.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_requirements">2. Requirements</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>1) Define a class, called <code>Button</code>, to represent each letter Button</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>Button</code> contains the following data:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>text (String)</p>
+</li>
+<li>
+<p>x coordinate (float)</p>
+</li>
+<li>
+<p>y coordinate (float)</p>
+</li>
+<li>
+<p>width (float)</p>
+</li>
+<li>
+<p>height (float)</p>
+</li>
+<li>
+<p>isSelected (boolean)</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><code>Button</code> contains the following methods:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>constructor with parameters for <code>character</code>, <code>x</code>, <code>y</code>, <code>width</code>, and <code>height</code>. <code>isSelected</code> should be false initially.</p>
+</li>
+<li>
+<p><code>intersects</code> method. This method returns true if <code>mouseX</code> and <code>mouseY</code> are inside the bounds of the button and false otherwise</p>
+</li>
+<li>
+<p><code>draw</code> method. Draws a box button with the text centered in the middle. If the button is selected, draws the box in a different color.</p>
+</li>
+<li>
+<p><code>getSelected</code> method (Accessor). Returns the value of isSelected.</p>
+</li>
+<li>
+<p><code>setSelected</code> method (Mutator). Sets the value of isSelected.</p>
+</li>
+<li>
+<p><code>getLabel</code> method (Accessor). Returns the text on this button.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>3) In setup, create 16 buttons for the grid of letters as well as buttons for linear and binary search. You are given a function <code>chooseRandomLetter</code> to help you initialize the values of each letter button. Your base code also loads a dictionary of words to use.</p>
+</div>
+<div class="paragraph">
+<p>4) In draw, draw your buttons. The base code already draws the helper text.</p>
+</div>
+<div class="paragraph">
+<p>5) In mousePressed, check whether the user has clicked a button.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>If they click a character button, append the character to the current word and set the button&#8217;s selected property to true.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>The user should not be allowed to use the same letter block twice!</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>If they click a search button, use either linear or binary search to check whether the current word is valid. Then clear the selected buttons and the current word.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>6) In binarySearch, implement binary search with String types. (Hint: use the <code>compareTo</code> function)</p>
+</div>
+<div class="paragraph">
+<p>7) In linearSearch, implement linear search with String types. (Hint: use the <code>compareTo</code> function)</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_starter_code">3. Starter code</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>You have basecode for this assignment. Check dropbox.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_what_to_hand_in">4. What to hand-in</h2>
+<div class="sectionbody">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>The complete program (Don&#8217;t forget your header comment!)</p>
+</li>
+<li>
+<p>A brief write-up with your name, course and assignment number and a few sentences about anything you found challenging about the assignment.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_submission_guidelines">5. Submission guidelines</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Submit your program (entire sketch directory), write-up, and image as an electronic copy in the folder marked A05 in your dropbox folder.</p>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2020-11-20 17:09:39 -0500
+</div>
+</div>
+</body>
+</html>

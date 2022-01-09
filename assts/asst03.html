@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.10">
+<title>Assignment 3: Drawing program</title>
+<link rel="stylesheet" href="../style/cs21.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="article toc2 toc-left">
+<div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_assignment_3_drawing_program">Assignment 3: Drawing program</a></li>
+<li><a href="#_description">1. Description</a>
+<ul class="sectlevel2">
+<li><a href="#_requirements">1.1. Requirements</a></li>
+<li><a href="#_recommendations">1.2. Recommendations</a></li>
+</ul>
+</li>
+<li><a href="#_interface_specification">2. Interface specification</a></li>
+<li><a href="#_what_to_hand_in">3. What to hand-in</a></li>
+<li><a href="#_submission_guidelines">4. Submission guidelines</a></li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_assignment_3_drawing_program">Assignment 3: Drawing program</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><strong>Due Friday, October 2, before midnight</strong></p>
+</div>
+<div class="paragraph">
+<p>The goals for this assignment are:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Use conditional statements</p>
+</li>
+<li>
+<p>Work with variables</p>
+</li>
+<li>
+<p>Implement a user interface (UI)</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_description">1. Description</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The goal of this assignment is to create your own drawing program.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Support multiple brush types (line, circle, and one of your own choosing)</p>
+</li>
+<li>
+<p>Support multiple brush sizes (no smaller than size 1)</p>
+</li>
+<li>
+<p>Support multiple colors (at least three)</p>
+</li>
+<li>
+<p>Saving an image</p>
+</li>
+<li>
+<p>Clearing an image</p>
+</li>
+</ul>
+</div>
+<div class="videoblock">
+<div class="content">
+<video src="img/CS110-Draw.mp4" width="500" controls>
+Your browser does not support the video tag.
+</video>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_requirements">1.1. Requirements</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Your program should accept the following <strong>key input</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>The 's' key should save the current canvas as an image. Use the <code>save</code> function.</p>
+</li>
+<li>
+<p>The 'c' key should clear the canvas. Hint: use the <code>background</code> function.</p>
+</li>
+<li>
+<p>The '1' key should switch to the line brush</p>
+</li>
+<li>
+<p>The '2' key should switch to the circle brush</p>
+</li>
+<li>
+<p>The '3' key should switch to the custom brush</p>
+</li>
+<li>
+<p>The 'UP' key should increase the brush size</p>
+</li>
+<li>
+<p>The 'DOWN' key should decrease the brush size. The brush size should not be allowed to go smaller than 1.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>You program should have <strong>circle buttons</strong> for changing the current color</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Check whether the user clicked inside any of the pallet buttons. If yes, change the current color to the pallet button&#8217;s color.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Your <strong>UI features</strong> should include</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Text to show the current brush and brush size</p>
+</li>
+<li>
+<p>A shape to show the current color</p>
+</li>
+<li>
+<p>Circle buttons for choosing the current color</p>
+</li>
+<li>
+<p>The shapes and coordinates for the shown demo are given in the next section. Feel free to use it if you like.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Line Brush</strong>: draw a line using mouseX, mouseY, pmouseX, and pmouseY. See example 3-4 in the textbook.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>strokeWidth should match the current brush size</p>
+</li>
+<li>
+<p>stroke should match the current color</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Circle brush</strong>: draw a circle at the current mouseX, mouseY position. See the jitter/gradient examples from week 1 for an example.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Your choice whether to use stroke or not</p>
+</li>
+<li>
+<p>circle size should match the current brush size</p>
+</li>
+<li>
+<p>circle fill should match the current color</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Custom brush</strong>: a brush of your choosing. You can combine multiple shapes, jitter the colors, or use transparency. In the above example, the brush has a quad shape centered at mouseX and mouseY.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Your choice whether to use stroke/fill or not</p>
+</li>
+<li>
+<p>shape size should be based on the current brush size</p>
+</li>
+<li>
+<p>shape color should match the current color</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_recommendations">1.2. Recommendations</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Define variables to store the following information</p>
+<div class="ulist">
+<ul>
+<li>
+<p>A variable to store the current color (data type: color)</p>
+</li>
+<li>
+<p>A variable to store the current brush size (data type: float)</p>
+</li>
+<li>
+<p>A variable to store the current brush type (data type: String)</p>
+</li>
+<li>
+<p>These variables can be global or local. It&#8217;s up to you.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>In <code>draw()</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Do not call background to clear the screen. Instead, re-draw the user interface on top of the previous frame.</p>
+</li>
+<li>
+<p>To draw the user interface:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Draw a rectangle to serve as the background for the pallet. Then draw the pallet buttons on top.</p>
+</li>
+<li>
+<p>Draw a rectangle to serve as the background for the brush information. Then draw the brush information.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_interface_specification">2. Interface specification</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The following coordinates were used to create the interface.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="img/Asst3-DrawUI.png" alt="Asst3 DrawUI"></span></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_what_to_hand_in">3. What to hand-in</h2>
+<div class="sectionbody">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>The program (Don&#8217;t forget your header comment)</p>
+</li>
+<li>
+<p>A brief write-up describing the custom brush you made along with a description of what you found easy or difficult about this assignment.</p>
+</li>
+<li>
+<p>An image (png,jpg) of a drawing made using your program.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_submission_guidelines">4. Submission guidelines</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Submit your program (entire sketch directory), write-up, and image as an electronic copy in the folder marked A03 in your dropbox folder.</p>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2020-09-26 13:20:32 -0400
+</div>
+</div>
+</body>
+</html>

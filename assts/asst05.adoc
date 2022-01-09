@@ -1,0 +1,90 @@
+include::header.adoc[]
+
+:title: Assignment 5: Digital Pet
+:Author Initials: ASN
+:Date:    2020-08-15
+:Revision: 0.1
+
+= {title}
+
+**Due Friday, October 16, before midnight**
+
+The goals for this assignment are:
+
+* Define and use functions
+
+:sectnums:
+
+= Description
+
+The goal of this assignment is to create a digital pet. Each day, your pet loses 
+energy and its mood deteriorates. Give your pet treats to improve its energy and also its mood! 
+
+video::Digipet.mp4[width=500]
+
+= Features
+
+* Your pet's energy ranges from 0 to 100. Energy can never be less than 0 or greater than 100.
+* Pressing '>' increases the current day by 1
+* Pressing 't' gives your pet a treat
+* Energy starts at 90
+* Day starts at 1
+* Each day, your pet loses 5-20 units of energy. 
+* Giving a treat, increases your pet's energy by 5-10 units.
+* Your pet's energy level determines its mood, for example,
+** Joyful: 100
+** Happy: 90-99
+** Peaceful: 80-89
+** Melancholy: 70-79
+** Sad: 60-69
+** Grumpy: 50-59
+** Unconscious: 0-49
+
+= Requirements
+
+* Define global variables for `day` and `energy`
+* Design your own unique pet. You can base your pet on a previous assignment. A good submission will also modify the pet's appearance based on the mood. For example, you can change the color, shape, or expressions of your pet. 
+* Use the `random` function to increase and decrease your pet's energy. For example, call `random(5,20)` to get the energy loss for the day. 
+* You can personalize the moods however you like. Make sure that they are based on the energy level and that you have at least 4 of them.
+* You program must define and use the functions below; however, you are encouraged to include more functions to keep your program organized. For example, you might have a function `drawPet()` which calls a function `drawExpression()` 
+[source,java]
+----
+/*
+Inputs: none
+Outputs: none
+Side effects: modifies energy and day
+Updates our pet:
+- decreases the energy by [5,20)
+- increments the day by 1
+- ensures energy does not go below 0
+*/
+void updatePet()
+
+/*
+Inputs: none
+Outputs: none
+Side effects: modifies energy
+Gives a treat to our pet
+- increases the energy by [5,10)
+- ensures energy does not go above 100
+*/
+void giveTreat() 
+
+/*
+Inputs: energy (float) - the given energy level to translate to a mood
+Outputs: String
+Side effects: none
+Returns a string indicating the current mood based on the given energy level
+*/
+String computeMood(float energy) 
+----
+
+= What to hand-in
+
+. The program (Don't forget your header comment!)
+. A brief write-up  with your name, course and assignment number and a few sentences about unique features of your sketch. If you found aspects of the assignment interesting or challenging, include that too.
+. Images (png,jpg) or an animation (gif or video) of your finished sketch. Use thess to demonstrate the features of your pet! 
+
+= Submission guidelines
+
+Submit your program (entire sketch directory), write-up, and image as an electronic copy in the folder marked A05 in your dropbox folder. 

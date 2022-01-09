@@ -1,0 +1,80 @@
+include::header.adoc[]
+
+:title: Assignment 6: Arcade Game
+:Author Initials: ASN
+:Date:    2020-08-15
+:Revision: 0.1
+
+= {title}
+
+**Part 1 Due Monday, November 2, before midnight**
+
+**Part 2 Due Friday, November 6, before midnight**
+
+The goals for this assignment are:
+
+* Define and use functions and objects
+* Design a larger program
+
+:sectnums:
+
+= Description
+
+The goal of this assignment is to create your own arcade game. It should support 
+numerous obstacles and a single player controlled with the keyboard. An example 
+with basic game mechanics is shown below.
+
+image::asst06-arcade.gif[width=250]
+
+And here is an example with a theme applied
+
+image::asst06-arcadeCloud.gif[width=250]
+
+= Requirements
+
+* You must define a Obstacle class having methods `update()`, `draw()`, and `intersects(Player player)`
+* You must define a Player class having methods draw(), moveLeft(), moveRight(), moveUp(), moveDown(), x(), y(), width(), and height()
+* Your game should define many obstacles using an array
+* In draw(), you should update the player based on the keyboard, draw objects, and check for intersections 
+* Use the `random` function to modify the behavior of obstacles each time you play
+* Your game should have a 'game over' condition
+* You should implement your own unique theme for the background, player, and obstacles. 
+* You should implement at least one unique game mechanic. Some ideas:
+** Allow the player to get hit multiple times before 'game over'
+** Make the goal of the game to hit as many obstacles as possible, rather than avoid them
+** Add powerups
+** Randomize the appearance of enemies
+** Implement projectiles
+** Implement your own obstacles. For example, they don't need to be circles. You could do a series of walls. 
+** Implement a win condition. You can keep track of how many seconds the user plays, or stop once the player collects a certain number of items.
+** Increase the difficulty over time
+** Modify how obstacles move. They could oscillate or change direction. 
+
+Use the resources below to help you implement your game:
+
+* link:https://www.cs.brynmawr.edu/~alinen/lab-website/cs110/notes/week06.html#_an_array_of_car[Many cars using an array]
+* link:https://www.cs.brynmawr.edu/~alinen/lab-website/cs110/notes/week07.html#_keyboard_controls[Keyboard controls]
+* link:https://www.cs.brynmawr.edu/~alinen/lab-website/cs110/notes/week07.html#_collisions[Collision example]
+
+Ideas to help with debugging and implementation:
+
+* If a feature might be difficult, implement it in a separate program before integrating it into your game. For example, you can implement a Player class and test it in its own program. Then you can copy the Player code into your game sketch.
+* Implement the core game without a theme to start
+* Implement a reset feature to make it easy to restart your game for testing
+
+= What to hand-in
+
+* PART 1 (Due Nov 2, by midnight)* 
+
+. Your program with working Player and Obstacle classes implemented. You do not need to have intersection testing complete. Your submission should have your background and theme implemented. When I run your program, I should be able to control the player character and see the obstacles drawn to the screen.  
+. Your program should have a header comment and should run without errors. 
+
+* PART 2 (Due Nov 6, by midnight)*
+
+. The complete program, including intersection tests, win condition, and unique game mechanic (Don't forget your header comment!)
+. A brief write-up  with your name, course and assignment number and a few sentences about the unique features of your game. 
+. An animation (gif or video) of your finished sketch
+
+= Submission guidelines
+
+Submit your program (entire sketch directory), write-up, and image as an electronic copy in the folder marked A05 in your dropbox folder. 

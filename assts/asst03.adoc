@@ -1,0 +1,88 @@
+include::header.adoc[]
+
+:title: Assignment 3: Drawing program
+:Author Initials: ASN
+:Date:    2020-08-15
+:Revision: 0.1
+
+= {title}
+
+**Due Friday, October 2, before midnight**
+
+The goals for this assignment are:
+
+* Use conditional statements 
+* Work with variables
+* Implement a user interface (UI)
+
+:sectnums:
+
+= Description
+
+The goal of this assignment is to create your own drawing program. 
+
+* Support multiple brush types (line, circle, and one of your own choosing)
+* Support multiple brush sizes (no smaller than size 1)
+* Support multiple colors (at least three) 
+* Saving an image 
+* Clearing an image
+
+video::CS110-Draw.mp4[width=500]
+
+== Requirements
+
+* Your program should accept the following *key input*
+** The 's' key should save the current canvas as an image. Use the `save` function.
+** The 'c' key should clear the canvas. Hint: use the `background` function.
+** The '1' key should switch to the line brush
+** The '2' key should switch to the circle brush
+** The '3' key should switch to the custom brush
+** The 'UP' key should increase the brush size
+** The 'DOWN' key should decrease the brush size. The brush size should not be allowed to go smaller than 1.
+* You program should have *circle buttons* for changing the current color 
+** Check whether the user clicked inside any of the pallet buttons. If yes, change the current color to the pallet button's color.
+* Your *UI features* should include
+** Text to show the current brush and brush size
+** A shape to show the current color
+** Circle buttons for choosing the current color 
+** The shapes and coordinates for the shown demo are given in the next section. Feel free to use it if you like.
+* *Line Brush*: draw a line using mouseX, mouseY, pmouseX, and pmouseY. See example 3-4 in the textbook. 
+** strokeWidth should match the current brush size
+** stroke should match the current color
+* *Circle brush*: draw a circle at the current mouseX, mouseY position. See the jitter/gradient examples from week 1 for an example.
+** Your choice whether to use stroke or not
+** circle size should match the current brush size
+** circle fill should match the current color
+* *Custom brush*: a brush of your choosing. You can combine multiple shapes, jitter the colors, or use transparency. In the above example, the brush has a quad shape centered at mouseX and mouseY.
+** Your choice whether to use stroke/fill or not
+** shape size should be based on the current brush size
+** shape color should match the current color
+
+== Recommendations
+
+* Define variables to store the following information
+** A variable to store the current color (data type: color)
+** A variable to store the current brush size (data type: float)
+** A variable to store the current brush type (data type: String)
+** These variables can be global or local. It's up to you.
+* In `draw()` 
+** Do not call background to clear the screen. Instead, re-draw the user interface on top of the previous frame.
+** To draw the user interface:
+*** Draw a rectangle to serve as the background for the pallet. Then draw the pallet buttons on top. 
+*** Draw a rectangle to serve as the background for the brush information. Then draw the brush information.
+
+= Interface specification
+
+The following coordinates were used to create the interface. 
+
+image:Asst3-DrawUI.png[]
+
+= What to hand-in
+
+. The program (Don't forget your header comment)
+. A brief write-up describing the custom brush you made along with a description of what you found easy or difficult about this assignment. 
+. An image (png,jpg) of a drawing made using your program. 
+
+= Submission guidelines
+
+Submit your program (entire sketch directory), write-up, and image as an electronic copy in the folder marked A03 in your dropbox folder. 

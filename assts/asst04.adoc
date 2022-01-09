@@ -1,0 +1,73 @@
+include::header.adoc[]
+
+:title: Assignment 4: Abstract computational art
+:Author Initials: ASN
+:Date:    2020-08-15
+:Revision: 0.1
+
+= {title}
+
+**Due Friday, October 9, before midnight**
+
+The goals for this assignment are:
+
+* Use Loops to create visual patterns
+
+:sectnums:
+
+= Description
+
+The goal of this assignment is to create an algorithmic artwork. 
+Your submission should be *aesthetically pleasing*. 
+Here are a few sources of inspiration:
+
+* Mandala patterns
+* String art
+* Spirograph
+* Robert Delaunay's paintings 
+
+= Requirements
+
+* You must use at least one *for-/while- loop* somewhere in your sketch. Preferably more!
+* Your sketch must use trigonometry (`sin()` and `cos()`) or `rotate()`
+* Your sketch should contain elements *radial symmetry*.
+* Make sure your sketch includes your name and "CS110 Fall 2020" on the image
+
+Your final submission should include a static image.
+
+Recommendations:
+
+* Make judicious use of colors. Experiment with transparency, jitter, gradients, and glow
+* Use `random()` (or `noise()`) to create interesting variations. 
+
+= What to hand-in
+
+. The program (Don't forget your header comment!)
+. A brief write-up  with your name, course and assignment number and a paragraph about the sketch, its inspiration, and how you designed and implemented it. Include a brief discussion about your experience working on this assignment.  
+. An image (png,jpg) or animation (gif) of your finished sketch.
+
+= Submission guidelines
+
+Submit your program (entire sketch directory), write-up, and image as an electronic copy in the folder marked A04 in your dropbox folder. 
+
+= Gallery of previous work
+
+image:BezaWondwossen.jpg[ex,width=200]
+image:CorineHartshorne.jpg[ex,width=200]
+image:DianneMoore.jpg[ex,width=200]
+image:ElainaSassine.jpg[ex,width=200]
+image:EmmaRegev.jpg[ex,width=200]
+image:FoqiaShahid.jpg[ex,width=200]
+image:JiananGu.jpg[ex,width=200]
+image:JiaqiZheng.jpg[ex,width=200]
+image:JiayinBao.jpg[ex,width=200]
+image:JingyuanFu.jpg[ex,width=200]
+image:JingyuanShe.jpg[ex,width=200]
+image:LaurynWhite.jpg[ex,width=200]
+image:LilySanchez.jpg[ex,width=200]
+image:LylaPoonawala.jpg[ex,width=200]
+image:MorineKimani.jpg[ex,width=200]
+image:NataliaBElchikov.jpg[ex,width=200]
+image:SethBoyce.jpg[ex,width=200]
+image:ThomasWhelan.jpg[ex,width=200]
+image:TrangDuong.jpg[ex,width=200]

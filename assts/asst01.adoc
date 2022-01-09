@@ -1,0 +1,92 @@
+include::header.adoc[]
+
+:title: Assignment 1: Make an original design!
+:Author Initials: ASN
+:Date:    2020-08-15
+:Revision: 0.1
+
+= {title}
+
+**Due Friday, September 18, before midnight**
+
+The goals for this assignment are:
+
+* Work with shapes and colors 
+* Understand the Processing canvas and coordinate system
+* Save your work as an image
+
+:sectnums:
+
+= Description
+
+Design and create your own sketch using the Processing language/environment.
+Think of yourself as a creative designer when choosing the topic of your
+design. This is your very first program, so here are some guidelines.
+
+Requirements:
+
+* Make sure that it is *at least 500 pixels by 500 pixels*. The dimensions can vary depending upon your design, but make sure that it is not "small".
+* Use each of the following drawing primitives at least once: *line, rect, ellipse, quad, beginShape/endShape, arc, curve*.
+* Make liberal use of formatting commands, including: *background, no/stroke, no/fill*.
+* Include proper source *code header* and adequate *comments*.
+* Your program should call many built-in functions and *create a design*, as this is the point of this assignment.  A very "abstract" sketch like a simple circle in the center of the screen will not suffice (as aesthetic as it may seem). Here are some ideas:
+
+** A self-portrait
+** An avatar or a cartoon of someone
+** Your favorite cartoon TV Show character or design your own...
+** A city scape
+** Animal/object caricatures/study
+** A post card design
+** A fabric pattern
+** Stylize your name's initials...or a logo
+** The Bryn Mawr Owl
+** A Poster
+** Imitation of existing design or art
+** etc.
+
+* Sign your work - the *course title* (CS110 Fall 2020) and *your name* should appear some where in the bottom of the sketch. Use the text() function and design your own signature.
+
+= What to hand-in
+
+. The program
+. A write-up with your name, course and assignment number and a paragraph about the sketch, its inspiration, and how you designed and implemented it. Include a brief discussion about your experience working on this assignment.
+. A jpg or png image of your finished sketch (use the `save()` function).
+
+= Submission guidelines
+
+Submit your program (entire sketch directory), write-up, and image as an electronic copy in the folder marked A01 in your dropbox folder. 
+
+= Gallery of Previous Work
+
+image:2016Monkey.png[ex,width=200]
+image:Bird.jpg[ex,width=200]
+image:Bubbles01.jpg[ex,width=200]
+image:CMSC110-01Spring2016 Koukou Zhang.jpg[ex,width=200]
+image:Chibi Maruko-chan.jpg[ex,width=200]
+image:Doraemon.jpg[ex,width=200]
+image:Julias Kumamo.jpg[ex,width=200]
+image:Rilakkuma_bear.jpg[ex,width=200]
+image:Screen_Shot_2016-01-27_at_9.jpg[ex,width=200]
+image:United States Regional Map.jpg[ex,width=200]
+image:assignment 1 screenshot.jpg[ex,width=200]
+image:assignment 1.jpg[ex,width=200]
+image:assignment01sdepew.jpg[ex,width=200]
+image:cat.jpg[ex,width=200]
+image:frank.jpng.png[ex,width=200]
+image:knowledge_rabbit.jpg[ex,width=200]
+image:lighthouse.jpg[ex,width=200]
+image:minion.jpg[ex,width=200]
+image:screenshotsketch01nhagar.png[ex,width=200]
+image:sguo3-fall.jpg[ex,width=200]
+image:sguo3-spring.jpg[ex,width=200]
+image:sguo3-summer.jpg[ex,width=200]
+image:sguo3-winter.jpg[ex,width=200]
+image:skecth01kmoravec.jpg[ex,width=200]
+image:sketch01cchen.jpg[ex,width=200]
+image:sketch01cchen5.jpg[ex,width=200]
+image:sketch01eyang.jpg[ex,width=200]
+image:sketch01kellison.jpg[ex,width=200]
+image:sketch01mcherniack.jpg[ex,width=200]
+image:sketch01mhaydengat.png[ex,width=200]
+image:sketch01pmnguyen.jpg[ex,width=200]
+image:sketch01vgarner.png[ex,width=200]

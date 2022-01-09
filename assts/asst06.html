@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.10">
+<title>Assignment 6: Arcade Game</title>
+<link rel="stylesheet" href="../style/cs21.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="article toc2 toc-left">
+<div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_assignment_6_arcade_game">Assignment 6: Arcade Game</a></li>
+<li><a href="#_description">1. Description</a></li>
+<li><a href="#_requirements">2. Requirements</a></li>
+<li><a href="#_what_to_hand_in">3. What to hand-in</a></li>
+<li><a href="#_submission_guidelines">4. Submission guidelines</a></li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_assignment_6_arcade_game">Assignment 6: Arcade Game</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><strong>Part 1 Due Monday, November 2, before midnight</strong></p>
+</div>
+<div class="paragraph">
+<p><strong>Part 2 Due Friday, November 6, before midnight</strong></p>
+</div>
+<div class="paragraph">
+<p>The goals for this assignment are:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Define and use functions and objects</p>
+</li>
+<li>
+<p>Design a larger program</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_description">1. Description</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The goal of this assignment is to create your own arcade game. It should support
+numerous obstacles and a single player controlled with the keyboard. An example
+with basic game mechanics is shown below.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="img/asst06-arcade.gif" alt="asst06 arcade" width="250">
+</div>
+</div>
+<div class="paragraph">
+<p>And here is an example with a theme applied</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="img/asst06-arcadeCloud.gif" alt="asst06 arcadeCloud" width="250">
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_requirements">2. Requirements</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>You must define a Obstacle class having methods <code>update()</code>, <code>draw()</code>, and <code>intersects(Player player)</code></p>
+</li>
+<li>
+<p>You must define a Player class having methods draw(), moveLeft(), moveRight(), moveUp(), moveDown(), x(), y(), width(), and height()</p>
+</li>
+<li>
+<p>Your game should define many obstacles using an array</p>
+</li>
+<li>
+<p>In draw(), you should update the player based on the keyboard, draw objects, and check for intersections</p>
+</li>
+<li>
+<p>Use the <code>random</code> function to modify the behavior of obstacles each time you play</p>
+</li>
+<li>
+<p>Your game should have a 'game over' condition</p>
+</li>
+<li>
+<p>You should implement your own unique theme for the background, player, and obstacles.</p>
+</li>
+<li>
+<p>You should implement at least one unique game mechanic. Some ideas:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Allow the player to get hit multiple times before 'game over'</p>
+</li>
+<li>
+<p>Make the goal of the game to hit as many obstacles as possible, rather than avoid them</p>
+</li>
+<li>
+<p>Add powerups</p>
+</li>
+<li>
+<p>Randomize the appearance of enemies</p>
+</li>
+<li>
+<p>Implement projectiles</p>
+</li>
+<li>
+<p>Implement your own obstacles. For example, they don&#8217;t need to be circles. You could do a series of walls.</p>
+</li>
+<li>
+<p>Implement a win condition. You can keep track of how many seconds the user plays, or stop once the player collects a certain number of items.</p>
+</li>
+<li>
+<p>Increase the difficulty over time</p>
+</li>
+<li>
+<p>Modify how obstacles move. They could oscillate or change direction.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Use the resources below to help you implement your game:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://www.cs.brynmawr.edu/~alinen/lab-website/cs110/notes/week06.html#_an_array_of_car">Many cars using an array</a></p>
+</li>
+<li>
+<p><a href="https://www.cs.brynmawr.edu/~alinen/lab-website/cs110/notes/week07.html#_keyboard_controls">Keyboard controls</a></p>
+</li>
+<li>
+<p><a href="https://www.cs.brynmawr.edu/~alinen/lab-website/cs110/notes/week07.html#_collisions">Collision example</a></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Ideas to help with debugging and implementation:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>If a feature might be difficult, implement it in a separate program before integrating it into your game. For example, you can implement a Player class and test it in its own program. Then you can copy the Player code into your game sketch.</p>
+</li>
+<li>
+<p>Implement the core game without a theme to start</p>
+</li>
+<li>
+<p>Implement a reset feature to make it easy to restart your game for testing</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_what_to_hand_in">3. What to hand-in</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>PART 1 (Due Nov 2, by midnight)*</p>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Your program with working Player and Obstacle classes implemented. You do not need to have intersection testing complete. Your submission should have your background and theme implemented. When I run your program, I should be able to control the player character and see the obstacles drawn to the screen.</p>
+</li>
+<li>
+<p>Your program should have a header comment and should run without errors.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>PART 2 (Due Nov 6, by midnight)*</p>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>The complete program, including intersection tests, win condition, and unique game mechanic (Don&#8217;t forget your header comment!)</p>
+</li>
+<li>
+<p>A brief write-up  with your name, course and assignment number and a few sentences about the unique features of your game.</p>
+</li>
+<li>
+<p>An animation (gif or video) of your finished sketch</p>
+</li>
+</ol>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_submission_guidelines">4. Submission guidelines</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Submit your program (entire sketch directory), write-up, and image as an electronic copy in the folder marked A05 in your dropbox folder.</p>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2020-10-28 12:17:23 -0400
+</div>
+</div>
+</body>
+</html>

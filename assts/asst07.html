@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.10">
+<title>Assignment 7: Star map</title>
+<link rel="stylesheet" href="../style/cs21.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="article toc2 toc-left">
+<div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_assignment_7_star_map">Assignment 7: Star map</a></li>
+<li><a href="#_description">1. Description</a></li>
+<li><a href="#_requirements">2. Requirements</a></li>
+<li><a href="#_starter_code">3. Starter code</a></li>
+<li><a href="#_what_to_hand_in">4. What to hand-in</a></li>
+<li><a href="#_submission_guidelines">5. Submission guidelines</a></li>
+<li><a href="#_credits">6. Credits</a></li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_assignment_7_star_map">Assignment 7: Star map</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Due Friday, November 13, before midnight</p>
+</div>
+<div class="paragraph">
+<p>The goals for this assignment are:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Define and use functions and objects</p>
+</li>
+<li>
+<p>Load and parse data from a file</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_description">1. Description</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The goal of this assignment is to create an interactive star map with constellations.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="img/asst07-starmap.gif" alt="asst07 starmap" width="250">
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_requirements">2. Requirements</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>1) Define a class, called <code>Star</code>, to represent each star on the map</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>Star</code> contains the following data:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>x coordinate (float between 0 and 1000)</p>
+</li>
+<li>
+<p>y coordinate (float between 0 and 1000), and</p>
+</li>
+<li>
+<p>brightness (float between 0 and 1.0, where 1.0 is most bright and 0.0 is dim)</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><code>Star</code> contains the two methods:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>constructor with parameters for x, y, and brightness</p>
+</li>
+<li>
+<p>draw method. In the picture above, brighter stars are bigger and have a brighter color.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>2) Define a class, called <code>Constellation</code>, to represent each constellation line on the map.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>Constellation</code> contains the following data:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>name of the constellation (String)</p>
+</li>
+<li>
+<p>starting x coordinate (float between 0 and 1000)</p>
+</li>
+<li>
+<p>starting y coordinate (float between 0 and 1000),</p>
+</li>
+<li>
+<p>ending x coordinate (float between 0 and 1000),</p>
+</li>
+<li>
+<p>ending y coordinate (float between 0 and 1000),</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><code>Constellation</code> contains the following methods:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>constructor with parameters for name, and the starting and ending points</p>
+</li>
+<li>
+<p><code>draw</code> method. This function should draw a line between the starting and ending points.</p>
+</li>
+<li>
+<p><code>getName</code> method. This method should return the name of the constellation.</p>
+</li>
+<li>
+<p><code>intersects</code> method. This function should return true if the mouse is within 25 units of one of the endpoints of the constellation line.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>3) In setup, you should read and parse the file <code>stars-cs110.txt</code>. Use the function <code>loadStrings</code> to load the file into an array of String. Each line in the file stores the x,y,brightness values, separated by commas. For each line, create a Star object and save it in an array of Star.</p>
+</div>
+<div class="paragraph">
+<p>4) In setup, you should read and parse the file <code>constellations-cs110.txt</code>. Use the function <code>loadStrings</code> to load the file into an array of String. Each line in the file stores the name,x1,y1,x2,y2 of the constellation line. For each line, create a Constellation object and save it in an array of Constellation.</p>
+</div>
+<div class="paragraph">
+<p>5) In draw, draw your stars and constellations. For each constellation, check whether the mouse is over a constellation. If it is, display its name at the current mouse position.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_starter_code">3. Starter code</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>You have basecode for this assignment. Check dropbox.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_what_to_hand_in">4. What to hand-in</h2>
+<div class="sectionbody">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>The complete program (Don&#8217;t forget your header comment!)</p>
+</li>
+<li>
+<p>A brief write-up with your name, course and assignment number and a few sentences about anything you found challenging about the assignment.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_submission_guidelines">5. Submission guidelines</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Submit your program (entire sketch directory), write-up, and image as an electronic copy in the folder marked A05 in your dropbox folder.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_credits">6. Credits</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The starmap data is based on this <a href="http://nifty.stanford.edu/2009/reid-starmap/starmap.html">assignment</a>.</p>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2020-11-07 15:41:01 -0500
+</div>
+</div>
+</body>
+</html>

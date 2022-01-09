@@ -1,0 +1,72 @@
+include::header.adoc[]
+
+:title: Assignment 7: Star map
+:Author Initials: ASN
+:Date:    2020-08-15
+:Revision: 0.1
+
+= {title}
+
+Due Friday, November 13, before midnight
+
+The goals for this assignment are:
+
+* Define and use functions and objects
+* Load and parse data from a file
+
+:sectnums:
+
+= Description
+
+The goal of this assignment is to create an interactive star map with constellations. 
+
+image::asst07-starmap.gif[width=250]
+
+= Requirements
+
+1) Define a class, called `Star`, to represent each star on the map
+
+* `Star` contains the following data: 
+** x coordinate (float between 0 and 1000)
+** y coordinate (float between 0 and 1000), and 
+** brightness (float between 0 and 1.0, where 1.0 is most bright and 0.0 is dim)
+* `Star` contains the two methods:
+** constructor with parameters for x, y, and brightness
+** draw method. In the picture above, brighter stars are bigger and have a brighter color.
+
+2) Define a class, called `Constellation`, to represent each constellation line on the map.
+
+* `Constellation` contains the following data: 
+** name of the constellation (String) 
+** starting x coordinate (float between 0 and 1000)
+** starting y coordinate (float between 0 and 1000), 
+** ending x coordinate (float between 0 and 1000),
+** ending y coordinate (float between 0 and 1000), 
+* `Constellation` contains the following methods:
+** constructor with parameters for name, and the starting and ending points
+** `draw` method. This function should draw a line between the starting and ending points. 
+** `getName` method. This method should return the name of the constellation. 
+** `intersects` method. This function should return true if the mouse is within 25 units of one of the endpoints of the constellation line. 
+
+3) In setup, you should read and parse the file `stars-cs110.txt`. Use the function `loadStrings` to load the file into an array of String. Each line in the file stores the x,y,brightness values, separated by commas. For each line, create a Star object and save it in an array of Star.
+
+4) In setup, you should read and parse the file `constellations-cs110.txt`. Use the function `loadStrings` to load the file into an array of String. Each line in the file stores the name,x1,y1,x2,y2 of the constellation line. For each line, create a Constellation object and save it in an array of Constellation. 
+
+5) In draw, draw your stars and constellations. For each constellation, check whether the mouse is over a constellation. If it is, display its name at the current mouse position. 
+
+= Starter code
+
+You have basecode for this assignment. Check dropbox.
+
+= What to hand-in
+
+. The complete program (Don't forget your header comment!)
+. A brief write-up with your name, course and assignment number and a few sentences about anything you found challenging about the assignment. 
+
+= Submission guidelines
+
+Submit your program (entire sketch directory), write-up, and image as an electronic copy in the folder marked A05 in your dropbox folder. 
+
+= Credits
+
+The starmap data is based on this link:http://nifty.stanford.edu/2009/reid-starmap/starmap.html[assignment].

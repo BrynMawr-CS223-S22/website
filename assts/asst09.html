@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.10">
+<title>Assignment 9: Word cloud</title>
+<link rel="stylesheet" href="../style/cs21.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="article toc2 toc-left">
+<div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_assignment_9_word_cloud">Assignment 9: Word cloud</a></li>
+<li><a href="#_description">1. Description</a></li>
+<li><a href="#_requirements">2. Requirements</a></li>
+<li><a href="#_starter_code">3. Starter code</a></li>
+<li><a href="#_what_to_hand_in">4. What to hand-in</a></li>
+<li><a href="#_submission_guidelines">5. Submission guidelines</a></li>
+<li><a href="#_hints_and_advice">6. Hints and advice</a></li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_assignment_9_word_cloud">Assignment 9: Word cloud</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Due Thursday, December 10, before midnight</p>
+</div>
+<div class="paragraph">
+<p>The goals for this assignment are:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Define and use functions and objects</p>
+</li>
+<li>
+<p>Use selection sort</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_description">1. Description</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The goal of this assignment is to draw word clouds.  The following cloud was created from
+articles written about the Love statue in Philadelphia. In the demo below, pressing the 'r' key
+computes a new cloud, '+' adds one word to the cloud, '=' subtracts one word from the cloud, and 'd'
+toggles whether we show bounding boxes or not.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="img/asst09-wordcloud.gif" alt="asst09 wordcloud" width="250">
+</div>
+</div>
+<div class="paragraph">
+<p>A word cloud arranges words such that those that appear more often in a text are largest. To
+arrange the words, we draw each word from most occurrences to least (e.g. from biggest to smallest),
+ensuring that each new word we draw does not overlap with the ones we already drew.</p>
+</div>
+<div class="paragraph">
+<p>In this assignment, you are given a text file that lists words and counts. Your job is to read in
+the file and arrange the corresponding words into a word cloud.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_requirements">2. Requirements</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>1) Define a class, called <code>Tile</code>, to represent each word.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>Tile</code> contains the following data:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>word (String): the word on the tile</p>
+</li>
+<li>
+<p>count (int): the number of occurrences of the word in the text</p>
+</li>
+<li>
+<p>x coordinate (float): the left side of the tile</p>
+</li>
+<li>
+<p>y coordinate (float): the top of the tile</p>
+</li>
+<li>
+<p>width (float): the width of the tile based on the text size and word</p>
+</li>
+<li>
+<p>height (float): the height of the tile based on the text ascent and descent</p>
+</li>
+<li>
+<p>text size (int): the font size (based on the count)</p>
+</li>
+<li>
+<p>isVisible (boolean): whether or not the tile should be drawn</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><code>Tile</code> contains the following methods:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>constructor with parameters for <code>word</code> and <code>count</code>. <code>isVisible</code> should be true initially. The size should be a function of the count. Above, we use the formula <code>3 * count + 8</code>, where 8 is the minimum font size. The width and height should be computed using the font size and word.</p>
+</li>
+<li>
+<p><code>intersects(Tile)</code> method. This method returns true if the given tile intersects this tile and false otherwise.</p>
+</li>
+<li>
+<p><code>draw(debug)</code> method. If <code>debug</code> is true, draws both the text and the bounding box. If <code>debug</code> is false, just draw the text.</p>
+</li>
+<li>
+<p><code>getCount</code> method (Accessor). Returns the count associated with this tile.</p>
+</li>
+<li>
+<p><code>getSize</code> method (Accessor). Returns the font size of this tile.</p>
+</li>
+<li>
+<p><code>getWord</code> method (Accessor). Returns the word of this tile.</p>
+</li>
+<li>
+<p><code>getWidth</code> method (Accessor).  Returns the width of this tile.</p>
+</li>
+<li>
+<p><code>getHeight</code> method (Accessor).  Returns the height of this tile.</p>
+</li>
+<li>
+<p><code>getX</code> method (Accessor). Returns the x coordinate of this tile.</p>
+</li>
+<li>
+<p><code>getY</code> method (Accessor). Returns the y coordinate of this tile.</p>
+</li>
+<li>
+<p><code>setXY(float,float)</code> method (Mutator). Sets the value of x and y for this tile.</p>
+</li>
+<li>
+<p><code>setVisible(boolean)</code> method (Mutator). Sets whether this tile should be visible of not</p>
+</li>
+<li>
+<p><code>getVisible</code> method (Accessor).  Returns whether this tile should be visible or not</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>3) In setup, load the file "word-counts.txt" and initialize an array of Tile, one for each line in the file.</p>
+</div>
+<div class="paragraph">
+<p>4) In setup, print the first 10 tiles from the file to the console. Implement your print to console in the function <code>printTiles(Tile[],int)</code>.</p>
+</div>
+<div class="paragraph">
+<p>5) In setup, sort the tiles based on the counts in descending order, from largest count to smallest. Implement your sorting algorithm in <code>sortByCount</code>. Print the first 10 tiles after sorting using <code>printTiles</code>.</p>
+</div>
+<div class="paragraph">
+<p>6) In setup, compute (x,y) positions for the N largest tiles. Choose random positions for these tiles such that it doesn&#8217;t overlap with previously placed words. When looking for an open spot to place a word, you might not find one. Implement a max number of times to look for a random spot to place a word. If none is found, print a message to the console and hide that tile (call <code>setVisible(false)</code>) so it is not drawn. Below is psuedocode for this algorithm</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">// Algorithm for placeTiles(tiles, N)
+for the first N tile in tiles
+    x,y = generate a random point on the canvas
+    tile.setXY(x,y)
+    numTries = 100
+    while intersectsPreviousTiles(tile, tiles) and numTries &gt; 0
+        x,y = generate a random point on the canvas
+        tile.setXY(x,y)
+        numTries = numTries - 1
+
+    if numTries &lt;= 0
+        tile.setVisible(false)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>7) In draw, draw all the tiles. Pass the global variable, <code>drawDebug</code>, to each tile&#8217;s draw function to determine whether bounding boxes should be shown.</p>
+</div>
+<div class="paragraph">
+<p>8) In keyPressed, implement the following commands</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>'d' key: toggle the global variable, <code>drawDebug</code></p>
+</li>
+<li>
+<p>'r' key: call <code>placeTiles</code> to create a new arrangement of tiles</p>
+</li>
+<li>
+<p>'+' key: increase the number N of words used in the cloud. Don&#8217;t allow N to be larger than the number of tiles. Call <code>placeTiles</code> to recompute the cloud.</p>
+</li>
+<li>
+<p>'-' key: decrease the number N of words used in the cloud. Don&#8217;t allow N to be smaller than 1.  Call <code>placeTiles</code> to recompute the cloud.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_starter_code">3. Starter code</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>You have basecode for this assignment. Check dropbox.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_what_to_hand_in">4. What to hand-in</h2>
+<div class="sectionbody">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>The complete program (Don&#8217;t forget your header comment!)</p>
+</li>
+<li>
+<p>A brief write-up with your name, course and assignment number and a few sentences about anything you found challenging about the assignment.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_submission_guidelines">5. Submission guidelines</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Submit your program (entire sketch directory), write-up, and image as an electronic copy in the folder marked A05 in your dropbox folder.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_hints_and_advice">6. Hints and advice</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This assignment ties together several concepts from previous assignments in a non-trivial way!</p>
+</div>
+<div class="paragraph">
+<p>If you don&#8217;t know where to start, here is a recommended approach</p>
+</div>
+<div class="paragraph">
+<p>1) Implement the Tile class first. Some methods, such as <code>intersects</code> and <code>draw</code> can be implemented later, but you should implement the constructor, accessors, and mutators. The base code outlines what these are.</p>
+</div>
+<div class="paragraph">
+<p>2) Load in the file into an array of <code>Tile</code>. This is similar to assignment 07. For each line, parse the line into <code>word</code> and <code>count</code> and use these values to create new <code>Tile</code> objects.</p>
+</div>
+<div class="paragraph">
+<p>3) Implement the function <code>printTiles</code>. This function should loop through your array of tiles and print the word and count for each. Below is the console output when n is 10.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">dixon:2
+year:1
+evolved:1
+hall:5
+undergoing:2
+building:2
+near:2
+welcome:2
+brand:1
+13:1</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>4) Implement the function <code>sortByCount</code>. Then call <code>printTiles</code> again (with N = 10) to check that your sort is working, you should get</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">park:27
+love:21
+sculpture:16
+plaza:15
+city:13
+philadelphia:10
+kennedy:9
+john:9
+art:6
+designed:6</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>5) Implement <code>placeTiles</code> but don&#8217;t worry about intersection testing. Draw all your words with random positions. Make sure the bounds around each word is correct and that words have good relative sizes.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="img/Asst9-IntersectingTiles.png" alt="Asst9 IntersectingTiles" width="200px"></span></p>
+</div>
+<div class="paragraph">
+<p>6) Enhance your cloud so that words do not overlap. Implement <code>isClear</code> and <code>Tile.intersects</code>. Your intersection algorithm will need to be modified from the one we used for the video game to account for the following case:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="img/NewIntersectionCase.png" alt="NewIntersectionCase" width="100px">
+</div>
+</div>
+<div class="paragraph">
+<p>An easy way to deal with the above situation is to consider the cases where we know two boxes <strong>do not</strong> intersect.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>If a tile&#8217;s left side (e.g x position) is to the right of us (e.g. greater than mX + mWidth), then we don&#8217;t intersect</p>
+</li>
+<li>
+<p>If a tile&#8217;s top side (e.g. y position) is below us (e.g. greater than mY + mHeight), then we don&#8217;t intersect</p>
+</li>
+<li>
+<p>If a tile&#8217;s right side (e.g. x+width) is to the left of us (e.g. less than mX), then we don&#8217;t intersect</p>
+</li>
+<li>
+<p>If a tile&#8217;s bottom side (e.g. y+height) is to above us (e.g. less than mY), then we don&#8217;t intersect</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Implement the above rules in <code>Tile.intersects</code>.</p>
+</div>
+<div class="paragraph">
+<p>7) Once you have a basic cloud drawing, implement the keyboard controls</p>
+</div>
+<div class="paragraph">
+<p><strong>Gotchas and more advice</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Be careful about what draw mode you use for your tiles. This writeup assumes that we are using corner mode.</p>
+</li>
+<li>
+<p>Start by drawing only 2 or 3 words</p>
+</li>
+<li>
+<p>When looking for an open spot to place a word, you might not find one (infinite loop!). Implement a max number of times to look for a random spot to place a word. If none is found, print a message to the console and hide that tile so it is not drawn.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2020-12-09 10:55:40 -0500
+</div>
+</div>
+</body>
+</html>
