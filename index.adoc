@@ -12,9 +12,9 @@ include::header.adoc[]
 
 Instructor: link:https://www.cs.brynmawr.edu/~alinen[Aline Normoyle]
 
-link:#week01[Jump to week01 agenda]
-
-//[.anns]
+[.anns]
+* Current Agenda: link:#week01[Week01]
+* link:assts/asst00.html[Assignment 00 Due Jan 21]
 
 == Course Info
 
@@ -56,9 +56,9 @@ as a weighted average of all grades according to the following weights:
 |===
 |30% | Final Exam
 |30% | Assignments
-|25% | Code jams
+|25% | Quizzes
 |10% | Lab participation
-| 5% | Lecture participation
+| 5% | Participation
 |===
 
 include::quizzes.adoc[]

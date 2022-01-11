@@ -7,26 +7,17 @@ include::header.adoc[]
 
 = {title}
 
-**Due Friday, September 11, before midnight**
+**Due Friday, January 21, before midnight**
 
 The goals for this assignment are:
 
-* Sign-up for dropbox
 * Try slack
-* Look at the website!
-* Installing Processing
-* Write a simple Processing program
+* Sign-up for Github
+* Look at the website
+* Write a simple C program
+* (Optional) Setup your development environment on your own machine
 
 :sectnums:
-
-= Sign-up for Dropbox
-
-Please go to dropbox.com and register. You will be using dropbox to submit 
-your assignments. 
-
-Create a dropbox account and send an e-mail to the instructor (anormoyle at
-brynmawr.edu) with the e-mail used for dropbox account. You will then get an
-invite to share a folder for all your submissions. 
 
 = Try slack
 
@@ -34,38 +25,171 @@ I will be inviting you all to join the course slack channel. In the
 introduction channel, say and introduce yourself:
 
 * What is your preferred name and pronouns?
-* Tell us your favorite food. :)
+* Share with us your favorite emojji. :)
+
+We will use Slack for 
+
+* Course announcements
+* Links to zoom and calend.ly
+* Questions and errata for assignments and labs
+
+You can also use Slack to talk directly to me and the TAs, or even to each other!
+
+= Sign-up for Github
+
+Please go to github.com and register. We will use github for assignments.  *Email
+the instructor (anormoyle at brynmawr.edu) with your github username.* 
+
+We have made the decision to open-source our assignments and projects for this 
+class. The benefit of this decision is that you will have a portfolio of work that 
+you can easily keep and share.
+
+Having open-source assignments means that your work is publicly viewable, should 
+someone search for it. It also means that if you copy other people's work, it is 
+in plain view for anyone to see! We will compare assignments and expect everyone to 
+adhere to the honor code at Bryn Mawr and Haverford.
+
+You will discover that there are many open-source coding resources for 
+online. Some of it is boiler plate and intended to be re-used, such as when 
+we use API documentation in order to use a function. Any code you re-use in 
+your own program should be attributed.
 
 = Read the class web pages 
 
 Start by reading through **all** of the link:../index.html[class webpage]!
 Bookmark this page on your browser, or use some other method that helps you 
-keep this information handy. All course materials and announcements will be 
+keep this information handy. All course materials will be 
 posted on the course webpage! 
 
 Pay special attention to the link:../index.html#_schedule[Schedule]. 
 
-= Processing
+= Hello C
 
-This class will teach the fundamentals of programming using Processing.
-Processing is based on Java and is specialized for creating beautiful images
-and animations.
+Verify that you can use Github, git, and C. You can try this using a lab machine, or your own 
+machine if you have setup your development environment there. 
 
-Processing is already setup in the computer labs in Park 230 and 231.
-However, everyone should also install it on their own personal computer.
-This will give all students the flexibility to work either on campus or 
-remotely as needed.
+[discrete]
+== Fork the repository 
 
-If you do not have access to a personal computer, I will help you obtain one
-to use for the semester. Please email me (anormoyle at byrnmawr.edu) or ping
-me on Slack if you need help.
+Fork the repository from here: 
 
-1. Do the Processing tutorial: link:https://processing.org/tutorials/gettingstarted/[Getting started].
-2. Try creating a new sketch which executes the following program. We will learn how these programs work during the semester.
-image:Asst0-Ellipse.png[]
-3. Run the program by clicking the play button in the top, left corner
-image:Asst0-EllipseRun.png[]
-4. Save your program (in processing, programs are called *sketches*). From the
-menu, choose File -> Save. I recommend you create a directory on your computer
-to keep track of all your CS110 work for the term. We will cover a lot of examples!
+link:https://github.com/BrynMawr-CS223-S22/assignments[]
 
+[discrete]
+== Clone the reppository
+
+From _your own account_, clone the resitory you just forked. The URL should look 
+something like the following
+
+link:https://github.com/<YOURUSERNAME>/assignments[]
+
+This will download a local account of the repository to your computer.
+
+[discrete]
+== Build hello.c
+
+In the directory `A00`, you will have a sample file, `hello.c` and makefile `Makefile`. Try building and running.
+
+[source]
+----
+> make hello
+> ./hello
+Hello World
+----
+
+[discrete]
+== Fortune
+
+In the directory, `A00`, 
+
+* implement a new program, `fortune.c` that modifies `hello.c` to print a fortune of your choosing. 
+* add a rule to the Makefile to compile your program to an executable named `fortune`
+
+Your program should compile and run like so:
+
+[source]
+----
+> make fortune
+> ./fortune
+A journey of a thousand miles begins with a single step.
+----
+
+[discrete]
+== Submit your work
+
+Add and check in your program using git and then push your changes to Github. 
+
+[source]
+----
+> git status
+> git add fortune.c Makefile
+> git status
+> git commit -m "assignment 0 exercise"
+> git status
+> git push
+> git status
+----
+
+Run `git status` to check the result of the previous git command.
+Check the Github website to make sure that your program uploaded correctly. 
+
+= (Optional) Set up your own development environment
+
+Having your own development environment will allow you to write code outside of lab.
+
+NOTE: All programs must run on the lab's Linux environment. Make sure you test your work on the lab machines if you work on your laptop! 
+
+== Windows
+
+. Open PowerShell and install wsl2: `wsl --install`. See link:https://docs.microsoft.com/en-us/windows/wsl/install[documentation]. Note that you may need to open powershell as an administrator.
+. From the windows store, link:https://ubuntu.com/wsl[install `Ubuntu`].
+
+Once installed, you can setup your development environment from a bash shell. 
+
+. Open PowerShell
+. Type `wsl` to start the windows subsystem for linux. This will give your a bash prompt
+. Then install your development tools
+.. `sudo apt-get install cmake`
+.. `sudo apt-get install git`
+.. `sudo apt-get install g++`
+.. `sudo apt-get install vim`
+.. `sudo apt-get install libc6-dev-i386`
+.. `sudo apt-get install gcc-multilib`
+.. `sudo apt-get install hexedit`
+.. `sudo apt-get install valgrind`
+.. `sudo apt-get install gdb`
+
+For example, you get something like the following
+
+[source]
+----
+Windows PowerShell
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+PS C:\Users\alinen> wsl
+WSL alinen@Balthazar:~$ sudo apt-get install make
+
+etc
+----
+
+NOTE: A quick way to open powershell is to type <WindowsKey>-'Q' and type 'powershell'.
+
+== MacOS
+
+From terminal, run command `xcode-select --install`
+
+You can follow the instructions link:https://www.ics.uci.edu/~pattis/common/handouts/macclion/clang.html[here]
+
+Then, to install additional dependencies, execute the following commands form terminal
+
+[source]
+----
+> brew install vim
+> brew install git
+> brew install hexdump
+> brew install cmake
+----
+
+NOTE: A quick way to open terminal is to use spotlight. From the keyboard, type the <cmd> and <spacebar>. Then type terminal at the popup edit field.
+
+Unfortunately, `valgrind` and `gdb` cannot be run natively on mac. 
