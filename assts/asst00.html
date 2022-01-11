@@ -168,7 +168,7 @@ something like the following</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code>&gt; make
+<pre class="highlight"><code>&gt; make hello
 &gt; ./hello
 Hello World</code></pre>
 </div>
@@ -180,7 +180,7 @@ Hello World</code></pre>
 <div class="ulist">
 <ul>
 <li>
-<p>implement a new program, <code>fortune.c</code> that prints a fortune.</p>
+<p>implement a new program, <code>fortune.c</code> that modifies <code>hello.c</code> to print a fortune of your choosing.</p>
 </li>
 <li>
 <p>add a rule to the Makefile to compile your program to an executable named <code>fortune</code></p>
@@ -192,7 +192,7 @@ Hello World</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code>&gt; make
+<pre class="highlight"><code>&gt; make fortune
 &gt; ./fortune
 A journey of a thousand miles begins with a single step.</code></pre>
 </div>
@@ -203,15 +203,13 @@ A journey of a thousand miles begins with a single step.</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code>---
-&gt; git status
+<pre class="highlight"><code>&gt; git status
 &gt; git add fortune.c Makefile
 &gt; git status
 &gt; git commit -m "assignment 0 exercise"
 &gt; git status
 &gt; git push
-&gt; git status
----</code></pre>
+&gt; git status</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -308,7 +306,7 @@ Copyright (C) Microsoft Corporation. All rights reserved.
 PS C:\Users\alinen&gt; wsl
 WSL alinen@Balthazar:~$ sudo apt-get install make
 
-.... etc</code></pre>
+etc</code></pre>
 </div>
 </div>
 <div class="admonitionblock note">
@@ -335,21 +333,13 @@ A quick way to open powershell is to type &lt;WindowsKey&gt;-'Q' and type 'power
 <div class="paragraph">
 <p>Then, to install additional dependencies, execute the following commands form terminal</p>
 </div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p><code>brew install vim</code></p>
-</li>
-<li>
-<p><code>brew install git</code></p>
-</li>
-<li>
-<p><code>brew install hexdump</code></p>
-</li>
-<li>
-<p><code>brew install cmake</code></p>
-</li>
-</ol>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>&gt; brew install vim
+&gt; brew install git
+&gt; brew install hexdump
+&gt; brew install cmake</code></pre>
+</div>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -372,7 +362,7 @@ A quick way to open terminal is to use spotlight. From the keyboard, type the &l
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2022-01-11 16:08:40 -0500
+Last updated 2022-01-11 16:10:54 -0500
 </div>
 </div>
 </body>

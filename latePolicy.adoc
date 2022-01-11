@@ -8,45 +8,13 @@ The purpose of this work is to give you hands on experience with the topics
 from class. Most of this work will be due in lecture or labs. The  
 weekly time commitment for this course is aimed to be 10 hours or less per week.
 
-No late work will be accepted. Why? Because it's important that you do not
-fall behind in the material. *It is better to submit incomplete work than to
-fall behind, or not submit work at all!*
+Assignments will generally be due on Fridays. However, you may request a late 
+day (until Saturday) if necessary. No submissions beyond Saturday will be accepted.
+This allows us time to grade assignments. And it helps prevent you from falling 
+behind.
 
-However, we realize that you may not be able to complete a deadline for any 
-number of valid reasons. We also *do not want you to feel compelled to come to 
-class or lab in person if you feel sick in anyway*.
+If you need to miss a quiz, let the instructor know and alternate arrangements for 
+taking it will be arranged if possible. 
 
-Below are our class policies for these cases:
-
-[cols="1,4a", options="header"]
-|===
-| Work type 
-| Policy
-//-----------------------------
-| Assignments
-| Lowest grade dropped
-//-----------------------------
-| Quizzes
-| Lowest grade dropped
-//-----------------------------
-| Class exercises
-| Lowest two grades dropped
-//-----------------------------
-| Lab exercises
-| Lowest two grades dropped
-//-----------------------------
-| Final
-| Must be taken
-
-|===
-
-If you need to miss class or lab, you can submit your exercises
-electronically by midnight on the day the exercises are assigned:
-
-* Either email the instructor with a photo of your work, 
-* or email a link to your work in your dropbox folder.
-
-If you need to miss more than one quiz, you must make arrangements ahead of
-time to take the quiz at another time. If you cannot give notice ahead of
-time because of a medical emergency, you will need to provide a doctor's note
-to schedule a make-up quiz.
+You may need to provide a doctor's note if you need special accomodations due to a 
+medical emergency.
