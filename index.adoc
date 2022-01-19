@@ -18,8 +18,10 @@ Instructor: link:https://www.cs.brynmawr.edu/~alinen[Aline Normoyle]
 
 == Course Info
 
-**Welcome to CS223**. 
+**Welcome to CS223: Systems Programming**! The goals of this course is to develop skills for writing "hardware-aware" programming.  
 
+* introduce you to low-level programming. 
+ 
 === Meeting Times
 
 [.center,options="header,autowidth"]

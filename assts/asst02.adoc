@@ -1,67 +1,22 @@
 include::header.adoc[]
 
-:title: Assignment 2: Make an original animation!
+:title: Assignment 2: Watch where you point 
 :Author Initials: ASN
 :Date:    2020-08-15
 :Revision: 0.1
 
 = {title}
 
-**Due Friday, September 25, before midnight**
+**Due Friday, Feb 4, before midnight**
 
 The goals for this assignment are:
 
-* Gain more practice with shapes and colors 
-* Work with variables
-* Save your work as a gif
+* Work with pointers
 
 :sectnums:
 
-= Description
+= Can't get a word in Ent-wise
 
-The goal of this assignment is to create a scene having at least one animated component. 
+Resizable string
 
-You may re-use your scene from assignment 1. You can animate a component of your scene 
-or add new components to animate. We encourage you to re-write components of assignment 1 
-so it's easy to move parts of the scene together. For an example, see the hovering cloud 
-example from lecture, or the Zoog example from your book (Section 4-7). 
-
-If you wish, you may also create a new scene. The new scene should be
-non-trivial, but does not need to include all the primitives of assignment 1.
-
-Requirements:
-
-* Your program should use *variables*. 
-** The variables you define should have descriptive names
-** Feel free to use Processing variables, such as width and height
-** Feel free to re-write portions of your assignment 1 to use variables. This should simplify your code and make it more flexible.
-* Your program should contain at least one *accumulator variable*. Use this variable to animate a component in your scene. 
-* Your animated component should contain *at least 3 primitives*. For example, animating a single `ellipse` will not impress!
-* Your animated component should *make sense* for your scene. For example, cut and pasting an example from class on top of your assignment 1 will not suffice! 
-* Make sure that it is *at least 500 pixels by 500 pixels*. The dimensions can vary depending upon your design, but make sure that it is not "small".
-* If you are making a new scene, be sure to use at least 4 different primitives out of: *line, rect, ellipse, quad, beginShape/endShape, arc, curve*.
-* Include proper source *code header* and adequate *comments*.
-* Below are examples of scenes which would meet our requirements: 
-
-** an aquarium with an animated fish
-** an underwater submarine
-** streets with an animated car
-** flowers with an animated bee
-** sky with flying plane
-** a rocket ship taking off
-** a flying saucer traveling through a asteroid belt
-** a lab with a robot
-** beach sunset
-** etc.
-
-* Sign your work - the *course title* (CS110 Fall 2020) and *your name* should appear some where in the bottom of the sketch. Use the text() function and design your own signature.
-
-= What to hand-in
-
-. The program
-. A write-up with your name, course and assignment number. This week, briefly describe where and how you used variables in your program. 
-. A gif of your finished sketch. If you don't have a preferred tool for making GIFs on your computer, try using the open source tool called link:https://www.cockos.com/licecap/[LiceCAP].
-
-= Submission guidelines
-
-Submit your program (entire sketch directory), write-up, and image as an electronic copy in the folder marked A02 in your dropbox folder. 
+= 
