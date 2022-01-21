@@ -51,8 +51,9 @@ adhere to the honor code at Bryn Mawr and Haverford.
 
 You will discover that there are many open-source coding resources for 
 online. Some of it is boiler plate and intended to be re-used, such as when 
-we use API documentation in order to use a function. Any code you re-use in 
-your own program should be attributed.
+we use API documentation in order to use a function. Any non-trivial code (longer than a 
+single statement) that you re-use in your own program should be attributed. In this class, 
+99% of all code should be your own.
 
 = Read the class web pages 
 
@@ -76,7 +77,7 @@ Fork the repository from here:
 link:https://github.com/BrynMawr-CS223-S22/assignments[]
 
 [discrete]
-== Clone the reppository
+== Clone the repository
 
 From _your own account_, clone the resitory you just forked. The URL should look 
 something like the following
