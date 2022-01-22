@@ -13,8 +13,8 @@ include::header.adoc[]
 Instructor: link:https://www.cs.brynmawr.edu/~alinen[Aline Normoyle]
 
 [.anns]
-* Current Agenda: link:#week01[Week01]
-* link:assts/asst00.html[Assignment 00 Due Jan 21]
+* Current Agenda: link:#week02[Week02]
+* link:assts/asst01.html[Assignment 01 Due Jan 28]
 
 == Course Info
 
@@ -30,9 +30,9 @@ Instructor: link:https://www.cs.brynmawr.edu/~alinen[Aline Normoyle]
 
 | Lecture | Park 245 | Tuesday and Thursday 12:55 PM - 2:15 PM 
 | Lab | Park 231 | Thursday 2:25 PM - 3:45 PM 
-| Office Hours - Prof. Normoyle | Park 231/Park 242 | Thursday 4 PM - 5 PM
-| Office Hours - Trang Dang | Park 231 | TBA
-//| Office Hours - Yitian (Zoey) Cao | Park 231 | TBA
+| Office Hours - Prof. Normoyle | Park 231/Park 204 | Thursday 4 PM - 5 PM
+| Office Hours - Trang Dang | Park 231 | Wednesday 8-9 PM
+| Office Hours - Yitian (Zoey) Cao | Park 231 | Thursday 7-8 PM 
 
 |===
 

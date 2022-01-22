@@ -13,6 +13,8 @@
 
 * Read: link:https://diveintosystems.org/singlepage/[Chapter 1] 
 * link:assts/asst00.html[Assignment 00]
+* link:http://linuxcommand.org/lc3_learning_the_shell.php[Learning the shell]
+* link:https://github.com/BrynMawr-CS223-S22/git-workshop[Github workshop] and link:https://github.com/BrynMawr-CS223-S22/git-workshop/blob/main/SSHSetup.md[Setting up SSH keys for Github]
 * From Java to C 
 
 //-----------------------------
