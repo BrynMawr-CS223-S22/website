@@ -21,7 +21,7 @@ The goals for this assignment are:
 Write a program, `password.c`, that asks the user for a word and creates a bad password from it.
 You can assume that all characters are lowercase.
 
-[source]
+[source,subs="quotes"]
 ----
 $ **make password**
 gcc password.c -o password
@@ -46,7 +46,7 @@ Your bad password algorithm should
 
 Write a program, `snackbar.c`, that maintains a list of snacks available for purchase.
 
-[source]
+[source,subs="quotes"]
 ----
 $ **make snackbar**
 gcc snackbar.c -o snackbar
@@ -104,7 +104,7 @@ Your program should have an AI and human player. Each turn, each makes a choice 
 * Paper covers rock
 * Scissors cut paper
 
-[source]
+[source,subs="quotes"]
 ----
 $ **make rpc**
 gcc rpc.c -o rpc
