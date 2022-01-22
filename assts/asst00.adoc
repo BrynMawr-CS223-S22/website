@@ -92,8 +92,8 @@ In the directory `A00`, you will have a sample file, `hello.c` and makefile `Mak
 
 [source]
 ----
-> make hello
-> ./hello
+$ make hello
+$ ./hello
 Hello World
 ----
 
@@ -109,8 +109,8 @@ Your program should compile and run like so:
 
 [source]
 ----
-> make fortune
-> ./fortune
+$ make fortune
+$ ./fortune
 A journey of a thousand miles begins with a single step.
 ----
 
@@ -121,13 +121,13 @@ Add and check in your program using git and then push your changes to Github.
 
 [source]
 ----
-> git status
-> git add fortune.c Makefile
-> git status
-> git commit -m "assignment 0 exercise"
-> git status
-> git push
-> git status
+$ git status
+$ git add fortune.c Makefile
+$ git status
+$ git commit -m "assignment 0 exercise"
+$ git status
+$ git push
+$ git status
 ----
 
 Run `git status` to check the result of the previous git command.
@@ -184,10 +184,10 @@ Then, to install additional dependencies, execute the following commands form te
 
 [source]
 ----
-> brew install vim
-> brew install git
-> brew install hexdump
-> brew install cmake
+$ brew install vim
+$ brew install git
+$ brew install hexdump
+$ brew install cmake
 ----
 
 NOTE: A quick way to open terminal is to use spotlight. From the keyboard, type the <cmd> and <spacebar>. Then type terminal at the popup edit field.

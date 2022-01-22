@@ -1,3 +1,3 @@
 #! /bin/bash
 
-asciidoctor assts/*.adoc notes/*.adoc labs/*.adoc *.adoc
+/usr/local/bin/asciidoctor assts/*.adoc *.adoc

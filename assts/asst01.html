@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 2.0.17">
-<title>Assignment 1: Make an original design!</title>
+<title>Assignment 1: Learn to C!</title>
 <link rel="stylesheet" href="../style/cs21.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
@@ -14,20 +14,20 @@
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
 <ul class="sectlevel1">
-<li><a href="#_assignment_1_make_an_original_design">Assignment 1: Make an original design!</a></li>
-<li><a href="#_description">1. Description</a></li>
-<li><a href="#_what_to_hand_in">2. What to hand-in</a></li>
-<li><a href="#_submission_guidelines">3. Submission guidelines</a></li>
-<li><a href="#_gallery_of_previous_work">4. Gallery of Previous Work</a></li>
+<li><a href="#_assignment_1_learn_to_c">Assignment 1: Learn to C!</a></li>
+<li><a href="#_bad_password">1. Bad password</a></li>
+<li><a href="#_snackbar">2. Snackbar</a></li>
+<li><a href="#_rock_paper_scissors">3. Rock, paper, scissors</a></li>
+<li><a href="#_submit_your_work">4. Submit your Work</a></li>
 </ul>
 </div>
 </div>
 <div id="content">
 <div class="sect1">
-<h2 id="_assignment_1_make_an_original_design">Assignment 1: Make an original design!</h2>
+<h2 id="_assignment_1_learn_to_c">Assignment 1: Learn to C!</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p><strong>Due Friday, September 18, before midnight</strong></p>
+<p><strong>Due Friday, January 28, before midnight</strong></p>
 </div>
 <div class="paragraph">
 <p>The goals for this assignment are:</p>
@@ -35,25 +35,103 @@
 <div class="ulist">
 <ul>
 <li>
-<p>Work with shapes and colors</p>
+<p>Work with printf and scanf</p>
 </li>
 <li>
-<p>Understand the Processing canvas and coordinate system</p>
-</li>
-<li>
-<p>Save your work as an image</p>
+<p>Practice C syntax: variables, functions, loops, structs, arrays, strings</p>
 </li>
 </ul>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_description">1. Description</h2>
+<h2 id="_bad_password">1. Bad password</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Design and create your own sketch using the Processing language/environment.
-Think of yourself as a creative designer when choosing the topic of your
-design. This is your very first program, so here are some guidelines.</p>
+<p>Write a program, <code>password.c</code>, that asks the user for a word and creates a bad password from it.
+You can assume that all characters are lowercase.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>$ **make password**
+gcc password.c -o password
+$ **./password**
+Enter a word: **elephant**
+Your bad password is 313ph@nt
+$ **./password**
+Enter a word: **hello**
+Your bad password is h311o
+$ **./password**
+Enter a word: **rhythm**
+Your bad password is rhythm</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Your bad password algorithm should</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Replace 'e&#8217;s with '3&#8217;s</p>
+</li>
+<li>
+<p>Replace 'l&#8217;s with '1&#8217;s</p>
+</li>
+<li>
+<p>Replace 'a&#8217;s with '@'s</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_snackbar">2. Snackbar</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Write a program, <code>snackbar.c</code>, that maintains a list of snacks available for purchase.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>$ **make snackbar**
+gcc snackbar.c -o snackbar
+
+$ **./snackbar**
+Welcome to Steven Struct's Snack Bar.
+
+How much money do you have? **5**
+
+0) Coco Puffs           cost: $1.50     quantity: 4
+1) Manchego cheese      cost: $15.50    quantity: 6
+2) Magic beans          cost: $0.50     quantity: 0
+
+What snack would you like to buy? [0,1,2] **1**
+You can't afford it!
+
+$ **./snackbar**
+Welcome to Steven Struct's Snack Bar.
+
+How much money do you have? **5**
+
+0) Coco Puffs           cost: $1.50     quantity: 4
+1) Manchego cheese      cost: $15.50    quantity: 6
+2) Magic beans          cost: $0.50     quantity: 0
+
+What snack would you like to buy? [0,1,2] **2**
+Sorry, we are out of Magic beans
+
+$ **./snackbar**
+Welcome to Steven Struct's Snack Bar.
+
+How much money do you have? **5**
+
+0) Coco Puffs           cost: $1.50     quantity: 4
+1) Manchego cheese      cost: $15.50    quantity: 6
+2) Magic beans          cost: $0.50     quantity: 0
+
+What snack would you like to buy? [0,1,2] **0**
+You bought Coco Puffs
+You have $3.50 left</code></pre>
+</div>
 </div>
 <div class="paragraph">
 <p>Requirements:</p>
@@ -61,136 +139,136 @@ design. This is your very first program, so here are some guidelines.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Make sure that it is <strong>at least 500 pixels by 500 pixels</strong>. The dimensions can vary depending upon your design, but make sure that it is not "small".</p>
+<p>Your program should define a <code>struct snack</code> that stores a name, cost, and quantity</p>
 </li>
 <li>
-<p>Use each of the following drawing primitives at least once: <strong>line, rect, ellipse, quad, beginShape/endShape, arc, curve</strong>.</p>
+<p>Your program should define at least three snacks and store them in an array</p>
 </li>
 <li>
-<p>Make liberal use of formatting commands, including: <strong>background, no/stroke, no/fill</strong>.</p>
+<p>Your program should be similar to the given output but feel free to customize it!</p>
 </li>
-<li>
-<p>Include proper source <strong>code header</strong> and adequate <strong>comments</strong>.</p>
-</li>
-<li>
-<p>Your program should call many built-in functions and <strong>create a design</strong>, as this is the point of this assignment.  A very "abstract" sketch like a simple circle in the center of the screen will not suffice (as aesthetic as it may seem). Here are some ideas:</p>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_rock_paper_scissors">3. Rock, paper, scissors</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Write a program, <code>rpc.c</code>, that implements the game [rock, paper, scissors](<a href="https://en.wikipedia.org/wiki/Rock_paper_scissors" class="bare">https://en.wikipedia.org/wiki/Rock_paper_scissors</a>).
+Your program should have an AI and human player. Each turn, each makes a choice and then wins a point based on the following rules</p>
+</div>
 <div class="ulist">
 <ul>
 <li>
-<p>A self-portrait</p>
+<p>Rock bashes scissors</p>
 </li>
 <li>
-<p>An avatar or a cartoon of someone</p>
+<p>Paper covers rock</p>
 </li>
 <li>
-<p>Your favorite cartoon TV Show character or design your own&#8230;&#8203;</p>
-</li>
-<li>
-<p>A city scape</p>
-</li>
-<li>
-<p>Animal/object caricatures/study</p>
-</li>
-<li>
-<p>A post card design</p>
-</li>
-<li>
-<p>A fabric pattern</p>
-</li>
-<li>
-<p>Stylize your name&#8217;s initials&#8230;&#8203;or a logo</p>
-</li>
-<li>
-<p>The Bryn Mawr Owl</p>
-</li>
-<li>
-<p>A Poster</p>
-</li>
-<li>
-<p>Imitation of existing design or art</p>
-</li>
-<li>
-<p>etc.</p>
+<p>Scissors cut paper</p>
 </li>
 </ul>
 </div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>$ **make rpc**
+gcc rpc.c -o rpc
+$ **./rpc**
+Welcome to Rock, Paper, Scissors!
+How many rounds do you want to play? **6**
+
+Which do you choose? rock, paper, or scissors? **nope**
+AI chose scissors
+You entered an invalid choice: nope
+AI score: 0, Player score: 0
+
+Which do you choose? rock, paper, or scissors? **rock**
+AI chose scissors
+Rock bashes scissors
+AI score: 0, Player score: 1
+
+Which do you choose? rock, paper, or scissors? **paper**
+AI chose paper
+AI score: 0, Player score: 1
+
+Which do you choose? rock, paper, or scissors? **paper**
+AI chose rock
+Paper covers sock
+AI score: 0, Player score: 2
+
+Which do you choose? rock, paper, or scissors? **scissors**
+AI chose scissors
+AI score: 0, Player score: 2
+
+Which do you choose? rock, paper, or scissors? **scissors**
+AI chose scissors
+AI score: 0, Player score: 2
+Player wins!</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Requirements and hints:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Your program should implement at least one function. Try to keep your program DRY (e.g. Don&#8217;t Repeat Yourself!)</p>
 </li>
 <li>
-<p>Sign your work - the <strong>course title</strong> (CS110 Fall 2020) and <strong>your name</strong> should appear some where in the bottom of the sketch. Use the text() function and design your own signature.</p>
+<p>Use the <code>rand()</code> function (defined in <code>stdlib.h</code>) to make the AI&#8217;s choice. If the choice is 0, interpret it as "rock"; 2 as "paper"; and 3 as "scissors".</p>
+</li>
+<li>
+<p>Use the <code>strcmp</code> function (defined in <code>string.h</code>) to compare the player&#8217;s choice against either rock, paper, or scissors.</p>
+</li>
+<li>
+<p>Your output should be similar to the sample output, although you can customize it!</p>
+</li>
+<li>
+<p>You can assume the user enters an integer for the number of rounds</p>
 </li>
 </ul>
 </div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_what_to_hand_in">2. What to hand-in</h2>
-<div class="sectionbody">
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>The program</p>
-</li>
-<li>
-<p>A write-up with your name, course and assignment number and a paragraph about the sketch, its inspiration, and how you designed and implemented it. Include a brief discussion about your experience working on this assignment.</p>
-</li>
-<li>
-<p>A jpg or png image of your finished sketch (use the <code>save()</code> function).</p>
-</li>
-</ol>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The code <code>srand(time(0));</code> sets up the <code>rand()</code> function to produce different random numbers every time you run the program.
+Comment this line out, to run with the same random numbers. This can be useful for testing.
+</td>
+</tr>
+</table>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_submission_guidelines">3. Submission guidelines</h2>
+<h2 id="_submit_your_work">4. Submit your Work</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Submit your program (entire sketch directory), write-up, and image as an electronic copy in the folder marked A01 in your dropbox folder.</p>
+<p>Push you work to github to submit your work.</p>
 </div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>$ cd A01
+$ git status
+$ git add *.c
+$ git status
+$ git commit -m "assignment 1 complete"
+$ git status
+$ git push
+$ git status</code></pre>
 </div>
-</div>
-<div class="sect1">
-<h2 id="_gallery_of_previous_work">4. Gallery of Previous Work</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p><span class="image"><img src="img/2016Monkey.png" alt="ex" width="200"></span>
-<span class="image"><img src="img/Bird.jpg" alt="ex" width="200"></span>
-<span class="image"><img src="img/Bubbles01.jpg" alt="ex" width="200"></span>
-<span class="image"><img src="img/CMSC110-01Spring2016%20Koukou%20Zhang.jpg" alt="ex" width="200"></span>
-<span class="image"><img src="img/Chibi%20Maruko-chan.jpg" alt="ex" width="200"></span>
-<span class="image"><img src="img/Doraemon.jpg" alt="ex" width="200"></span>
-<span class="image"><img src="img/Julias%20Kumamo.jpg" alt="ex" width="200"></span>
-<span class="image"><img src="img/Rilakkuma_bear.jpg" alt="ex" width="200"></span>
-<span class="image"><img src="img/Screen_Shot_2016-01-27_at_9.jpg" alt="ex" width="200"></span>
-<span class="image"><img src="img/United%20States%20Regional%20Map.jpg" alt="ex" width="200"></span>
-<span class="image"><img src="img/assignment%201%20screenshot.jpg" alt="ex" width="200"></span>
-<span class="image"><img src="img/assignment%201.jpg" alt="ex" width="200"></span>
-<span class="image"><img src="img/assignment01sdepew.jpg" alt="ex" width="200"></span>
-<span class="image"><img src="img/cat.jpg" alt="ex" width="200"></span>
-<span class="image"><img src="img/frank.jpng.png" alt="ex" width="200"></span>
-<span class="image"><img src="img/knowledge_rabbit.jpg" alt="ex" width="200"></span>
-<span class="image"><img src="img/lighthouse.jpg" alt="ex" width="200"></span>
-<span class="image"><img src="img/minion.jpg" alt="ex" width="200"></span>
-<span class="image"><img src="img/screenshotsketch01nhagar.png" alt="ex" width="200"></span>
-<span class="image"><img src="img/sguo3-fall.jpg" alt="ex" width="200"></span>
-<span class="image"><img src="img/sguo3-spring.jpg" alt="ex" width="200"></span>
-<span class="image"><img src="img/sguo3-summer.jpg" alt="ex" width="200"></span>
-<span class="image"><img src="img/sguo3-winter.jpg" alt="ex" width="200"></span>
-<span class="image"><img src="img/skecth01kmoravec.jpg" alt="ex" width="200"></span>
-<span class="image"><img src="img/sketch01cchen.jpg" alt="ex" width="200"></span>
-<span class="image"><img src="img/sketch01cchen5.jpg" alt="ex" width="200"></span>
-<span class="image"><img src="img/sketch01eyang.jpg" alt="ex" width="200"></span>
-<span class="image"><img src="img/sketch01kellison.jpg" alt="ex" width="200"></span>
-<span class="image"><img src="img/sketch01mcherniack.jpg" alt="ex" width="200"></span>
-<span class="image"><img src="img/sketch01mhaydengat.png" alt="ex" width="200"></span>
-<span class="image"><img src="img/sketch01pmnguyen.jpg" alt="ex" width="200"></span>
-<span class="image"><img src="img/sketch01vgarner.png" alt="ex" width="200"></span></p>
 </div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2022-01-09 17:39:35 -0500
+Last updated 2022-01-21 22:26:14 -0500
 </div>
 </div>
 </body>

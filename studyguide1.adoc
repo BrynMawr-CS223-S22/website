@@ -1,0 +1,36 @@
+include::header.adoc[]
+
+:title: Study Guide 1
+:Author Initials: ASN
+:Date:    2020-08-15
+:Revision: 0.1
+
+= {title}
+
+Code Jams are open book. 40 minutes in lab.
+
+Topics:
+
+* Variables: defining and assigning
+* Data types and working with strings
+* arithmetic operators: +, *, -, /, %
+* Operators and expressions, order of operations
+* Command line syntax
+
+Write C programs to check your answers. Or you can ask a TA or instructor 
+to give feedback on your responses.
+
+= Practice questions
+
+1) What is the minimum size of the following structures?
+
+[source]
+----
+struct Snack {
+  char name[32];
+  int quantity;
+  float cost;
+};
+----
+
+Hint: To check your answers, use the `sizeof()` function.
