@@ -33,6 +33,7 @@
 |*Debugging* 
 
 * Read: link:https://diveintosystems.org/singlepage/[Chapter 3] 
+* link:assts/asst02.html[Assignment 02]
 
 //-----------------------------
 |4

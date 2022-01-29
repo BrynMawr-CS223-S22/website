@@ -144,7 +144,7 @@ Player wins!
 Requirements and hints:
 
 * Your program should implement at least one function. Try to keep your program DRY (e.g. Don't Repeat Yourself!)
-* Use the `rand()` function (defined in `stdlib.h`) to make the AI's choice. If the choice is 0, interpret it as "rock"; 2 as "paper"; and 3 as "scissors". 
+* Use the `rand()` function (defined in `stdlib.h`) to make the AI's choice. If the choice is 0, interpret it as "rock"; 1 as "paper"; and 2 as "scissors". 
 * Use the `strcmp` function (defined in `string.h`) to compare the player's choice against either rock, paper, or scissors.
 * Your output should be similar to the sample output, although you can customize it!
 * You can assume the user enters an integer for the number of rounds

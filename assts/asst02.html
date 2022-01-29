@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 2.0.17">
-<title>Assignment 2: Watch where you point</title>
+<title>Assignment 2: If you malloc something, set it free</title>
 <link rel="stylesheet" href="../style/cs21.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
@@ -14,14 +14,17 @@
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
 <ul class="sectlevel1">
-<li><a href="#_assignment_2_watch_where_you_point">Assignment 2: Watch where you point</a></li>
-<li><a href="#_cant_get_a_word_in_ent_wise">1. Can&#8217;t get a word in Ent-wise</a></li>
+<li><a href="#_assignment_2_if_you_malloc_something_set_it_free">Assignment 2: If you malloc something, set it free</a></li>
+<li><a href="#_repeat_repeat_repeat">1. Repeat! Repeat! Repeat!</a></li>
+<li><a href="#_dynamic_snackbar">2. Dynamic snackbar</a></li>
+<li><a href="#_guess_word">3. Guess word</a></li>
+<li><a href="#_submit_your_work">4. Submit your Work</a></li>
 </ul>
 </div>
 </div>
 <div id="content">
 <div class="sect1">
-<h2 id="_assignment_2_watch_where_you_point">Assignment 2: Watch where you point</h2>
+<h2 id="_assignment_2_if_you_malloc_something_set_it_free">Assignment 2: If you malloc something, set it free</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p><strong>Due Friday, Feb 4, before midnight</strong></p>
@@ -34,25 +37,209 @@
 <li>
 <p>Work with pointers</p>
 </li>
+<li>
+<p>Work with malloc/free</p>
+</li>
+<li>
+<p>Work with arrays</p>
+</li>
 </ul>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_cant_get_a_word_in_ent_wise">1. Can&#8217;t get a word in Ent-wise</h2>
+<h2 id="_repeat_repeat_repeat">1. Repeat! Repeat! Repeat!</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Resizable string</p>
+<p>Implement a program, <code>repeat.c</code>, that asks the user for a string <code>s</code> and an integer <code>n</code> and
+then creates a new string that repeats <code>s</code> <code>n</code> times.  For example, if the user inputs <code>"ha"</code> and
+the number <code>3</code>, the program creates a string <code>"hahaha"</code>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>$ <strong>make repeat</strong>
+gcc repeat.c -o repeat
+$ <strong>./repeat</strong>
+Enter a word: <strong>ha</strong>
+Enter a count: <strong>3</strong>
+Your word is hahaha
+$ <strong>./repeat</strong>
+Enter a word: <strong>ha</strong>
+Enter a count: <strong>1000</strong>
+hahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahaha
+hahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahaha
+hahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahaha
+hahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahaha
+hahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahaha
+hahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahaha
+[truncated]
+$ <strong>./repeat</strong>
+Enter a word: <strong>hi</strong>
+Enter a count: <strong>1000000000000</strong>
+Cannot allocate new string. Exiting...</code></pre>
+</div>
 </div>
 <div class="paragraph">
-<p>=</p>
+<p>Requirements/Hints:
+* Your program can assume that the user enters words that are smaller than 32 characters.
+* Your program should use <code>malloc</code> and <code>free</code>.
+* Your program should check that <code>malloc</code> is successful.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_dynamic_snackbar">2. Dynamic snackbar</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Implement a program, <code>dynamic_snackbar.c</code>, that allows users to add snacks to the snackbar.
+Unlike last week&#8217;s snackbar, your program only needs two features:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>The ability to add a new snack to the list of snacks</p>
+</li>
+<li>
+<p>The ability to print out the current list of snacks</p>
+</li>
+</ol>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>$ <strong>make dynamic_snackbar</strong>
+gcc dynamic_snackbar.c -o dynamic_snackbar
+$ <strong>./dynamic_snackbar</strong>
+Enter a number of snacks: <strong>3</strong>
+Enter a name: <strong>Slurm</strong>
+Enter a cost: <strong>1.50</strong>
+Enter a quantity: <strong>3</strong>
+Enter a name: <strong>Beans</strong>
+Enter a cost: <strong>5</strong>
+Enter a quantity: <strong>1</strong>
+Enter a name: <strong>Carrots</strong>
+Enter a cost: <strong>2</strong>
+Enter a quantity: <strong>10</strong>
+
+Welcome to Dynamic Donna's Snack Bar.
+
+0) Slurm                cost: $1.50     quantity: 3
+1) Beans                cost: $5.00     quantity: 1
+2) Carrots              cost: $2.00     quantity: 10</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_guess_word">3. Guess word</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Implement a program, <code>wordguess.c</code>, that chooses a random word from a list and then asks the
+player to guess letters from that word.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>$ <strong>make wordguess</strong>
+gcc wordguess.c -o wordguess
+$ <strong>./wordguess</strong>
+Welcome to Word Guess!
+
+Turn: 1
+
+_ _ _ _ _ _ _ _ _ _ _
+Guess a character: <strong>e</strong>
+Turn: 2
+
+_ _ _ _ _ _ _ _ e _ _
+Guess a character: <strong>a</strong>
+Turn: 3
+
+_ _ _ _ _ a _ _ e _ _
+Guess a character: <strong>s</strong>
+Turn: 4
+
+_ _ s _ _ a _ _ e _ s
+Guess a character: <strong>d</strong>
+Turn: 5
+
+d _ s _ _ a _ _ e _ s
+Guess a character: <strong>i</strong>
+Turn: 6
+
+d i s _ _ a i _ e _ s
+Guess a character: <strong>t</strong>
+Sorry, t not found!
+Turn: 7
+
+d i s _ _ a i _ e _ s
+Guess a character: <strong>c</strong>
+Turn: 8
+
+d i s c _ a i _ e _ s
+Guess a character: <strong>l</strong>
+Turn: 9
+
+d i s c l a i _ e _ s
+Guess a character: <strong>m</strong>
+Turn: 10
+
+d i s c l a i m e _ s
+Guess a character: <strong>r</strong>
+
+d i s c l a i m e r s
+You won in 10 turns!</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Requirements/Hints:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>To help you debug, print the random word at the beginning.</p>
+</li>
+<li>
+<p>You may want to make a small list of words, say with 6 words in it, to debug initializing the puzzle.</p>
+</li>
+<li>
+<p>Your program does not need to store the entire list of words (this would require a 2D array). Instead, you can read the first line to get the number of words in the file and then choose a random row. You then only need to read the file up to the random row.</p>
+</li>
+<li>
+<p>All words are lower case and no word is greater than 32 characters long.</p>
+</li>
+<li>
+<p>Use <code>fgets</code> to read in each line of text.</p>
+</li>
+<li>
+<p>If you allocate any dynamic memory, be sure to free it before you program completes!</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_submit_your_work">4. Submit your Work</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Push you work to github to submit your work.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>$ cd A01
+$ git status
+$ git add *.c
+$ git status
+$ git commit -m "assignment 1 complete"
+$ git status
+$ git push
+$ git status</code></pre>
+</div>
 </div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2022-01-19 14:40:35 -0500
+Last updated 2022-01-29 16:57:07 -0500
 </div>
 </div>
 </body>

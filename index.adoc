@@ -13,15 +13,14 @@ include::header.adoc[]
 Instructor: link:https://www.cs.brynmawr.edu/~alinen[Aline Normoyle]
 
 [.anns]
-* Current Agenda: link:#week02[Week02]
-* link:assts/asst01.html[Assignment 01 Due Jan 28]
+* Current Agenda: link:#week03[Week03]
+* link:assts/asst02.html[Assignment 02 Due Feb 4]
 
 == Course Info
 
-**Welcome to CS223: Systems Programming**! The goals of this course is to develop skills for writing "hardware-aware" programming.  
+**Welcome to CS223: Systems Programming**! 
+The primary goal of this course is to develop skills for writing "hardware-aware" programs.  
 
-* introduce you to low-level programming. 
- 
 === Meeting Times
 
 [.center,options="header,autowidth"]

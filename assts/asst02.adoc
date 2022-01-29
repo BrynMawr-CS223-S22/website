@@ -1,8 +1,8 @@
 include::header.adoc[]
 
-:title: Assignment 2: Watch where you point 
+:title: Assignment 2: If you malloc something, set it free
 :Author Initials: ASN
-:Date:    2020-08-15
+:Date:    2021-01-29
 :Revision: 0.1
 
 = {title}
@@ -12,11 +12,156 @@ include::header.adoc[]
 The goals for this assignment are:
 
 * Work with pointers
+* Work with malloc/free
+* Work with arrays
 
 :sectnums:
 
-= Can't get a word in Ent-wise
+= Repeat! Repeat! Repeat!
 
-Resizable string
+Implement a program, `repeat.c`, that asks the user for a string `s` and an integer `n` and 
+then creates a new string that repeats `s` `n` times.  For example, if the user inputs `"ha"` and 
+the number `3`, the program creates a string `"hahaha"`.  
 
-= 
+[source,subs="quotes"]
+----
+$ **make repeat**
+gcc repeat.c -o repeat
+$ **./repeat**
+Enter a word: **ha**
+Enter a count: **3**
+Your word is hahaha
+$ **./repeat**
+Enter a word: **ha**
+Enter a count: **1000**
+hahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahaha
+hahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahaha
+hahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahaha
+hahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahaha
+hahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahaha
+hahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahaha
+[truncated]
+$ **./repeat**
+Enter a word: **hi**
+Enter a count: **1000000000000**
+Cannot allocate new string. Exiting...
+----
+
+Requirements/Hints:
+* Your program can assume that the user enters words that are smaller than 32 characters.
+* Your program should use `malloc` and `free`.
+* Your program should check that `malloc` is successful.
+
+= Dynamic snackbar
+
+Implement a program, `dynamic_snackbar.c`, that allows users to add snacks to the snackbar. 
+Unlike last week's snackbar, your program only needs two features: 
+
+. The ability to add a new snack to the list of snacks
+. The ability to print out the current list of snacks
+
+[source,subs="quotes"]
+----
+$ **make dynamic_snackbar**
+gcc dynamic_snackbar.c -o dynamic_snackbar
+$ **./dynamic_snackbar**
+Enter a number of snacks: **3**
+Enter a name: **Slurm**
+Enter a cost: **1.50**
+Enter a quantity: **3**
+Enter a name: **Beans**
+Enter a cost: **5**
+Enter a quantity: **1**
+Enter a name: **Carrots**
+Enter a cost: **2**
+Enter a quantity: **10**
+
+Welcome to Dynamic Donna's Snack Bar.
+
+0) Slurm                cost: $1.50     quantity: 3
+1) Beans                cost: $5.00     quantity: 1
+2) Carrots              cost: $2.00     quantity: 10
+----
+
+= Guess word
+
+Implement a program, `wordguess.c`, that chooses a random word from a list and then asks the 
+player to guess letters from that word. 
+
+[source,subs="quotes"]
+----
+$ **make wordguess**
+gcc wordguess.c -o wordguess
+$ **./wordguess**
+Welcome to Word Guess!
+
+Turn: 1
+
+_ _ _ _ _ _ _ _ _ _ _
+Guess a character: **e**
+Turn: 2
+
+_ _ _ _ _ _ _ _ e _ _
+Guess a character: **a**
+Turn: 3
+
+_ _ _ _ _ a _ _ e _ _
+Guess a character: **s**
+Turn: 4
+
+_ _ s _ _ a _ _ e _ s
+Guess a character: **d**
+Turn: 5
+
+d _ s _ _ a _ _ e _ s
+Guess a character: **i**
+Turn: 6
+
+d i s _ _ a i _ e _ s
+Guess a character: **t**
+Sorry, t not found!
+Turn: 7
+
+d i s _ _ a i _ e _ s
+Guess a character: **c**
+Turn: 8
+
+d i s c _ a i _ e _ s
+Guess a character: **l**
+Turn: 9
+
+d i s c l a i _ e _ s
+Guess a character: **m**
+Turn: 10
+
+d i s c l a i m e _ s
+Guess a character: **r**
+
+d i s c l a i m e r s
+You won in 10 turns!
+----
+
+Requirements/Hints:
+
+* To help you debug, print the random word at the beginning.
+* You may want to make a small list of words, say with 6 words in it, to debug initializing the puzzle.
+* Your program does not need to store the entire list of words (this would require a 2D array). Instead, you can read the first line to get the number of words in the file and then choose a random row. You then only need to read the file up to the random row. 
+* All words are lower case and no word is greater than 32 characters long.
+* Use `fgets` to read in each line of text.
+* If you allocate any dynamic memory, be sure to free it before you program completes! 
+
+= Submit your Work
+
+Push you work to github to submit your work.
+
+[source]
+----
+$ cd A01
+$ git status
+$ git add *.c 
+$ git status
+$ git commit -m "assignment 1 complete"
+$ git status
+$ git push
+$ git status
+----
