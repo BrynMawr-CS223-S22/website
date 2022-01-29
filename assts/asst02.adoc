@@ -147,7 +147,7 @@ Requirements/Hints:
 * You may want to make a small list of words, say with 6 words in it, to debug initializing the puzzle.
 * Your program does not need to store the entire list of words (this would require a 2D array). Instead, you can read the first line to get the number of words in the file and then choose a random row. You then only need to read the file up to the random row. 
 * All words are lower case and no word is greater than 32 characters long.
-* Use `fgets` to read in each line of text. link:https://diveintosystems.org/book/C2-C_depth/IO.html[See Dive into Systems, Sec 2.8 for more information].
+* Use `fgets` to read in each line of text. link:https://diveintosystems.org/book/C2-C_depth/IO.html#_using_text_files_in_c[See Dive into Systems, Sec 2.8.3 for more information].
 * If you allocate any dynamic memory, be sure to free it before you program completes! 
 
 = Submit your Work
