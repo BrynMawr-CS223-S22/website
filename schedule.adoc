@@ -38,7 +38,7 @@
 * Read: link:https://diveintosystems.org/singlepage/[Chapter 3] 
 * Read: link:http://svslibrary.pbworks.com/f/Data+Structures+and+Algorithm+Analysis+in+C+-+Mark+Allen+Weiss.pdf[Data Structures in C, Mark Allen Weiss, Chpt 3 and 4]
 * link:assts/asst02.html[Assignment 02]
-* Lab: GDB and Valgrind workshop
+* Lab: Office hours
 
 //-----------------------------
 |4
@@ -46,6 +46,7 @@
 |*Binary and Data Representation I* 
 
 * Read: link:https://diveintosystems.org/singlepage/[Chapter 4.1-4.3] 
+* link:assts/asst03.html[Assignment 03]
 * **Code Jam 01**: Feb 10 link:studyguide1.html[Study Guide]
 
 //-----------------------------

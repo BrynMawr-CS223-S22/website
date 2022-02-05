@@ -13,16 +13,112 @@ The goals for this assignment are:
 
 * Use malloc and free
 * Work with 2D arrays
-* Implement a pointer-based data structure
-* Use gdb and valgrind
+* Work with pointer-based data structures
+* Use gdb and valgrind. 
+* Work with different types of input: stdin, command line arguments, and files
+
+**All programs must run without memory errors and leaks!**
 
 :sectnums:
 
-= Snackbar List
+= Magic Square
 
+Implement a program, `magic_square.c`, that tests whether a given matrix is a magic square. 
+A link:https://en.wikipedia.org/wiki/Magic_square[magic square] is an N by N matrix where each 
+row, column, and diagonal has the same sum, called the _magic constant_. 
 
-= Dungeon Explore
+image::https://mathworld.wolfram.com/images/gifs/melencol.jpg[height=200]
 
+[source,subs="quotes"]
+----
+$ **make magic_square**
+gcc -g magic_square.c -o magic_square
+$ **./magic_square < magic1.txt**
+8 1 6
+3 5 7
+4 9 2
+M is a magic square (magic constant = 15)
+$ **./magic_square < magic2.txt**
+9 1 6
+3 5 7
+4 8 2
+M is NOT a magic square!
+$ **./magic_square < magic3.txt**
+1
+M is a magic square (magic constant = 1)
+----
+
+Requirements/Hints:
+
+* Read in the matrix from stdin using `scanf(" %d", &val);`. The first two values are the dimensions of the matrix. All subsequent integers are the values of the matrix. 
+* Use malloc and free to allocate a 2D array to store the inputs.
+
+= Sorted Snacks
+
+Implement a program, `sorted_snackbar.c`, that allows users to add snacks to the snackbar and displays 
+them in alphabetical order. Your program should have the same features as last week's snackbar, but should 
+use a _linked list_ to store the snacks, rather than an array. 
+
+[source,subs="quotes"]
+----
+$ **make sorted_snackbar**
+gcc sorted_snackbar.c -o sorted_snackbar
+$ **./sorted_snackbar**
+Enter a number of snacks: **3**
+Enter a name: **Slurm**
+Enter a cost: **1.50**
+Enter a quantity: **3**
+Enter a name: **Beans**
+Enter a cost: **5**
+Enter a quantity: **1**
+Enter a name: **Carrots**
+Enter a cost: **2**
+Enter a quantity: **10**
+
+Welcome to Sorted Sally's Snack Bar.
+
+0) Beans                cost: $5.00     quantity: 1
+1) Carrots              cost: $2.00     quantity: 10
+2) Slurm                cost: $1.50     quantity: 3
+----
+
+Requirements/Hints:
+
+* Implement the function `insert_sorted`. This function should create a new snack struct and return the first item in the list
+* Implement the function `clear`. This function should clear and free all items in the list.
+
+= Matching braces 
+
+Implement a program, `match_braces.c`, that takes a filename as a command line argument and uses a stack to check 
+for matched braces and report any errors.
+
+[source,subs="quotes"]
+----
+$ **make match_braces**
+gcc -g match_braces.c -o match_braces
+$ **./match_braces**
+usage: ./match_braces <filename>
+$ **./match_braces prog.c**
+Cannot open file: prog.c
+$ **./match_braces prog1.c**
+Found matching braces: (21, 32) -> (23, 5)
+Found matching braces: (25, 30) -> (28, 9)
+Found matching braces: (17, 53) -> (29, 5)
+Unmatched brace on Line 31 and Column 1
+Found matching braces: (40, 47) -> (43, 5)
+Found matching braces: (36, 18) -> (47, 1)
+Unmatched brace on Line 34 and Column 34
+----
+
+Requirements/Hints:
+
+* Implement the functions `push`, `pop`, `clear`. Implementing `print` is also recommended to help you debug your assignment.
+* Use link:https://diveintosystems.org/book/C2-C_depth/advanced_cmd_line_args.html[command line arguments] to input the filename. 
+* Print the usage if the user inputs an incorrect number of command line arguments
+* Print an error if your program cannot open the file
+* Use `fgetc` to read the file one character at a time. Update the current line number when you encounter `\n`. Update the current column as you read in each character. 
+* To check for matched braces, push to the stack when you encounter a '{' and then pop from the stack when you encounter '}'. If the symbols pushed and popped do not match, there is an error. 
+* The output of the program should match the line and column numbers that Vim reports when you use `%` to check for matched braces. 
 
 = Submit your Work
 
@@ -34,7 +130,7 @@ $ cd A01
 $ git status
 $ git add *.c 
 $ git status
-$ git commit -m "assignment 1 complete"
+$ git commit -m "assignment 3 complete"
 $ git status
 $ git push
 $ git status

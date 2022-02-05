@@ -160,7 +160,7 @@ $ cd A01
 $ git status
 $ git add *.c 
 $ git status
-$ git commit -m "assignment 1 complete"
+$ git commit -m "assignment 2 complete"
 $ git status
 $ git push
 $ git status
