@@ -1,73 +1,213 @@
 include::header.adoc[]
 
-:title: Assignment 4: Abstract computational art
+:title: Assignment 4: Don't be afraid to ASCII
 :Author Initials: ASN
 :Date:    2020-08-15
 :Revision: 0.1
+:stem: latexmath
 
 = {title}
 
-**Due Friday, October 9, before midnight**
+**Due Friday, February 18, before midnight**
 
 The goals for this assignment are:
 
-* Use Loops to create visual patterns
+* Work with more complex files
+* Deepen our understanding of data types
+* Work with malloc/free
+* Work with 2D arrays
+
+**All programs must run without memory errors and leaks!**
+
+
+= Background: PPM
+
+link:http://netpbm.sourceforge.net/doc/ppm.html[PPM (Portable Pix Map)]
+ is an image file format that stores the colors of an image as a 2D array of 
+colors. Each color is represented as a RGB triplet, representing red, green and blue respectively. 
+The properties of the image, such as its size and color format, are specified at the start of the 
+file (called its "header information"). PPM supports both ASCII (plain text) and binary data (raw). 
+
+For example, consider the following image
+
+image::https://www.cs.swarthmore.edu/~soni/cs35/f13/Labs/images/01/example5000.png[]
+
+In ASCII format, the above image is stored as follows. To see for yourself, do `cat feep-ascii.ppm`.
+
+[source]
+----
+P3
+# This is a comment
+4 4
+255
+0  0  0   100 0  0       0  0  0    255   0 255
+0  0  0    0 255 175     0  0  0     0    0  0
+0  0  0    0  0  0       0 15 175    0    0  0
+255 0 255  0  0  0       0  0  0    255  255 255
+----
+
+//And here is an example of the same image in binary, or raw, format. To see for yourself, do `hexedit feep-binary.ppm`.
+//
+//[source]
+//----
+//00000000   50 36 0A 23  20 43 72 65  61 74 65 64  20 62 79 20  47 49 4D 50  20 76 65 72  P6.# Created by GIMP ver 
+//00000018   73 69 6F 6E  20 32 2E 31  30 2E 32 34  20 50 4E 4D  20 70 6C 75  67 2D 69 6E  sion 2.10.24 PNM plug-in
+//00000030   0A 34 20 34  0A 32 35 35  0A 00 00 00  64 00 00 00  00 00 FF 00  FF 00 00 00  .4 4.255....d...........
+//00000048   00 FF AF 00  00 00 00 00  00 00 00 00  00 00 00 00  0F AF 00 00  00 FF 00 FF  ........................
+//00000060   00 00 00 00  00 00 FF FF  FF                                                  .........
+//----
+
+Regardless of format, every PPM file starts the following information in its header. 
+
+* A "magic number" indicating the type of PPM. ASCII types start with "P3". Binary types start with "P6".
+* Whitespace  (blanks, tabs, \n, \r, etc)
+* Width and height as ASCII decimal integers (separated by whitespace)
+* Maximum color value as an ASCII decimal integer. *You can assume the Maxval is less than 256, meaning each RGB value is 1 byte.*
+* A single whitespace character
+* A 2D raster (e.g. 2D array) of Height number of rows and Width number of columns, in order from top to bottom. 
+
+PPM images may contain comments in their header. These must be on their own line and start with the symbol `#`.
+
+NOTE: The header information is always in plain text. It is only the pixel data that differs between ASCII and raw formats. 
+
+NOTE: PPM files can be viewed using tools such as Photoshop and Gimp.
 
 :sectnums:
+= Read PPM
 
-= Description
+For this question, you will implement a function, `read_ppm()`, that can read
+PPM files stored in ASCII format. This function should take a filename as input
+and return a 2D array of `struct pixel`. A `struct pixel` has the following definition
 
-The goal of this assignment is to create an algorithmic artwork. 
-Your submission should be *aesthetically pleasing*. 
-Here are a few sources of inspiration:
+[source]
+----
+struct ppm_pixel {
+    unsigned char red;
+    unsigned char green;
+    unsigned char blue;
+};
+----
 
-* Mandala patterns
-* String art
-* Spirograph
-* Robert Delaunay's paintings 
+The user of the function `read_ppm` is reponsible for freeing the memory allocated by this function.
 
-= Requirements
+You will re-use this function for the next question. For this reason, we place its implementation
+in it's own file, `read_ppm.c`, and use a header file, `read_ppm.h`, to include it in our main application.
 
-* You must use at least one *for-/while- loop* somewhere in your sketch. Preferably more!
-* Your sketch must use trigonometry (`sin()` and `cos()`) or `rotate()`
-* Your sketch should contain elements *radial symmetry*.
-* Make sure your sketch includes your name and "CS110 Fall 2020" on the image
+You may implement your 2D array of pixels as either a flat array or an array or
+arrays. For example, if you return a flat array, your function should be defined
+as `struct ppm_pixel* read_ppm(const char* filename, int* width, int* height)`.
+If you return an array or arrays, your function should be defined as  `struct
+ppm_pixel** read_ppm(const char* filename, int* width, int* height)`. In both cases, 
+use the parameters `width` and `height` to return the width and height of the image.
 
-Your final submission should include a static image.
+In the file, `test_ppm.c`, write a short test that calls your function and prints the
+contents of `feep-ascii.ppm` like so:
 
-Recommendations:
+[source,subs="quotes"]
+----
+$ **make test_ppm**
+gcc -g -Wall -Wvla -Werror test_ppm.c read_ppm.c -o test_ppm
+$ **./test_ppm**
+Testing file feep-ascii.ppm: 4 4
+(0,0,0) (100,0,0) (0,0,0) (255,0,255)
+(0,0,0) (0,255,175) (0,0,0) (0,0,0)
+(0,0,0) (0,0,0) (0,15,175) (0,0,0)
+(255,0,255) (0,0,0) (0,0,0) (255,255,255)
+----
 
-* Make judicious use of colors. Experiment with transparency, jitter, gradients, and glow
-* Use `random()` (or `noise()`) to create interesting variations. 
+Requirements/Hints:
 
-= What to hand-in
+* Your function should return NULL if the filename is invalid
+* Your function should return NULL if memory cannot be allocated for the image data
+* Your function should return a pointer to the array you create in read_ppm
+* You can assume that it is safe to read the header line by line (e.g. using `fgets`).
+* You can use `fscanf(fp, " %hhu %hhu %hhu", &r, &g, &b)` to read unsigned char color values
+* Don't forget to free your data!
 
-. The program (Don't forget your header comment!)
-. A brief write-up  with your name, course and assignment number and a paragraph about the sketch, its inspiration, and how you designed and implemented it. Include a brief discussion about your experience working on this assignment.  
-. An image (png,jpg) or animation (gif) of your finished sketch.
+= ASCII Art
 
-= Submission guidelines
+When I was a kid, my mom used to bring home dot-matrix printouts of ascii art for my sister and I to use as coloring books. 
 
-Submit your program (entire sketch directory), write-up, and image as an electronic copy in the folder marked A04 in your dropbox folder. 
+image:ascii-snoopy.jpg[]
 
-= Gallery of previous work
+For this question, write a program, `ascii_art.c`, that takes a PPM image as a 
+command line argument and displays it as 
+link:https://en.wikipedia.org/wiki/ASCII_art[ASCII Art].  
 
-image:BezaWondwossen.jpg[ex,width=200]
-image:CorineHartshorne.jpg[ex,width=200]
-image:DianneMoore.jpg[ex,width=200]
-image:ElainaSassine.jpg[ex,width=200]
-image:EmmaRegev.jpg[ex,width=200]
-image:FoqiaShahid.jpg[ex,width=200]
-image:JiananGu.jpg[ex,width=200]
-image:JiaqiZheng.jpg[ex,width=200]
-image:JiayinBao.jpg[ex,width=200]
-image:JingyuanFu.jpg[ex,width=200]
-image:JingyuanShe.jpg[ex,width=200]
-image:LaurynWhite.jpg[ex,width=200]
-image:LilySanchez.jpg[ex,width=200]
-image:LylaPoonawala.jpg[ex,width=200]
-image:MorineKimani.jpg[ex,width=200]
-image:NataliaBElchikov.jpg[ex,width=200]
-image:SethBoyce.jpg[ex,width=200]
-image:ThomasWhelan.jpg[ex,width=200]
-image:TrangDuong.jpg[ex,width=200]
+[source,subs="quotes"]
+----
+$ **make ascii_image**
+gcc -g -Wall -Wvla -Werror ascii_image.c read_ppm.c -o ascii_image
+$ **./ascii_image feep-ascii.ppm**
+Reading feep-ascii.ppm with width 4 and height 4
+@#@:
+@;@@
+@@%@
+:@@
+$ **./ascii_image smile-ascii.ppm**
+Reading smile-ascii.ppm with width 14 and height 19
+@@@@@@@@@@@@@@
+@@@@@@@@@@@@@@
+@@          @@
+@@          @@
+@@          @@
+@@   @  @   @@
+@@          @@
+@@ @      @ @@
+@@  @@@@@@  @@
+@@          @@
+@@          @@
+@@          @@
+@@          @@
+@@          @@
+@@          @@
+@@          @@
+@@          @@
+@@@@@@@@@@@@@@
+@@@@@@@@@@@@@@
+----
+
+[discrete]
+== Algorithm
+
+Step 1: For each RGB pixel in the image, compute the average intensity as follows
+
+[stem]
+++++
+I = \frac{1}{3}(R + G + B)
+++++
+
+Step 2: Then, assign an ASCII character based on the intensity
+
+[.center,options="header,autowidth"]
+|===
+| Intensity | Symbol
+
+| 0-25 | @
+| 26-50 | #
+| 51-75 | %
+| 76-100 | *
+| 101-125 | o
+| 126-150 | ;
+| 151-175 | :
+| 176-200 | ,
+| 201-225 | .
+| 226-255 | <space>
+|===
+
+= Submit your work
+
+Push you work to github to submit your work.
+
+[source]
+----
+$ cd A01
+$ git status
+$ git add *.c 
+$ git status
+$ git commit -m "assignment 3 complete"
+$ git status
+$ git push
+$ git status
+----
+

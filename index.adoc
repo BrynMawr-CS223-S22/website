@@ -13,9 +13,10 @@ include::header.adoc[]
 Instructor: link:https://www.cs.brynmawr.edu/~alinen[Aline Normoyle]
 
 [.anns]
-* Current Agenda: link:#week04[Week04]
-* link:assts/asst03.html[Assignment 03 Due Feb 11]
-* **Code Jam 01: Feb 10** link:studyguide1.html[Study Guide]
+* Current Agenda: link:#week05[Week05]
+* link:assts/asst04.html[Assignment 04 Due Feb 18]
+* **Jam Redux 01: Feb 17** 
+* **Code Jam 02: Feb 24** link:studyguide2.html[Study Guide]
 
 == Course Info
 
