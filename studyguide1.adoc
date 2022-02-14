@@ -82,7 +82,7 @@ int main() {
 }
 ----
 
-7) The following program crashes. What is the problem and how can we fix it?
+8) The following program crashes. What is the problem and how can we fix it?
 
 [source]
 ----
@@ -101,7 +101,7 @@ int main() {
 }
 ----
 
-8) What is the output of this program?
+9) What is the output of this program?
 
 [source]
 ----
@@ -136,7 +136,7 @@ int arg_modifier(int x, int *y) {
 }
 ----
 
-9) Draw the state of the function stack and heap for the program above in `arg_modifier`. Assume the 
+10) Draw the state of the function stack and heap for the program above in `arg_modifier`. Assume the 
 user entered the values 6 and 1.  Draw the stack at the point in the execution
 right before the return from the arg_modifier function, and consider the
 following questions:
