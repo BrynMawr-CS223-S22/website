@@ -1,0 +1,28 @@
+include::header.adoc[]
+
+:title: Study Guide 3
+:Author Initials: ASN
+:Date:    2020-08-15
+:Revision: 0.1
+
+= {title}
+
+Code Jams are open book. 40 minutes in lab.
+
+Topics:
+
+Everything from link:studyguide2.html[Study Guide 2], plus
+
+* Data type formats: signed and unsigned integers, float, double
+* Bitwise operators
+* Binary arithmetic
+* Memory layouts of arrays and structs, byte alignment
+* Reading and writing binary files
+
+Write C programs to check your answers. Or you can ask a TA or instructor 
+to give feedback on your responses.
+
+= Practice questions
+
+1) Consider the following struct. When we print the memory addresses of its data, we 
+get the following values. Draw the contents and layout of memory starting at address XX. Use `hexedit` to check your work.
