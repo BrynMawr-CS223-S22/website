@@ -1,90 +1,283 @@
 include::header.adoc[]
 
-:title: Assignment 5: Bit shift your thinking
+:title: Assignment 5: Give a little bit
 :Author Initials: ASN
 :Date:    2020-08-15
 :Revision: 0.1
 
 = {title}
 
-**Due Friday, October 16, before midnight**
+**Due Friday, February 25, before midnight**
 
 The goals for this assignment are:
 
-* Define and use functions
+* Understand binary representations of data types
+* Directly manipulate basic types at the bit level
+* Work with bitwise operators: |, &, ~, ^
+
+**All programs must run without memory errors and leaks!**
 
 :sectnums:
 
-= Description
+= Four letter words
 
-The goal of this assignment is to create a digital pet. Each day, your pet loses 
-energy and its mood deteriorates. Give your pet treats to improve its energy and also its mood! 
+In the program, `word.c`, implement a program that asks the user for a 4-letter word 
+and stores the characters within a single `unsigned int`. 
 
-video::Digipet.mp4[width=500]
-
-= Features
-
-* Your pet's energy ranges from 0 to 100. Energy can never be less than 0 or greater than 100.
-* Pressing '>' increases the current day by 1
-* Pressing 't' gives your pet a treat
-* Energy starts at 90
-* Day starts at 1
-* Each day, your pet loses 5-20 units of energy. 
-* Giving a treat, increases your pet's energy by 5-10 units.
-* Your pet's energy level determines its mood, for example,
-** Joyful: 100
-** Happy: 90-99
-** Peaceful: 80-89
-** Melancholy: 70-79
-** Sad: 60-69
-** Grumpy: 50-59
-** Unconscious: 0-49
-
-= Requirements
-
-* Define global variables for `day` and `energy`
-* Design your own unique pet. You can base your pet on a previous assignment. A good submission will also modify the pet's appearance based on the mood. For example, you can change the color, shape, or expressions of your pet. 
-* Use the `random` function to increase and decrease your pet's energy. For example, call `random(5,20)` to get the energy loss for the day. 
-* You can personalize the moods however you like. Make sure that they are based on the energy level and that you have at least 4 of them.
-* You program must define and use the functions below; however, you are encouraged to include more functions to keep your program organized. For example, you might have a function `drawPet()` which calls a function `drawExpression()` 
-[source,java]
-----
-/*
-Inputs: none
-Outputs: none
-Side effects: modifies energy and day
-Updates our pet:
-- decreases the energy by [5,20)
-- increments the day by 1
-- ensures energy does not go below 0
-*/
-void updatePet()
-
-/*
-Inputs: none
-Outputs: none
-Side effects: modifies energy
-Gives a treat to our pet
-- increases the energy by [5,10)
-- ensures energy does not go above 100
-*/
-void giveTreat() 
-
-/*
-Inputs: energy (float) - the given energy level to translate to a mood
-Outputs: String
-Side effects: none
-Returns a string indicating the current mood based on the given energy level
-*/
-String computeMood(float energy) 
+[source,subs="quotes"]
+$ **./word**
+Enter 4 characters: love
+Debug: e = 0x00000065
+Debug: v = 0x00007600
+Debug: o = 0x006F0000
+Debug: l = 0x6C000000
+Your number is: 1819244133 (0x6c6f7665)
+$ **./word**
+Enter 4 characters: !@#$
+Debug: $ = 0x00000024
+Debug: # = 0x00002300
+Debug: @ = 0x00400000
+Debug: ! = 0x21000000
+Your number is: 557851428 (0x21402324)
 ----
 
-= What to hand-in
+Requirements/Hints:
 
-. The program (Don't forget your header comment!)
-. A brief write-up  with your name, course and assignment number and a few sentences about unique features of your sketch. If you found aspects of the assignment interesting or challenging, include that too.
-. Images (png,jpg) or an animation (gif or video) of your finished sketch. Use thess to demonstrate the features of your pet! 
+* You can assume the user enters a valid 4-letter word
+* For debugging, print the hexadecimal values of each character, shifted to its correct spot
 
-= Submission guidelines
+= Binary to ASCII
 
-Submit your program (entire sketch directory), write-up, and image as an electronic copy in the folder marked A05 in your dropbox folder. 
+In the program, `binarychar.c`, implement a program that asks the user for an 8-bit 
+binary number and outputs the corresponding character.
+
+[source,subs="quotes"]
+----
+$ **make binarychar**
+gcc -g -Wall -Wvla -Werror binarychar.c -o binarychar
+$ **./binarychar**
+Enter 8 bits: 01100001
+Your character is: a
+$ **./binarychar**
+Enter 8 bits: 01111100
+Your character is: |
+----
+
+Requirements/Hints:
+
+* You can assume that the user enters a valid 8-bit binary number
+
+= Read raw
+
+In the file, `read_ppm.c`, implement a modified version of your PPM reader from 
+link:asst04.html[Assignment 04] that reads PPM files in _binary_ format, 
+rather than _ascii_ format.
+
+In raw format, the header information is still ASCII (although the magic number is "P6", not "P3"), 
+but the pixel data is in binary format. Use `fread` to read in the pixels. 
+
+Use `test_ppm.c` to again test that your reader is working
+
+[source,subs="quotes"]
+----
+$ **make test_ppm**
+gcc -g -Wall -Wvla -Werror test_ppm.c read_ppm.c -o test_ppm
+$ **./test_ppm**
+Testing file feep-raw.ppm: 4 4
+(0,0,0) (100,0,0) (0,0,0) (255,0,255)
+(0,0,0) (0,255,175) (0,0,0) (0,0,0)
+(0,0,0) (0,0,0) (0,15,175) (0,0,0)
+(255,0,255) (0,0,0) (0,0,0) (255,255,255)
+----
+
+Requirements/Hints:
+
+* Remember to open the file with "rb", not "r"
+* Use `fread` to copy all the pixel data into your array as one large block
+* If you needed to modify the function signature in `ppm_read` because you allocated an array of arrays, be sure to update `read_ppm.h` here as well. **Just be careful to keep the new definition of ppm_pixel**!
+
+= Background: Steganography
+
+link:https://en.wikipedia.org/wiki/Steganography[Steganography] is the practice of hiding messages in plain sight. In this question, we will hide text messages using the least significant bits of an image. 
+
+[discrete]
+== Background
+
+_Credit: Chris Trailie (link:https://ursinus-cs174-s2022.github.io/CoursePage/Assignments/HW2_Steganography/#lsb[Original])_
+
+To understand how we will hide messages in the least significant bits of an image, let's look at the following write-up by 
+Chris Trailie, starting with the two pictures below. 
+++++
+<table style="width:650px;">
+    <tr>
+        <td><h4>Ordinary image</h4></td>
+        <td><h4>Hidden message</h4></td>
+    </tr>
+    <tr>
+        <td>
+            <img src = "https://ursinus-cs174-s2022.github.io/CoursePage/Assignments/HW2_Steganography/HW2_Steganography/images/birthday.png" width=300>
+        </td>
+        <td>
+            <img src = "https://ursinus-cs174-s2022.github.io/CoursePage/Assignments/HW2_Steganography/HW2_Steganography/images/birthday_encoded.png" width=300>
+        </td>
+    </tr>
+</table>
+
+<p>
+    The picture on the right contains 12 paragraphs of text on the Ursinus 150 strategic plan.  Can you see the difference?  No?  Well great, that's the point!  
+</p>
+<p>
+    So how do we do this?  The idea is beautifully simple, and is best understood with an example.  Consider the following 3-pixel image
+</p>
+
+<table style="width:250px;">
+    <tr>
+        <td style="background-color: #fe7732; width:50px; height:50px;"><span style="color:white">[254, 119, 50]</span></td>
+        <td style="background-color: #028dfe; width:50px; height:50px;"><span style="color:white">[2, 141, 254]</span></td>
+        <td style="background-color: #5b9f40; width:50px; height:50px;"><span style="color:white">[91, 159, 64]</span></td>
+    </tr>
+</table>
+
+<p>
+    We're going to extract a binary signal by looking at the <b>least significant bit</b> (the 1's place in binary) of each color channel in each pixel from left to right from red, to green, to blue, and put them together into one binary string.  In other words, for a particular pixel and a particular color channel, we'll extract a 0 if it's an even number and a 1 if it's an odd number.  Let's look at the first 8 bits in the above image.  We have 
+</p>
+<table style="width:50px;">
+    <tr>
+        <td>254</td><td>0</td>
+    </tr>
+    <tr>
+        <td>119</td><td>1</td>
+    </tr>
+    <tr>
+        <td>50</td><td>0</td>
+    </tr>
+    <tr>
+        <td>2</td><td>0</td>
+    </tr>
+    <tr>
+        <td>141</td><td>1</td>
+    </tr>
+    <tr>
+        <td>254</td><td>0</td>
+    </tr>
+    <tr>
+        <td>91</td><td>1</td>
+    </tr>
+    <tr>
+        <td>159</td><td>1</td>
+    </tr>
+</table>
+
+<p>
+    All together, this is the binary string <b>01001011</b>, which is the character <b>'K'</b> in <a href = "https://www.asciitable.com/">ASCII</a>.  What if we wanted to change it to some other character though?  Perhaps the character <b>'z'</b>, which is <b>0x7A</b> hex, or <b>01111010</b> in binary.  Then we can just tweak the 1's place of the pixel values as follows, where I've bolded the ones that have changed:
+</p>
+
+<table style="width:50px;">
+    <tr>
+        <td>254</td><td>0</td>
+    </tr>
+    <tr>
+        <td>119</td><td>1</td>
+    </tr>
+    <tr>
+        <td><b>51</b></td><td><b>1</b></td>
+    </tr>
+    <tr>
+        <td><b>3</b></td><td><b>1</b></td>
+    </tr>
+    <tr>
+        <td>141</td><td>1</td>
+    </tr>
+    <tr>
+        <td>254</td><td>0</td>
+    </tr>
+    <tr>
+        <td>91</td><td>1</td>
+    </tr>
+    <tr>
+        <td><b>158</b></td><td><b>0</b></td>
+    </tr>
+</table>
+
+<p>
+    Here's what these updated values look like 
+</p>
+
+<table style="width:250px;">
+    <tr>
+        <td style="background-color: #fe7733; width:50px; height:50px;"><span style="color:white">[254, 119, 51]</span></td>
+        <td style="background-color: #038dfe; width:50px; height:50px;"><span style="color:white">[3, 141, 254]</span></td>
+        <td style="background-color: #5b9e40; width:50px; height:50px;"><span style="color:white">[91, 158, 64]</span></td>
+    </tr>
+</table>
+
+<p>
+    If you were just looking at it and comparing it to what we started with, you would never notice the difference!  So we have freedom to tweak the least significant bit of every color channel of every pixel at will to encode text, and this is exactly what you will be doing in this assignment!.  In a 500x500 image, for example, this means we can store 250,000 bits.  Since each ASCII character is 8 bits, this is 31,250 characters total, or roughly about 6000 words.
+</p>
+++++
+
+= Decode
+
+In the file, `decode.c`, write a program that reads in a PPM file (raw, or binary, format) and then outputs any message that might be stored in 
+the least significant bits of each color. Your program should read bits from each of the red, green, and blue colors -- top to bottom, left to right. 
+You should keep decoding until you reach the empty character `\0`.
+
+For example, consider the example file `tiny_encoded.ppm`. Decoding should give you the bits `001100010011011100110100001000010000101000000000`. 
+
+If we group them up into ASCII char variables, we see this is the character string `174!\n`.
+
+++++
+<table style="width:100px;">
+<tr>
+    <td>00110001</td><td><code>'1'</code></td>
+</tr>
+<tr>
+    <td>00110111</td><td><code>'7'</code></td>
+</tr>
+<tr>
+    <td>00110100</td><td><code>'4'</code></td>
+</tr>
+<tr>
+    <td>00100001</td><td><code>'!'</code></td>
+</tr>
+<tr>
+    <td>00001010</td><td><code>'\n'</code></td>
+</tr>
+<tr>
+    <td>00000000</td><td><code>'\0'</code></td>
+</tr>
+</table>
+++++
+
+Your program should perform as follows.
+
+[source,subs="quotes"]
+----
+$ **./decode tiny_encoded.ppm**
+Reading tiny_encoded.ppm with width 4 and height 4
+Max number of characters in the image: 6
+174!
+----
+
+Requirements/Hints:
+
+* You should read the PPM filename as a command line argument
+* Output the size of the image along with the maximum number of characters it can store
+* For debugging, try printing out values in hex format, e.g. `printf("%02X", c);`
+* `ppm_pixel` (defined in `read_ppm.h`) allows you to access each color either by name, or by array. You may find it simpler to use the array representation for this question.
+
+= Submit your work
+
+Push you work to github to submit your work.
+
+[source]
+----
+$ cd A01
+$ git status
+$ git add *.c 
+$ git status
+$ git commit -m "assignment complete"
+$ git status
+$ git push
+$ git status
+----

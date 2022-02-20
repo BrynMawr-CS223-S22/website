@@ -13,15 +13,14 @@ include::header.adoc[]
 Instructor: link:https://www.cs.brynmawr.edu/~alinen[Aline Normoyle]
 
 [.anns]
-* Current Agenda: link:#week05[Week05]
-* link:assts/asst04.html[Assignment 04 Due Feb 18]
-* **Jam Redux 01: Feb 17** 
+* Current Agenda: link:#week06[Week06]
+* link:assts/asst05.html[Assignment 05 Due Feb 25]
 * **Code Jam 02: Feb 24** link:studyguide2.html[Study Guide]
 
 == Course Info
 
 **Welcome to CS223: Systems Programming**! 
-The primary goal of this course is to develop skills for writing "hardware-aware" programs.  
+The primary goal of this course is to develop skills for writing programs that are  "hardware-aware" and capable of interacting directly with the operating system. 
 
 // http://svslibrary.pbworks.com/f/Data+Structures+and+Algorithm+Analysis+in+C+-+Mark+Allen+Weiss.pdf
 // http://cslabcms.nju.edu.cn/problem_solving/images/c/cc/The_C_Programming_Language_%282nd_Edition_Ritchie_Kernighan%29.pdf
@@ -62,7 +61,7 @@ as a weighted average of all grades according to the following weights:
 |===
 |30% | Final Exam
 |30% | Assignments
-|25% | Quizzes
+|25% | Quizzes (Code Jams)
 |10% | Lab participation
 | 5% | Participation
 |===
