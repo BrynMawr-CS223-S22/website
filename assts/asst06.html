@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 2.0.17">
-<title>Assignment 6: Arcade Game</title>
+<title>Assignment 6: Secret messages</title>
 <link rel="stylesheet" href="../style/cs21.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
@@ -14,23 +14,20 @@
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
 <ul class="sectlevel1">
-<li><a href="#_assignment_6_arcade_game">Assignment 6: Arcade Game</a></li>
-<li><a href="#_description">1. Description</a></li>
-<li><a href="#_requirements">2. Requirements</a></li>
-<li><a href="#_what_to_hand_in">3. What to hand-in</a></li>
-<li><a href="#_submission_guidelines">4. Submission guidelines</a></li>
+<li><a href="#_assignment_6_secret_messages">Assignment 6: Secret messages</a></li>
+<li><a href="#_background_steganography">Background: Steganography</a></li>
+<li><a href="#_decode">1. Decode</a></li>
+<li><a href="#_encode">2. Encode</a></li>
+<li><a href="#_submit_your_work">3. Submit your work</a></li>
 </ul>
 </div>
 </div>
 <div id="content">
 <div class="sect1">
-<h2 id="_assignment_6_arcade_game">Assignment 6: Arcade Game</h2>
+<h2 id="_assignment_6_secret_messages">Assignment 6: Secret messages</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p><strong>Part 1 Due Monday, November 2, before midnight</strong></p>
-</div>
-<div class="paragraph">
-<p><strong>Part 2 Due Friday, November 6, before midnight</strong></p>
+<p><strong>Friday, March 4, before midnight</strong></p>
 </div>
 <div class="paragraph">
 <p>The goals for this assignment are:</p>
@@ -38,184 +35,290 @@
 <div class="ulist">
 <ul>
 <li>
-<p>Define and use functions and objects</p>
+<p>Understand binary representations of data types</p>
 </li>
 <li>
-<p>Design a larger program</p>
+<p>Directly manipulate basic types at the bit level</p>
+</li>
+<li>
+<p>Work with bitwise operators: |, &amp;, ~, ^</p>
 </li>
 </ul>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_description">1. Description</h2>
+<h2 id="_background_steganography">Background: Steganography</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The goal of this assignment is to create your own arcade game. It should support
-numerous obstacles and a single player controlled with the keyboard. An example
-with basic game mechanics is shown below.</p>
+<p><a href="https://en.wikipedia.org/wiki/Steganography">Steganography</a> is the practice of hiding messages in plain sight. In this question, we will hide text messages using the least significant bits of an image.</p>
 </div>
-<div class="imageblock">
+<h3 id="_background" class="discrete">Background</h3>
+<div class="paragraph">
+<p><em>Credit: Chris Trailie (<a href="https://ursinus-cs174-s2022.github.io/CoursePage/Assignments/HW2_Steganography/#lsb">Original</a>)</em></p>
+</div>
+<div class="paragraph">
+<p>To understand how we will hide messages in the least significant bits of an image, let&#8217;s look at the following write-up by
+Chris Trailie, starting with the two pictures below.</p>
+</div>
+<table style="width:650px;">
+    <tr>
+        <td><h4>Ordinary image</h4></td>
+        <td><h4>Hidden message</h4></td>
+    </tr>
+    <tr>
+        <td>
+            <img src = "https://ursinus-cs174-s2022.github.io/CoursePage/Assignments/HW2_Steganography/HW2_Steganography/images/birthday.png" width=300>
+        </td>
+        <td>
+            <img src = "https://ursinus-cs174-s2022.github.io/CoursePage/Assignments/HW2_Steganography/HW2_Steganography/images/birthday_encoded.png" width=300>
+        </td>
+    </tr>
+</table>
+
+<p>
+    The picture on the right contains 12 paragraphs of text on the Ursinus 150 strategic plan.  Can you see the difference?  No?  Well great, that's the point!
+</p>
+<p>
+    So how do we do this?  The idea is beautifully simple, and is best understood with an example.  Consider the following 3-pixel image
+</p>
+
+<table style="width:250px;">
+    <tr>
+        <td style="background-color: #fe7732; width:50px; height:50px;"><span style="color:white">[254, 119, 50]</span></td>
+        <td style="background-color: #028dfe; width:50px; height:50px;"><span style="color:white">[2, 141, 254]</span></td>
+        <td style="background-color: #5b9f40; width:50px; height:50px;"><span style="color:white">[91, 159, 64]</span></td>
+    </tr>
+</table>
+
+<p>
+    We're going to extract a binary signal by looking at the <b>least significant bit</b> (the 1's place in binary) of each color channel in each pixel from left to right from red, to green, to blue, and put them together into one binary string.  In other words, for a particular pixel and a particular color channel, we'll extract a 0 if it's an even number and a 1 if it's an odd number.  Let's look at the first 8 bits in the above image.  We have
+</p>
+<table style="width:50px;">
+    <tr>
+        <td>254</td><td>0</td>
+    </tr>
+    <tr>
+        <td>119</td><td>1</td>
+    </tr>
+    <tr>
+        <td>50</td><td>0</td>
+    </tr>
+    <tr>
+        <td>2</td><td>0</td>
+    </tr>
+    <tr>
+        <td>141</td><td>1</td>
+    </tr>
+    <tr>
+        <td>254</td><td>0</td>
+    </tr>
+    <tr>
+        <td>91</td><td>1</td>
+    </tr>
+    <tr>
+        <td>159</td><td>1</td>
+    </tr>
+</table>
+
+<p>
+    All together, this is the binary string <b>01001011</b>, which is the character <b>'K'</b> in <a href = "https://www.asciitable.com/">ASCII</a>.  What if we wanted to change it to some other character though?  Perhaps the character <b>'z'</b>, which is <b>0x7A</b> hex, or <b>01111010</b> in binary.  Then we can just tweak the 1's place of the pixel values as follows, where I've bolded the ones that have changed:
+</p>
+
+<table style="width:50px;">
+    <tr>
+        <td>254</td><td>0</td>
+    </tr>
+    <tr>
+        <td>119</td><td>1</td>
+    </tr>
+    <tr>
+        <td><b>51</b></td><td><b>1</b></td>
+    </tr>
+    <tr>
+        <td><b>3</b></td><td><b>1</b></td>
+    </tr>
+    <tr>
+        <td>141</td><td>1</td>
+    </tr>
+    <tr>
+        <td>254</td><td>0</td>
+    </tr>
+    <tr>
+        <td>91</td><td>1</td>
+    </tr>
+    <tr>
+        <td><b>158</b></td><td><b>0</b></td>
+    </tr>
+</table>
+
+<p>
+    Here's what these updated values look like
+</p>
+
+<table style="width:250px;">
+    <tr>
+        <td style="background-color: #fe7733; width:50px; height:50px;"><span style="color:white">[254, 119, 51]</span></td>
+        <td style="background-color: #038dfe; width:50px; height:50px;"><span style="color:white">[3, 141, 254]</span></td>
+        <td style="background-color: #5b9e40; width:50px; height:50px;"><span style="color:white">[91, 158, 64]</span></td>
+    </tr>
+</table>
+
+<p>
+    If you were just looking at it and comparing it to what we started with, you would never notice the difference!  So we have freedom to tweak the least significant bit of every color channel of every pixel at will to encode text, and this is exactly what you will be doing in this assignment!.  In a 500x500 image, for example, this means we can store 250,000 bits.  Since each ASCII character is 8 bits, this is 31,250 characters total, or roughly about 6000 words.
+</p>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_decode">1. Decode</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>In the file, <code>decode.c</code>, write a program that reads in a PPM file (raw, or binary, format) and then outputs any message that might be stored in
+the least significant bits of each color. Your program should read bits from each of the red, green, and blue colors&#8201;&#8212;&#8201;top to bottom, left to right.
+You should keep decoding until you reach the empty character <code>\0</code>.</p>
+</div>
+<div class="paragraph">
+<p>For example, consider the example file <code>tiny_encoded.ppm</code>. Decoding should give you the bits <code>001100010011011100110100001000010000101000000000</code>.</p>
+</div>
+<div class="paragraph">
+<p>If we group them up into ASCII char variables, we see this is the character string <code>174!\n</code>.</p>
+</div>
+<table style="width:100px;">
+<tr>
+    <td>00110001</td><td><code>'1'</code></td>
+</tr>
+<tr>
+    <td>00110111</td><td><code>'7'</code></td>
+</tr>
+<tr>
+    <td>00110100</td><td><code>'4'</code></td>
+</tr>
+<tr>
+    <td>00100001</td><td><code>'!'</code></td>
+</tr>
+<tr>
+    <td>00001010</td><td><code>'\n'</code></td>
+</tr>
+<tr>
+    <td>00000000</td><td><code>'\0'</code></td>
+</tr>
+</table>
+<div class="paragraph">
+<p>Your program should perform as follows.</p>
+</div>
+<div class="listingblock">
 <div class="content">
-<img src="img/asst06-arcade.gif" alt="asst06 arcade" width="250">
+<pre class="highlight"><code>$ <strong>./decode tiny_encoded.ppm</strong>
+Reading tiny_encoded.ppm with width 4 and height 4
+Max number of characters in the image: 6
+174!</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>And here is an example with a theme applied</p>
+<p>Requirements/Hints:</p>
 </div>
-<div class="imageblock">
+<div class="ulist">
+<ul>
+<li>
+<p>You should read the PPM filename as a command line argument</p>
+</li>
+<li>
+<p>You should report the usage if no file is given to the program</p>
+</li>
+<li>
+<p>You should report an error if the file cannot be read</p>
+</li>
+<li>
+<p>Re-use your implementation of <code>read_ppm</code> from <a href="asst05.html">Assignment 05</a>.</p>
+</li>
+<li>
+<p>Output the size of the image along with the maximum number of characters it can store</p>
+</li>
+<li>
+<p>For debugging, try printing out values in hex format, e.g. <code>printf("%02X", c);</code></p>
+</li>
+<li>
+<p><code>ppm_pixel</code> (defined in <code>read_ppm.h</code>) allows you to access each color either by name, or by array. You may find it simpler to use the array representation for this question.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_encode">2. Encode</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>In the file, <code>encode.c</code>, write a program that reads in a PPM file (raw, or binary, format) and
+asks the user for a message to embed within it.</p>
+</div>
+<div class="listingblock">
 <div class="content">
-<img src="img/asst06-arcadeCloud.gif" alt="asst06 arcadeCloud" width="250">
+<pre class="highlight"><code>$ <strong>make encode</strong>
+gcc -g -Wall -Wvla -Werror encode.c read_ppm.c -o encode
+$ <strong>./encode feep-raw.ppm</strong>
+Reading feep-raw.ppm with width 4 and height 4
+Max number of characters in the image: 5
+Enter a phrase: <strong>lol</strong>
+Writing file feep-raw-encoded.ppm</code></pre>
 </div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_requirements">2. Requirements</h2>
-<div class="sectionbody">
-<div class="ulist">
-<ul>
-<li>
-<p>You must define a Obstacle class having methods <code>update()</code>, <code>draw()</code>, and <code>intersects(Player player)</code></p>
-</li>
-<li>
-<p>You must define a Player class having methods draw(), moveLeft(), moveRight(), moveUp(), moveDown(), x(), y(), width(), and height()</p>
-</li>
-<li>
-<p>Your game should define many obstacles using an array</p>
-</li>
-<li>
-<p>In draw(), you should update the player based on the keyboard, draw objects, and check for intersections</p>
-</li>
-<li>
-<p>Use the <code>random</code> function to modify the behavior of obstacles each time you play</p>
-</li>
-<li>
-<p>Your game should have a 'game over' condition</p>
-</li>
-<li>
-<p>You should implement your own unique theme for the background, player, and obstacles.</p>
-</li>
-<li>
-<p>You should implement at least one unique game mechanic. Some ideas:</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Allow the player to get hit multiple times before 'game over'</p>
-</li>
-<li>
-<p>Make the goal of the game to hit as many obstacles as possible, rather than avoid them</p>
-</li>
-<li>
-<p>Add powerups</p>
-</li>
-<li>
-<p>Randomize the appearance of enemies</p>
-</li>
-<li>
-<p>Implement projectiles</p>
-</li>
-<li>
-<p>Implement your own obstacles. For example, they don&#8217;t need to be circles. You could do a series of walls.</p>
-</li>
-<li>
-<p>Implement a win condition. You can keep track of how many seconds the user plays, or stop once the player collects a certain number of items.</p>
-</li>
-<li>
-<p>Increase the difficulty over time</p>
-</li>
-<li>
-<p>Modify how obstacles move. They could oscillate or change direction.</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
 </div>
 <div class="paragraph">
-<p>Use the resources below to help you implement your game:</p>
+<p>Requirements/Hints:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><a href="https://www.cs.brynmawr.edu/~alinen/lab-website/cs110/notes/week06.html#_an_array_of_car">Many cars using an array</a></p>
+<p>You should read the PPM filename as a command line argument</p>
 </li>
 <li>
-<p><a href="https://www.cs.brynmawr.edu/~alinen/lab-website/cs110/notes/week07.html#_keyboard_controls">Keyboard controls</a></p>
+<p>You should report the usage if no file is given to the program</p>
 </li>
 <li>
-<p><a href="https://www.cs.brynmawr.edu/~alinen/lab-website/cs110/notes/week07.html#_collisions">Collision example</a></p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>Ideas to help with debugging and implementation:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>If a feature might be difficult, implement it in a separate program before integrating it into your game. For example, you can implement a Player class and test it in its own program. Then you can copy the Player code into your game sketch.</p>
+<p>You should report an error if the file cannot be read</p>
 </li>
 <li>
-<p>Implement the core game without a theme to start</p>
+<p>You should output a new file based on the input name. For example, if the input is <code>feep-raw.ppm</code>, the new file with the encoded message should be <code>feep-raw-encoded.ppm</code>.</p>
 </li>
 <li>
-<p>Implement a reset feature to make it easy to restart your game for testing</p>
+<p>Re-use your implementation of <code>read_ppm</code> from <a href="asst05.html">Assignment 05</a>.</p>
+</li>
+<li>
+<p>Output the size of the image along with the maximum number of characters it can store</p>
+</li>
+<li>
+<p>For debugging, try printing out values in hex format, e.g. <code>printf("%02X", c);</code></p>
+</li>
+<li>
+<p><code>ppm_pixel</code> (defined in <code>read_ppm.h</code>) allows you to access each color either by name, or by array. You may find it simpler to use the array representation for this question.</p>
 </li>
 </ul>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_what_to_hand_in">3. What to hand-in</h2>
-<div class="sectionbody">
-<div class="ulist">
-<ul>
-<li>
-<p>PART 1 (Due Nov 2, by midnight)*</p>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Your program with working Player and Obstacle classes implemented. You do not need to have intersection testing complete. Your submission should have your background and theme implemented. When I run your program, I should be able to control the player character and see the obstacles drawn to the screen.</p>
-</li>
-<li>
-<p>Your program should have a header comment and should run without errors.</p>
-</li>
-</ol>
-</div>
-</li>
-<li>
-<p>PART 2 (Due Nov 6, by midnight)*</p>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>The complete program, including intersection tests, win condition, and unique game mechanic (Don&#8217;t forget your header comment!)</p>
-</li>
-<li>
-<p>A brief write-up  with your name, course and assignment number and a few sentences about the unique features of your game.</p>
-</li>
-<li>
-<p>An animation (gif or video) of your finished sketch</p>
-</li>
-</ol>
-</div>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_submission_guidelines">4. Submission guidelines</h2>
+<h2 id="_submit_your_work">3. Submit your work</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Submit your program (entire sketch directory), write-up, and image as an electronic copy in the folder marked A05 in your dropbox folder.</p>
+<p>Push you work to github to submit your work.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>$ cd A01
+$ git status
+$ git add *.c
+$ git status
+$ git commit -m "assignment complete"
+$ git status
+$ git push
+$ git status</code></pre>
+</div>
 </div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2022-01-09 17:39:36 -0500
+Last updated 2022-02-20 16:44:55 -0500
 </div>
 </div>
 </body>

@@ -18,9 +18,8 @@
 <li><a href="#_four_letter_words">1. Four letter words</a></li>
 <li><a href="#_binary_to_ascii">2. Binary to ASCII</a></li>
 <li><a href="#_read_raw">3. Read raw</a></li>
-<li><a href="#_background_steganography">4. Background: Steganography</a></li>
-<li><a href="#_decode">5. Decode</a></li>
-<li><a href="#_submit_your_work">6. Submit your work</a></li>
+<li><a href="#_glitch">4. Glitch</a></li>
+<li><a href="#_submit_your_work">5. Submit your work</a></li>
 </ul>
 </div>
 </div>
@@ -44,6 +43,9 @@
 </li>
 <li>
 <p>Work with bitwise operators: |, &amp;, ~, ^</p>
+</li>
+<li>
+<p>Work with binary files</p>
 </li>
 </ul>
 </div>
@@ -170,195 +172,115 @@ Testing file feep-raw.ppm: 4 4
 </div>
 </div>
 <div class="sect1">
-<h2 id="_background_steganography">4. Background: Steganography</h2>
+<h2 id="_glitch">4. Glitch</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p><a href="https://en.wikipedia.org/wiki/Steganography">Steganography</a> is the practice of hiding messages in plain sight. In this question, we will hide text messages using the least significant bits of an image.</p>
+<p><a href="https://en.wikipedia.org/wiki/Glitch_art">Glitch Art</a> is the practice of leveraging technological errors for artistic purposes. Some cool examples can be found here by <a href="https://mobile.twitter.com/glitchartbot">glitchartbot</a>.</p>
 </div>
-<h3 id="_background" class="discrete">Background</h3>
-<div class="paragraph">
-<p><em>Credit: Chris Trailie (<a href="https://ursinus-cs174-s2022.github.io/CoursePage/Assignments/HW2_Steganography/#lsb">Original</a>)</em></p>
+<div class="imageblock">
+<div class="content">
+<img src="https://www.joelatimer.com/wp-content/uploads/2019/09/JoeLatimer.com-Blog-Featured-Image-Landscape-08-31-19.jpg" alt="JoeLatimer.com Blog Featured Image Landscape 08 31 19" height="300px">
 </div>
-<div class="paragraph">
-<p>To understand how we will hide messages in the least significant bits of an image, let&#8217;s look at the following write-up by
-Chris Trailie, starting with the two pictures below.</p>
-</div>
-<table style="width:650px;">
-    <tr>
-        <td><h4>Ordinary image</h4></td>
-        <td><h4>Hidden message</h4></td>
-    </tr>
-    <tr>
-        <td>
-            <img src = "https://ursinus-cs174-s2022.github.io/CoursePage/Assignments/HW2_Steganography/HW2_Steganography/images/birthday.png" width=300>
-        </td>
-        <td>
-            <img src = "https://ursinus-cs174-s2022.github.io/CoursePage/Assignments/HW2_Steganography/HW2_Steganography/images/birthday_encoded.png" width=300>
-        </td>
-    </tr>
-</table>
-
-<p>
-    The picture on the right contains 12 paragraphs of text on the Ursinus 150 strategic plan.  Can you see the difference?  No?  Well great, that's the point!
-</p>
-<p>
-    So how do we do this?  The idea is beautifully simple, and is best understood with an example.  Consider the following 3-pixel image
-</p>
-
-<table style="width:250px;">
-    <tr>
-        <td style="background-color: #fe7732; width:50px; height:50px;"><span style="color:white">[254, 119, 50]</span></td>
-        <td style="background-color: #028dfe; width:50px; height:50px;"><span style="color:white">[2, 141, 254]</span></td>
-        <td style="background-color: #5b9f40; width:50px; height:50px;"><span style="color:white">[91, 159, 64]</span></td>
-    </tr>
-</table>
-
-<p>
-    We're going to extract a binary signal by looking at the <b>least significant bit</b> (the 1's place in binary) of each color channel in each pixel from left to right from red, to green, to blue, and put them together into one binary string.  In other words, for a particular pixel and a particular color channel, we'll extract a 0 if it's an even number and a 1 if it's an odd number.  Let's look at the first 8 bits in the above image.  We have
-</p>
-<table style="width:50px;">
-    <tr>
-        <td>254</td><td>0</td>
-    </tr>
-    <tr>
-        <td>119</td><td>1</td>
-    </tr>
-    <tr>
-        <td>50</td><td>0</td>
-    </tr>
-    <tr>
-        <td>2</td><td>0</td>
-    </tr>
-    <tr>
-        <td>141</td><td>1</td>
-    </tr>
-    <tr>
-        <td>254</td><td>0</td>
-    </tr>
-    <tr>
-        <td>91</td><td>1</td>
-    </tr>
-    <tr>
-        <td>159</td><td>1</td>
-    </tr>
-</table>
-
-<p>
-    All together, this is the binary string <b>01001011</b>, which is the character <b>'K'</b> in <a href = "https://www.asciitable.com/">ASCII</a>.  What if we wanted to change it to some other character though?  Perhaps the character <b>'z'</b>, which is <b>0x7A</b> hex, or <b>01111010</b> in binary.  Then we can just tweak the 1's place of the pixel values as follows, where I've bolded the ones that have changed:
-</p>
-
-<table style="width:50px;">
-    <tr>
-        <td>254</td><td>0</td>
-    </tr>
-    <tr>
-        <td>119</td><td>1</td>
-    </tr>
-    <tr>
-        <td><b>51</b></td><td><b>1</b></td>
-    </tr>
-    <tr>
-        <td><b>3</b></td><td><b>1</b></td>
-    </tr>
-    <tr>
-        <td>141</td><td>1</td>
-    </tr>
-    <tr>
-        <td>254</td><td>0</td>
-    </tr>
-    <tr>
-        <td>91</td><td>1</td>
-    </tr>
-    <tr>
-        <td><b>158</b></td><td><b>0</b></td>
-    </tr>
-</table>
-
-<p>
-    Here's what these updated values look like
-</p>
-
-<table style="width:250px;">
-    <tr>
-        <td style="background-color: #fe7733; width:50px; height:50px;"><span style="color:white">[254, 119, 51]</span></td>
-        <td style="background-color: #038dfe; width:50px; height:50px;"><span style="color:white">[3, 141, 254]</span></td>
-        <td style="background-color: #5b9e40; width:50px; height:50px;"><span style="color:white">[91, 158, 64]</span></td>
-    </tr>
-</table>
-
-<p>
-    If you were just looking at it and comparing it to what we started with, you would never notice the difference!  So we have freedom to tweak the least significant bit of every color channel of every pixel at will to encode text, and this is exactly what you will be doing in this assignment!.  In a 500x500 image, for example, this means we can store 250,000 bits.  Since each ASCII character is 8 bits, this is 31,250 characters total, or roughly about 6000 words.
-</p>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_decode">5. Decode</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>In the file, <code>decode.c</code>, write a program that reads in a PPM file (raw, or binary, format) and then outputs any message that might be stored in
-the least significant bits of each color. Your program should read bits from each of the red, green, and blue colors&#8201;&#8212;&#8201;top to bottom, left to right.
-You should keep decoding until you reach the empty character <code>\0</code>.</p>
 </div>
 <div class="paragraph">
-<p>For example, consider the example file <code>tiny_encoded.ppm</code>. Decoding should give you the bits <code>001100010011011100110100001000010000101000000000</code>.</p>
+<p>First, implement a new function, <code>write_ppm</code>, defined in <code>read_ppm.c</code>. Similarly to <a href="asst04.html">Assignment 04</a>, you should change the definition of <code>write_ppm</code> if you use an "array of arrays" to store your pixels. <strong>Be careful that you do not change the definition of ppm_pixel!</strong></p>
 </div>
 <div class="paragraph">
-<p>If we group them up into ASCII char variables, we see this is the character string <code>174!\n</code>.</p>
-</div>
-<table style="width:100px;">
-<tr>
-    <td>00110001</td><td><code>'1'</code></td>
-</tr>
-<tr>
-    <td>00110111</td><td><code>'7'</code></td>
-</tr>
-<tr>
-    <td>00110100</td><td><code>'4'</code></td>
-</tr>
-<tr>
-    <td>00100001</td><td><code>'!'</code></td>
-</tr>
-<tr>
-    <td>00001010</td><td><code>'\n'</code></td>
-</tr>
-<tr>
-    <td>00000000</td><td><code>'\0'</code></td>
-</tr>
-</table>
-<div class="paragraph">
-<p>Your program should perform as follows.</p>
+<p>Then write a program, <code>glitch.c</code>, that reads in a PPM file and "glitches" it. Your program should save the modified PPM in a new file with the suffix "-glitch". For example, if you load in the file
+"monalisa.ppm", you should output a file named "monalisa-glitch.ppm".</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code>$ <strong>./decode tiny_encoded.ppm</strong>
-Reading tiny_encoded.ppm with width 4 and height 4
-Max number of characters in the image: 6
-174!</code></pre>
+<pre class="highlight"><code>$ <strong>./glitch monalisa.ppm</strong>
+Reading monalisa.ppm with width 606 and height 771
+Writing file monalisa-glitch.ppm</code></pre>
 </div>
 </div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Original Image</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Glitched Image</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="imageblock">
+<div class="content">
+<img src="img/monalisa.png" alt="monalisa" height="300px">
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="imageblock">
+<div class="content">
+<img src="img/monalisa-glitch-v2.0.png" alt="monalisa glitch v2.0" height="300">
+</div>
+</div></div></td>
+</tr>
+</tbody>
+</table>
 <div class="paragraph">
 <p>Requirements/Hints:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>You should read the PPM filename as a command line argument</p>
+<p>Implement a function to write your PPM as a <em>binary</em> file, e.g. with the option "wb".</p>
 </li>
 <li>
-<p>Output the size of the image along with the maximum number of characters it can store</p>
+<p>Use <code>fwrite</code> to write to your file.</p>
 </li>
 <li>
-<p>For debugging, try printing out values in hex format, e.g. <code>printf("%02X", c);</code></p>
+<p>Save the result to <code>&lt;filename&gt;-glitch.ppm</code></p>
 </li>
 <li>
-<p><code>ppm_pixel</code> (defined in <code>read_ppm.h</code>) allows you to access each color either by name, or by array. You may find it simpler to use the array representation for this question.</p>
+<p>To start, implement a minimal glitch, which shifts each color value by either 1 or 2 bits, choosen at random, e.g. <code>newcolorvalue = oldcolorvalue &lt;&lt; (rand() % 2);</code>. Your result should look like</p>
+</li>
+<li>
+<p>Submit your glitched images as part of your submission!</p>
 </li>
 </ul>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Original Image</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Result of random bit shift</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="imageblock">
+<div class="content">
+<img src="img/monalisa.png" alt="monalisa" height="300px">
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="imageblock">
+<div class="content">
+<img src="img/monalisa-glitch-simple.png" alt="monalisa glitch simple" height="300">
+</div>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Feel free to be creative with your glitches. You can use a combination of bit operations, switching colors, adding colors, etc.  Anything goes! Also, feel free to use your own images. PPM images can be exported using <a href="https://www.gimp.org">Gimp</a> or Photoshop.</p>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_submit_your_work">6. Submit your work</h2>
+<h2 id="_submit_your_work">5. Submit your work</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Push you work to github to submit your work.</p>
@@ -380,7 +302,7 @@ $ git status</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2022-02-20 16:04:06 -0500
+Last updated 2022-02-20 17:59:09 -0500
 </div>
 </div>
 </body>

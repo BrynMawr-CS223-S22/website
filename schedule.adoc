@@ -73,7 +73,7 @@
 |*Assembly* 
 
 * Read: link:https://diveintosystems.org/singlepage/[Chapter 5.6-5.10] 
-//* link:assts/asst06.html[Assignment 06]
+* link:assts/asst06.html[Assignment 06]
 * **Jam 02 Redux**: Mar 3
 
 //-----------------------------
