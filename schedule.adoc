@@ -63,7 +63,7 @@
 |Feb 22,24 anchor:week06[]
 |*Computer architecture* 
 
-* Read: link:https://diveintosystems.org/singlepage/[Chapter 5.1-5.5] 
+* Read: link:https://diveintosystems.org/singlepage/[Section 5.1, Chapter 6] 
 * link:assts/asst05.html[Assignment 05]
 * **Code Jam 02**: Feb 24 link:studyGuide2.html[Study Guide 2]
 
@@ -72,7 +72,7 @@
 |March 1,3 anchor:week07[]
 |*Assembly* 
 
-* Read: link:https://diveintosystems.org/singlepage/[Chapter 5.6-5.10] 
+* Read: link:https://diveintosystems.org/singlepage/[Chapter 7] 
 * link:assts/asst06.html[Assignment 06]
 * **Jam 02 Redux**: Mar 3
 
@@ -86,42 +86,41 @@ No meetings this week!
 //-----------------------------
 |9
 |March 15,17 anchor:week09[]
-|*Assembly* 
+|*Memory* 
 
-* Read: link:https://diveintosystems.org/singlepage/[Chapter 6] 
+* Read: link:https://diveintosystems.org/singlepage/[Chapter 11] 
 * **Jam 03**: Mar 15
 
 //-----------------------------
 |10
 |March 22,24 anchor:week10[]
-|*x86_64* 
+|*Code Optimization* 
 
-* Read: link:https://diveintosystems.org/singlepage/[Chapter 7] 
-* Read: link:https://diveintosystems.org/singlepage/[Chapter 10] 
+* Read: link:https://diveintosystems.org/singlepage/[Chapter 12] 
 * **Jam 03 Redux**: Mar 24
 
 //-----------------------------
 |11
 |March 29,31 anchor:week11[]
-|*Memory* 
+|*The operating system* 
 
-* Read: link:https://diveintosystems.org/singlepage/[Chapter 11] 
+* Read: link:https://diveintosystems.org/singlepage/[Chapter 13] 
 * **Jam 04**: Mar 31
 
 //-----------------------------
 |12
 |April 5,7 anchor:week12[]
-|*Code optimization* 
+|*The operating system* 
 
-* Read: link:https://diveintosystems.org/singlepage/[Chapter 12] 
+* Read: link:https://diveintosystems.org/singlepage/[Chapter 13] 
 * **Jam 04 Redux**: April 14
 
 //-----------------------------
 |13
 |April 12,14 anchor:week13[]
-|*The operating system* 
+|*Threads* 
 
-* Read: link:https://diveintosystems.org/singlepage/[Chapter 13] 
+* Read: link:https://diveintosystems.org/singlepage/[Chapter 14] 
 * **Jam 05**: April 14
 
 //-----------------------------
