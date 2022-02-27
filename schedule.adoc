@@ -72,7 +72,7 @@
 |March 1,3 anchor:week07[]
 |*Assembly* 
 
-* Read: link:https://diveintosystems.org/singlepage/[Chapter 7] 
+* Read: link:https://diveintosystems.org/singlepage/[Chapter 7, 10] 
 * link:assts/asst06.html[Assignment 06]
 * **Jam 02 Redux**: Mar 3
 
