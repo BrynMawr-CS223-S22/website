@@ -65,7 +65,7 @@
 
 * Read: link:https://diveintosystems.org/singlepage/[Section 5.1, Chapter 6] 
 * link:assts/asst05.html[Assignment 05]
-* **Code Jam 02**: Feb 24 link:studyGuide2.html[Study Guide 2]
+* **Code Jam 02**: Feb 24 link:studyguide2.html[Study Guide 2]
 
 //-----------------------------
 |7
