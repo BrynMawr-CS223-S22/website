@@ -13,9 +13,9 @@ include::header.adoc[]
 Instructor: link:https://www.cs.brynmawr.edu/~alinen[Aline Normoyle]
 
 [.anns]
-* Current Agenda: link:#week07[Week07]
-* link:assts/asst06.html[Assignment 06 Due March 4]
-* **Jam 02 Redux: March 3** 
+* Current Agenda: link:#week09[Week09]
+* Assignment A01-A06 Resubmissions Due: *March 18*
+* **Jam 03: March 17**  link:studyguide3.html[Study Guide 03]
 
 == Course Info
 

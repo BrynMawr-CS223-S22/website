@@ -89,7 +89,7 @@ No meetings this week!
 |*Memory* 
 
 * Read: link:https://diveintosystems.org/singlepage/[Chapter 11] 
-* **Jam 03**: Mar 15
+* **Jam 03**: Mar 15 link:studyguide3.html[Study Guide 3]
 
 //-----------------------------
 |10
