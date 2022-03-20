@@ -244,7 +244,7 @@ Draw the contents and layout of a variable of this struct type, assuming the var
 <pre class="highlight"><code>struct foo {
     float x;
     unsigned char c[3];
-    foo* v;
+    struct foo* v;
 };</code></pre>
 </div>
 </div>
@@ -346,7 +346,7 @@ What would you like to do? (d = deposit,w = withdraw)
 </div>
 </div>
 <div class="paragraph">
-<p>9) Write a program, <code>lswizzle.c</code> that shifts all the bits in an unsigned integer to the left, wrapping the most significant bit into the least significant bit. For example, if the integer has binary representation <code>0b 1010 0110</code>, the result should be <code>0b 0100 1101</code>.</p>
+<p>9) Write a program, <code>lswizzle.c</code> that shifts all the bits in an unsigned integer to the left, wrapping the most significant bit into the least significant bit. For example, if the integer has binary representation <code>0b 1010 0110 0000 0000</code>, the result should be <code>0b 0100 1100 000 0001</code>.</p>
 </div>
 <div class="paragraph">
 <p>10) Write a program, <code>odd.c</code> that uses xor to identify the single element that appears an odd number of times in the following list: [4, 6, 8, 8, 6, 2, 3, 4, 3].</p>
@@ -371,7 +371,7 @@ Your new number: 0x6d (109)</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2022-03-07 12:08:46 -0500
+Last updated 2022-03-17 14:38:22 -0400
 </div>
 </div>
 </body>

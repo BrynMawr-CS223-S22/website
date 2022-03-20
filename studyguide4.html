@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.17">
+<title>Study Guide 4</title>
+<link rel="stylesheet" href="style/cs21.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="article toc2 toc-left">
+<div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_study_guide_4">Study Guide 4</a></li>
+<li><a href="#_practice_questions">Practice questions</a></li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_study_guide_4">Study Guide 4</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Code Jams are open book. 40 minutes in lab.</p>
+</div>
+<div class="paragraph">
+<p>Topics:</p>
+</div>
+<div class="paragraph">
+<p>Everything from <a href="studyguide3.html">Study Guide 3</a>, plus</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Generating assembly from C code</p>
+</li>
+<li>
+<p>Building executables from assembly</p>
+</li>
+<li>
+<p>Assembly basics: registers, instructions, and operands</p>
+</li>
+<li>
+<p>Memory forms</p>
+</li>
+<li>
+<p>Using GDB to step through assembly code and inspect registers</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Use <a href="assts/asst07.html">Assignment 07</a> to practice for this jam.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_practice_questions">Practice questions</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>1) Consider the following programs. Use <code>gcc</code> to generate the assembly code for this program.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>#include &lt;stdio.h&gt;
+int main() {
+  int a = 10;
+  int value = a / 3;
+  printf("values = %d", value);
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>2) Try modifying the assembly code from Q1 to divide by 5 instead of 3.</p>
+</div>
+<div class="paragraph">
+<p>3) What are the differences between registers <code>%rax</code> and <code>%eax</code>. When would one be used by the other?</p>
+</div>
+<div class="paragraph">
+<p>4) Why are there two left bit shift instructions, <code>sal</code> and <code>shl</code>?</p>
+</div>
+<div class="paragraph">
+<p>5) What does the <code>lea</code> instruction do?</p>
+</div>
+<div class="paragraph">
+<p>6) How are parameters passed to functions?</p>
+</div>
+<div class="paragraph">
+<p>7) How do we call a function in assembly?</p>
+</div>
+<div class="paragraph">
+<p>8) What happens when we return from a function in assembly?</p>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2022-03-20 12:12:52 -0400
+</div>
+</div>
+</body>
+</html>

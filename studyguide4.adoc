@@ -1,0 +1,54 @@
+include::header.adoc[]
+
+:title: Study Guide 4
+:Author Initials: ASN
+:Date:    2020-08-15
+:Revision: 0.1
+
+= {title}
+
+Code Jams are open book. 40 minutes in lab.
+
+Topics:
+
+Everything from link:studyguide3.html[Study Guide 3], plus
+
+* Generating assembly from C code
+* Building executables from assembly
+* Assembly basics: registers, instructions, and operands
+* Memory forms
+* Using GDB to step through assembly code and inspect registers
+
+Use link:assts/asst07.html[Assignment 07] to practice for this jam.
+
+= Practice questions
+
+1) Consider the following programs. Use `gcc` to generate the assembly code for this program.
+
+[source]
+----
+#include <stdio.h>
+int main() {
+  int a = 10;
+  int value = a / 3;
+  printf("values = %d", value); 
+}
+----
+
+2) Try modifying the assembly code from Q1 to divide by 5 instead of 3.
+
+
+3) What are the differences between registers `%rax` and `%eax`. When would one be used by the other?
+
+
+4) Why are there two left bit shift instructions, `sal` and `shl`?
+
+
+5) What does the `lea` instruction do?
+
+6) How are parameters passed to functions?
+
+7) How do we call a function in assembly?
+
+8) What happens when we return from a function in assembly?
+
