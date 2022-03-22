@@ -77,7 +77,7 @@ value for each of the given operands.
 {nbsp} +
 |
 
-|0x4(%rax, %ri, 4)
+|0x4(%rax, %rsi, 4)
 |
 |{nbsp} +
 {nbsp} +
@@ -141,7 +141,7 @@ will analyze the binary executable using GDB to extract the secret codes explici
 {nbsp} +
 {nbsp} +
 
-5) Place a breakpoint in `computeValue`. How many times is `computeValue` called by the program?
+5) Place a breakpoint in `calculateValue`. How many times is `calculateValue` called by the program?
 {nbsp} +
 {nbsp} +
 {nbsp} +
@@ -149,7 +149,7 @@ will analyze the binary executable using GDB to extract the secret codes explici
 {nbsp} +
 {nbsp} +
 
-6) What is `computeValue` doing? From the given source, we can see it takes a string. What is the return value?  
+6) What is `calculateValue` doing? From the given source, we can see it takes a string. What is the return value?  
 {nbsp} +
 {nbsp} +
 {nbsp} +
