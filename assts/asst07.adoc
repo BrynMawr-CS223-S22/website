@@ -77,7 +77,7 @@ value for each of the given operands.
 {nbsp} +
 |
 
-|0x4(%rax, %rsi, 4)
+|0x4(%rax, %r8, 4)
 |
 |{nbsp} +
 {nbsp} +
@@ -543,7 +543,7 @@ Please show the before and after state (cross out old values).
 |===
 
 8) Consider the call the printf, `callq 1050 <printf@plt>`. The previous lines place the first 
-argument to printf into `%rdi`. Assume this contains "%x is %d\n". The second argument will be 
+argument to printf into `%rdi`. Assume this contains "x is %d\n". The second argument will be 
 placed in `%esi`. What value will %esi containin?
 
 [source]

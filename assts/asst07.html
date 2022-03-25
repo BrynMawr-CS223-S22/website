@@ -173,7 +173,7 @@ value for each of the given operands.</p>
 <td class="tableblock halign-left valign-top"></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">0x4(%rax, %rsi, 4)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0x4(%rax, %r8, 4)</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">&#160;<br>
 &#160;<br>
@@ -1110,7 +1110,7 @@ Please show the before and after state (cross out old values).</p>
 </table>
 <div class="paragraph">
 <p>8) Consider the call the printf, <code>callq 1050 &lt;printf@plt&gt;</code>. The previous lines place the first
-argument to printf into <code>%rdi</code>. Assume this contains "%x is %d\n". The second argument will be
+argument to printf into <code>%rdi</code>. Assume this contains "x is %d\n". The second argument will be
 placed in <code>%esi</code>. What value will %esi containin?</p>
 </div>
 <div class="listingblock">
@@ -1147,7 +1147,7 @@ office (Park 204).</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2022-03-22 14:43:24 -0400
+Last updated 2022-03-25 11:39:28 -0400
 </div>
 </div>
 </body>
