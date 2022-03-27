@@ -1,72 +1,159 @@
 include::header.adoc[]
 
-:title: Assignment 8: Word search
+:title: Assignment 8: Hold on to your memories
 :Author Initials: ASN
 :Date:    2020-08-15
 :Revision: 0.1
 
 = {title}
 
-Due Friday, November 20, before midnight
-*Extended! Due November 22, before midnight*
+Due Friday, April 1, before midnight
 
 The goals for this assignment are:
 
-* Define and use functions and objects
-* Use binary and linear search
+* More linked list practice
+* Work with void* types and pointer arithmetic
+* Better understand malloc and free, particularly the use of the free list
+* Understand how fragmentation can occur when re-using memory
 
 :sectnums:
 
 = Description
 
-The goal of this assignment is to create a word search game. 
+In this assignment, we will compare and contrast different implementations of malloc and free. 
 
-image::asst08-search.gif[width=250]
+For this assignment, you should submit both 
 
-In this game, the user is given a 4x4 block of random characters from which they can spell out words. 
+* your code, and
+* a brief report, as a README.adoc file 
 
-= Requirements
+Both should be checked into github. `adoc` is an Asciidoctor file. link:https://docs.asciidoctor.org/asciidoc/latest/syntax-quick-reference/[Click here for a reference].
 
-1) Define a class, called `Button`, to represent each letter Button 
+= Code setup
 
-* `Button` contains the following data: 
-** text (String)
-** x coordinate (float)
-** y coordinate (float)
-** width (float)
-** height (float)
-** isSelected (boolean)
-* `Button` contains the following methods:
-** constructor with parameters for `character`, `x`, `y`, `width`, and `height`. `isSelected` should be false initially.
-** `intersects` method. This method returns true if `mouseX` and `mouseY` are inside the bounds of the button and false otherwise 
-** `draw` method. Draws a box button with the text centered in the middle. If the button is selected, draws the box in a different color. 
-** `getSelected` method (Accessor). Returns the value of isSelected.  
-** `setSelected` method (Mutator). Sets the value of isSelected.  
-** `getLabel` method (Accessor). Returns the text on this button.
+Your basecode includes the following source files
 
-3) In setup, create 16 buttons for the grid of letters as well as buttons for linear and binary search. You are given a function `chooseRandomLetter` to help you initialize the values of each letter button. Your base code also loads a dictionary of words to use. 
+* `benchmark1.c` - Benchmark program that generates random, uniform memory requests
+* `benchmark2.c` - A more realistic benchmark program
+* `rand.c` - Utilities for generating random sizes of memory
+* `sbrk.c` - Replaces sbrk with a version based on mmap 
+* `mylloc_list.c` - Malloc/free implementation that implements a free list with first-fit strategy (corresponds to `mhysa.c` in reading)
 
-4) In draw, draw your buttons. The base code already draws the helper text.
+NOTE: This assignment is based on the reading: "My malloc: mylloc and mhysa" by
+Johan Montelius, posted to Slack. You should complete the reading and finish the
+implementation of `mylloc_list.c` _before_ starting the assignment. 
 
-5) In mousePressed, check whether the user has clicked a button. 
+= README
 
-* If they click a character button, append the character to the current word and set the button's selected property to true. 
-** The user should not be allowed to use the same letter block twice!
-* If they click a search button, use either linear or binary search to check whether the current word is valid. Then clear the selected buttons and the current word.
+In your README.adoc, under the section "Hardware specification", answer the following questions:
 
-6) In binarySearch, implement binary search with String types. (Hint: use the `compareTo` function)
+. Where did your run your tests? A laptop, or goldengate?
+. What are the performance specifications of the machine: number and speed of processors, size of RAM? (use `lscpu` and `free -m`)
 
-7) In linearSearch, implement linear search with String types. (Hint: use the `compareTo` function)
+= Allocations
 
-= Starter code
+In this question, you will analyze the allocations made by `mylloc_list.c`.
 
-You have basecode for this assignment. Check dropbox.
+[discrete]
+== Simple
 
-= What to hand-in
+Write a program, `print.c`, that 
 
-. The complete program (Don't forget your header comment!)
-. A brief write-up with your name, course and assignment number and a few sentences about anything you found challenging about the assignment. 
+. calls `sbrk(0)`
+. prints the initial top of the heap
+. calls `sbrk(0)` again. 
+. prints the new top of the heap allong with the increase in bytes (not kBytes!).
 
-= Submission guidelines
+[source]
+----
+$ ./print
+The initial top of the heap is 0x7fb924cb1000.
+The current top of the heap is 0x7fb924cb1410.
+Increased by 1040 (0x410) bytes
+----
 
-Submit your program (entire sketch directory), write-up, and image as an electronic copy in the folder marked A05 in your dropbox folder. 
+In your README.adoc, under the heading "Allocations", answer the following questions: 
+
+. Where does the increase in 1040 bytes come from?
+. Why is the value 1040 bytes?
+
+[discrete]
+== Reallocate
+
+Write a program, `reallocate.c`, that repeatedly malloc and frees 100 bytes of memory. 
+Your program should contain a loop that mallocs and frees at least 10 times.
+
+In the section titled "Allocations" in your document, answer the following question:
+
+. How many bytes does mylloc_list allocate when the program ends? In your document, explain why this amount makes sense.
+
+= Fragmentation
+
+//In this question, you will compare the amount of _internal_ and _external_ fragmentation that occurs when you use different block-selection strategies:
+//
+//* first-fit: use the first block that's large enough to accomodate the request
+//* worst-fit: use the largest block to accomodate the request 
+//* best-fit: use the smallest block that can accomodate the request
+
+In this question, you will analyze the unused memory that occurs when we use a first-fit strategy.
+You will need to make the following changes to `mylloc_list.c`
+
+* To keep track of your fragmentation, extend the record `struct chunk` to keep track of both the size of 
+the chunk and the amount of memory currently in use by the chunk. For example, suppose you allocate a 
+chunk with size 128 bytes but later re-use the chunk for 96 bytes of data. The size of the chunk is 128 
+but the amount in-use is 96.
+* Add an option to `mylloc_list.c` to change the strategy for choosing chunks. The reading uses first-fit. 
+* Implement a new function, `fragstats(void** buffers, int len)` that computes
+** the total number of free chunks allocated 
+** the total number of in-use chunks allocated 
+** the largest, smallest, and average unused memory across all used chunks
+** the total unused memory across all used chunks
+** the largest, smallest, and average sizes of all free chunks 
+
+[source]
+----
+The initial top of the heap is 0x7f9b72266000.
+Total blocks: 143 Free: 85 Used: 58
+Internal unused: total: 95635 average: 1648.0 smallest: 6 largest: 3805
+External unused: total: 235487 average: 2770.0 smallest: 151 largest: 3999
+0
+The current top of the heap is 0x7f9b722d7e00.
+Increased by 455 (0x1c7) Kbyte
+Total blocks: 150 Free: 96 Used: 54
+Internal unused: total: 98140 average: 1817.0 smallest: 32 largest: 3898
+External unused: total: 280774 average: 2924.0 smallest: 151 largest: 3999
+1
+The current top of the heap is 0x7f9b722debb4.
+Increased by 482 (0x1e2) Kbyte
+Total blocks: 154 Free: 102 Used: 52
+Internal unused: total: 100518 average: 1933.0 smallest: 376 largest: 3961
+External unused: total: 302622 average: 2966.0 smallest: 151 largest: 3999
+2
+The current top of the heap is 0x7f9b722e2a6e.
+Increased by 498 (0x1f2) Kbyte
+Total blocks: 156 Free: 104 Used: 52
+Internal unused: total: 102407 average: 1969.0 smallest: 18 largest: 3895
+External unused: total: 311165 average: 2991.0 smallest: 151 largest: 3999
+----
+
+In README.adoc, under the section titled "Fragmentation" in your document, answer the folowing questions:
+
+. What is fragmentation? What is the difference between internal and external fragmentation?
+. Include your output in the README.adoc
+
+= Submit your work
+
+Submit both your code *and* a brief report containing your plots as a PDF. 
+
+1) Push your code work to github
+
+[source]
+----
+$ git status
+$ git add . 
+$ git status
+$ git commit -m "assignment complete"
+$ git status
+$ git push
+$ git status
+----

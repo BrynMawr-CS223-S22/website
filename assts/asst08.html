@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 2.0.17">
-<title>Assignment 8: Word search</title>
+<title>Assignment 8: Hold on to your memories</title>
 <link rel="stylesheet" href="../style/cs21.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
@@ -14,22 +14,22 @@
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
 <ul class="sectlevel1">
-<li><a href="#_assignment_8_word_search">Assignment 8: Word search</a></li>
+<li><a href="#_assignment_8_hold_on_to_your_memories">Assignment 8: Hold on to your memories</a></li>
 <li><a href="#_description">1. Description</a></li>
-<li><a href="#_requirements">2. Requirements</a></li>
-<li><a href="#_starter_code">3. Starter code</a></li>
-<li><a href="#_what_to_hand_in">4. What to hand-in</a></li>
-<li><a href="#_submission_guidelines">5. Submission guidelines</a></li>
+<li><a href="#_code_setup">2. Code setup</a></li>
+<li><a href="#_readme">3. README</a></li>
+<li><a href="#_allocations">4. Allocations</a></li>
+<li><a href="#_fragmentation">5. Fragmentation</a></li>
+<li><a href="#_submit_your_work">6. Submit your work</a></li>
 </ul>
 </div>
 </div>
 <div id="content">
 <div class="sect1">
-<h2 id="_assignment_8_word_search">Assignment 8: Word search</h2>
+<h2 id="_assignment_8_hold_on_to_your_memories">Assignment 8: Hold on to your memories</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Due Friday, November 20, before midnight
-<strong>Extended! Due November 22, before midnight</strong></p>
+<p>Due Friday, April 1, before midnight</p>
 </div>
 <div class="paragraph">
 <p>The goals for this assignment are:</p>
@@ -37,10 +37,16 @@
 <div class="ulist">
 <ul>
 <li>
-<p>Define and use functions and objects</p>
+<p>More linked list practice</p>
 </li>
 <li>
-<p>Use binary and linear search</p>
+<p>Work with void* types and pointer arithmetic</p>
+</li>
+<li>
+<p>Better understand malloc and free, particularly the use of the free list</p>
+</li>
+<li>
+<p>Understand how fragmentation can occur when re-using memory</p>
 </li>
 </ul>
 </div>
@@ -50,147 +56,258 @@
 <h2 id="_description">1. Description</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The goal of this assignment is to create a word search game.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="img/asst08-search.gif" alt="asst08 search" width="250">
-</div>
+<p>In this assignment, we will compare and contrast different implementations of malloc and free.</p>
 </div>
 <div class="paragraph">
-<p>In this game, the user is given a 4x4 block of random characters from which they can spell out words.</p>
+<p>For this assignment, you should submit both</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>your code, and</p>
+</li>
+<li>
+<p>a brief report, as a README.adoc file</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Both should be checked into github. <code>adoc</code> is an Asciidoctor file. <a href="https://docs.asciidoctor.org/asciidoc/latest/syntax-quick-reference/">Click here for a reference</a>.</p>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_requirements">2. Requirements</h2>
+<h2 id="_code_setup">2. Code setup</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>1) Define a class, called <code>Button</code>, to represent each letter Button</p>
+<p>Your basecode includes the following source files</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><code>Button</code> contains the following data:</p>
-<div class="ulist">
-<ul>
-<li>
-<p>text (String)</p>
+<p><code>benchmark1.c</code> - Benchmark program that generates random, uniform memory requests</p>
 </li>
 <li>
-<p>x coordinate (float)</p>
+<p><code>benchmark2.c</code> - A more realistic benchmark program</p>
 </li>
 <li>
-<p>y coordinate (float)</p>
+<p><code>rand.c</code> - Utilities for generating random sizes of memory</p>
 </li>
 <li>
-<p>width (float)</p>
+<p><code>sbrk.c</code> - Replaces sbrk with a version based on mmap</p>
 </li>
 <li>
-<p>height (float)</p>
-</li>
-<li>
-<p>isSelected (boolean)</p>
+<p><code>mylloc_list.c</code> - Malloc/free implementation that implements a free list with first-fit strategy (corresponds to <code>mhysa.c</code> in reading)</p>
 </li>
 </ul>
 </div>
-</li>
-<li>
-<p><code>Button</code> contains the following methods:</p>
-<div class="ulist">
-<ul>
-<li>
-<p>constructor with parameters for <code>character</code>, <code>x</code>, <code>y</code>, <code>width</code>, and <code>height</code>. <code>isSelected</code> should be false initially.</p>
-</li>
-<li>
-<p><code>intersects</code> method. This method returns true if <code>mouseX</code> and <code>mouseY</code> are inside the bounds of the button and false otherwise</p>
-</li>
-<li>
-<p><code>draw</code> method. Draws a box button with the text centered in the middle. If the button is selected, draws the box in a different color.</p>
-</li>
-<li>
-<p><code>getSelected</code> method (Accessor). Returns the value of isSelected.</p>
-</li>
-<li>
-<p><code>setSelected</code> method (Mutator). Sets the value of isSelected.</p>
-</li>
-<li>
-<p><code>getLabel</code> method (Accessor). Returns the text on this button.</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>3) In setup, create 16 buttons for the grid of letters as well as buttons for linear and binary search. You are given a function <code>chooseRandomLetter</code> to help you initialize the values of each letter button. Your base code also loads a dictionary of words to use.</p>
-</div>
-<div class="paragraph">
-<p>4) In draw, draw your buttons. The base code already draws the helper text.</p>
-</div>
-<div class="paragraph">
-<p>5) In mousePressed, check whether the user has clicked a button.</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>If they click a character button, append the character to the current word and set the button&#8217;s selected property to true.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>The user should not be allowed to use the same letter block twice!</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>If they click a search button, use either linear or binary search to check whether the current word is valid. Then clear the selected buttons and the current word.</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>6) In binarySearch, implement binary search with String types. (Hint: use the <code>compareTo</code> function)</p>
-</div>
-<div class="paragraph">
-<p>7) In linearSearch, implement linear search with String types. (Hint: use the <code>compareTo</code> function)</p>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+This assignment is based on the reading: "My malloc: mylloc and mhysa" by
+Johan Montelius, posted to Slack. You should complete the reading and finish the
+implementation of <code>mylloc_list.c</code> <em>before</em> starting the assignment.
+</td>
+</tr>
+</table>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_starter_code">3. Starter code</h2>
+<h2 id="_readme">3. README</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>You have basecode for this assignment. Check dropbox.</p>
+<p>In your README.adoc, under the section "Hardware specification", answer the following questions:</p>
 </div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_what_to_hand_in">4. What to hand-in</h2>
-<div class="sectionbody">
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>The complete program (Don&#8217;t forget your header comment!)</p>
+<p>Where did your run your tests? A laptop, or goldengate?</p>
 </li>
 <li>
-<p>A brief write-up with your name, course and assignment number and a few sentences about anything you found challenging about the assignment.</p>
+<p>What are the performance specifications of the machine: number and speed of processors, size of RAM? (use <code>lscpu</code> and <code>free -m</code>)</p>
 </li>
 </ol>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_submission_guidelines">5. Submission guidelines</h2>
+<h2 id="_allocations">4. Allocations</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Submit your program (entire sketch directory), write-up, and image as an electronic copy in the folder marked A05 in your dropbox folder.</p>
+<p>In this question, you will analyze the allocations made by <code>mylloc_list.c</code>.</p>
+</div>
+<h3 id="_simple" class="discrete">Simple</h3>
+<div class="paragraph">
+<p>Write a program, <code>print.c</code>, that</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>calls <code>sbrk(0)</code></p>
+</li>
+<li>
+<p>prints the initial top of the heap</p>
+</li>
+<li>
+<p>calls <code>sbrk(0)</code> again.</p>
+</li>
+<li>
+<p>prints the new top of the heap allong with the increase in bytes (not kBytes!).</p>
+</li>
+</ol>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>$ ./print
+The initial top of the heap is 0x7fb924cb1000.
+The current top of the heap is 0x7fb924cb1410.
+Increased by 1040 (0x410) bytes</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In your README.adoc, under the heading "Allocations", answer the following questions:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Where does the increase in 1040 bytes come from?</p>
+</li>
+<li>
+<p>Why is the value 1040 bytes?</p>
+</li>
+</ol>
+</div>
+<h3 id="_reallocate" class="discrete">Reallocate</h3>
+<div class="paragraph">
+<p>Write a program, <code>reallocate.c</code>, that repeatedly malloc and frees 100 bytes of memory.
+Your program should contain a loop that mallocs and frees at least 10 times.</p>
+</div>
+<div class="paragraph">
+<p>In the section titled "Allocations" in your document, answer the following question:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>How many bytes does mylloc_list allocate when the program ends? In your document, explain why this amount makes sense.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_fragmentation">5. Fragmentation</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>In this question, you will analyze the unused memory that occurs when we use a first-fit strategy.
+You will need to make the following changes to <code>mylloc_list.c</code></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>To keep track of your fragmentation, extend the record <code>struct chunk</code> to keep track of both the size of
+the chunk and the amount of memory currently in use by the chunk. For example, suppose you allocate a
+chunk with size 128 bytes but later re-use the chunk for 96 bytes of data. The size of the chunk is 128
+but the amount in-use is 96.</p>
+</li>
+<li>
+<p>Add an option to <code>mylloc_list.c</code> to change the strategy for choosing chunks. The reading uses first-fit.</p>
+</li>
+<li>
+<p>Implement a new function, <code>fragstats(void** buffers, int len)</code> that computes</p>
+<div class="ulist">
+<ul>
+<li>
+<p>the total number of free chunks allocated</p>
+</li>
+<li>
+<p>the total number of in-use chunks allocated</p>
+</li>
+<li>
+<p>the largest, smallest, and average unused memory across all used chunks</p>
+</li>
+<li>
+<p>the total unused memory across all used chunks</p>
+</li>
+<li>
+<p>the largest, smallest, and average sizes of all free chunks</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>The initial top of the heap is 0x7f9b72266000.
+Total blocks: 143 Free: 85 Used: 58
+Internal unused: total: 95635 average: 1648.0 smallest: 6 largest: 3805
+External unused: total: 235487 average: 2770.0 smallest: 151 largest: 3999
+0
+The current top of the heap is 0x7f9b722d7e00.
+Increased by 455 (0x1c7) Kbyte
+Total blocks: 150 Free: 96 Used: 54
+Internal unused: total: 98140 average: 1817.0 smallest: 32 largest: 3898
+External unused: total: 280774 average: 2924.0 smallest: 151 largest: 3999
+1
+The current top of the heap is 0x7f9b722debb4.
+Increased by 482 (0x1e2) Kbyte
+Total blocks: 154 Free: 102 Used: 52
+Internal unused: total: 100518 average: 1933.0 smallest: 376 largest: 3961
+External unused: total: 302622 average: 2966.0 smallest: 151 largest: 3999
+2
+The current top of the heap is 0x7f9b722e2a6e.
+Increased by 498 (0x1f2) Kbyte
+Total blocks: 156 Free: 104 Used: 52
+Internal unused: total: 102407 average: 1969.0 smallest: 18 largest: 3895
+External unused: total: 311165 average: 2991.0 smallest: 151 largest: 3999</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In README.adoc, under the section titled "Fragmentation" in your document, answer the folowing questions:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>What is fragmentation? What is the difference between internal and external fragmentation?</p>
+</li>
+<li>
+<p>Include your output in the README.adoc</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_submit_your_work">6. Submit your work</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Submit both your code <strong>and</strong> a brief report containing your plots as a PDF.</p>
+</div>
+<div class="paragraph">
+<p>1) Push your code work to github</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>$ git status
+$ git add .
+$ git status
+$ git commit -m "assignment complete"
+$ git status
+$ git push
+$ git status</code></pre>
+</div>
 </div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2022-01-19 14:40:35 -0500
+Last updated 2022-03-27 18:44:46 -0400
 </div>
 </div>
 </body>
