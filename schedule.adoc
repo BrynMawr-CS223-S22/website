@@ -97,6 +97,7 @@ No meetings this week!
 |*Memory II*
 
 * Read: link:https://diveintosystems.org/singlepage/[Chapter 11.5, Malloc Handout] 
+* link:assts/asst07.html[Assignment 07]
 * **Jam 03 Redux**: Mar 24
 
 //-----------------------------
@@ -106,6 +107,7 @@ No meetings this week!
 
 * Read: link:https://diveintosystems.org/singlepage/[Chapter 13] 
 * **Jam 04**: Mar 31 link:studyguide4.html[Study Guide 4]
+* link:assts/asst08.html[Assignment 08]
 
 //-----------------------------
 |12
