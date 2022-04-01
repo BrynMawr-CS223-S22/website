@@ -215,10 +215,7 @@ chunk with size 128 bytes but later re-use the chunk for 96 bytes of data. The s
 but the amount in-use is 96.</p>
 </li>
 <li>
-<p>Add an option to <code>mylloc_list.c</code> to change the strategy for choosing chunks. The reading uses first-fit.</p>
-</li>
-<li>
-<p>Implement a new function, <code>fragstats(void** buffers, int len)</code> that computes</p>
+<p>Implement the function, <code>fragstats(void** buffers, int len)</code> located in <code>mylloc_list.c</code>, that computes</p>
 <div class="ulist">
 <ul>
 <li>
@@ -240,6 +237,18 @@ but the amount in-use is 96.</p>
 </div>
 </li>
 </ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+In <code>fragstats</code>, buffers contains the memory chunks that are currently being used. <code>flist</code> contains the memory chunks that are not currently in use.
+</td>
+</tr>
+</table>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -307,7 +316,7 @@ $ git status</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2022-03-27 18:44:46 -0400
+Last updated 2022-04-01 10:07:11 -0400
 </div>
 </div>
 </body>
