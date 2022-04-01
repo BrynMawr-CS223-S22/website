@@ -110,7 +110,7 @@ but the amount in-use is 96.
 ** the total unused memory across all used chunks
 ** the largest, smallest, and average sizes of all free chunks 
 
-NOTE: In `fragstats`, buffers contains the memory chunks that are currently being used. `flist` contains the memory chunks that are not currently in use.
+NOTE: In `fragstats`, `buffers` contains the memory chunks that are currently being used. `flist` contains the memory chunks that are not currently in use.
 
 [source]
 ----
@@ -137,6 +137,8 @@ Total blocks: 156 Free: 104 Used: 52
 Internal unused: total: 102407 average: 1969.0 smallest: 18 largest: 3895
 External unused: total: 311165 average: 2991.0 smallest: 151 largest: 3999
 ----
+
+NOTE: Above, "internal unused" analyzes the unused memory in `buffers`; "external unused" analyzes unused memory in `free list`
 
 In README.adoc, under the section titled "Fragmentation" in your document, answer the folowing questions:
 

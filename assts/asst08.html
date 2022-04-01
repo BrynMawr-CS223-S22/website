@@ -245,7 +245,7 @@ but the amount in-use is 96.</p>
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-In <code>fragstats</code>, buffers contains the memory chunks that are currently being used. <code>flist</code> contains the memory chunks that are not currently in use.
+In <code>fragstats</code>, <code>buffers</code> contains the memory chunks that are currently being used. <code>flist</code> contains the memory chunks that are not currently in use.
 </td>
 </tr>
 </table>
@@ -275,6 +275,18 @@ Total blocks: 156 Free: 104 Used: 52
 Internal unused: total: 102407 average: 1969.0 smallest: 18 largest: 3895
 External unused: total: 311165 average: 2991.0 smallest: 151 largest: 3999</code></pre>
 </div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Above, "internal unused" analyzes the unused memory in <code>buffers</code>; "external unused" analyzes unused memory in <code>free list</code>
+</td>
+</tr>
+</table>
 </div>
 <div class="paragraph">
 <p>In README.adoc, under the section titled "Fragmentation" in your document, answer the folowing questions:</p>
@@ -316,7 +328,7 @@ $ git status</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2022-04-01 10:07:11 -0400
+Last updated 2022-04-01 12:29:50 -0400
 </div>
 </div>
 </body>
