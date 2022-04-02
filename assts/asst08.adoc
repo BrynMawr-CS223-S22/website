@@ -147,7 +147,7 @@ In README.adoc, under the section titled "Fragmentation" in your document, answe
 
 = Submit your work
 
-Submit both your code *and* a brief report containing your plots as a PDF. 
+Submit both your code *and* a brief report containing your results in README.md.
 
 1) Push your code work to github
 
