@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 2.0.17">
-<title>Assignment 9: Word cloud</title>
+<title>Assignment 9: Many processes make light work</title>
 <link rel="stylesheet" href="../style/cs21.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
@@ -14,22 +14,20 @@
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
 <ul class="sectlevel1">
-<li><a href="#_assignment_9_word_cloud">Assignment 9: Word cloud</a></li>
-<li><a href="#_description">1. Description</a></li>
-<li><a href="#_requirements">2. Requirements</a></li>
-<li><a href="#_starter_code">3. Starter code</a></li>
-<li><a href="#_what_to_hand_in">4. What to hand-in</a></li>
-<li><a href="#_submission_guidelines">5. Submission guidelines</a></li>
-<li><a href="#_hints_and_advice">6. Hints and advice</a></li>
+<li><a href="#_assignment_9_many_processes_make_light_work">Assignment 9: Many processes make light work</a></li>
+<li><a href="#_mandelbrot_set">Mandelbrot Set</a></li>
+<li><a href="#_single">1. Single</a></li>
+<li><a href="#_multiple">2. Multiple</a></li>
+<li><a href="#_submit_your_work">3. Submit your work</a></li>
 </ul>
 </div>
 </div>
 <div id="content">
 <div class="sect1">
-<h2 id="_assignment_9_word_cloud">Assignment 9: Word cloud</h2>
+<h2 id="_assignment_9_many_processes_make_light_work">Assignment 9: Many processes make light work</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Due Thursday, December 10, before midnight</p>
+<p>Due Friday, April 8, before midnight</p>
 </div>
 <div class="paragraph">
 <p>The goals for this assignment are:</p>
@@ -37,321 +35,325 @@
 <div class="ulist">
 <ul>
 <li>
-<p>Define and use functions and objects</p>
+<p>Implement an algorithm using multiple processes with fork()</p>
 </li>
 <li>
-<p>Use selection sort</p>
+<p>Compare single- and multi-process implementation performance</p>
+</li>
+<li>
+<p>Work with fork(), wait(), process ids, and shared memory</p>
 </li>
 </ul>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_description">1. Description</h2>
+<h2 id="_mandelbrot_set">Mandelbrot Set</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The goal of this assignment is to draw word clouds.  The following cloud was created from
-articles written about the Love statue in Philadelphia. In the demo below, pressing the 'r' key
-computes a new cloud, '+' adds one word to the cloud, '=' subtracts one word from the cloud, and 'd'
-toggles whether we show bounding boxes or not.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="img/asst09-wordcloud.gif" alt="asst09 wordcloud" width="250">
-</div>
+<p>The <a href="https://en.wikipedia.org/wiki/Mandelbrot_set">mandelbrot set</a> is fractal popularized by
+Benoit Mandelbrot in 1980.</p>
 </div>
 <div class="paragraph">
-<p>A word cloud arranges words such that those that appear more often in a text are largest. To
-arrange the words, we draw each word from most occurrences to least (e.g. from biggest to smallest),
-ensuring that each new word we draw does not overlap with the ones we already drew.</p>
+<p>The mandelbrot set consists of the set of complex numbers z for which \(z^2 + c\) does not diverge to infinity when z starts at 0. To visualize this set, recall that a <a href="https://en.wikipedia.org/wiki/Complex_number">complex number</a>, \(z = x + yi\), can be visualized as a 2D point \((x,y)\). Although the set derives from complex
+numbers, we can compute the set by thinking about 2D coordinates, \((x,y)\).</p>
 </div>
 <div class="paragraph">
-<p>In this assignment, you are given a text file that lists words and counts. Your job is to read in
-the file and arrange the corresponding words into a word cloud.</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_requirements">2. Requirements</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>1) Define a class, called <code>Tile</code>, to represent each word.</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>Tile</code> contains the following data:</p>
-<div class="ulist">
-<ul>
-<li>
-<p>word (String): the word on the tile</p>
-</li>
-<li>
-<p>count (int): the number of occurrences of the word in the text</p>
-</li>
-<li>
-<p>x coordinate (float): the left side of the tile</p>
-</li>
-<li>
-<p>y coordinate (float): the top of the tile</p>
-</li>
-<li>
-<p>width (float): the width of the tile based on the text size and word</p>
-</li>
-<li>
-<p>height (float): the height of the tile based on the text ascent and descent</p>
-</li>
-<li>
-<p>text size (int): the font size (based on the count)</p>
-</li>
-<li>
-<p>isVisible (boolean): whether or not the tile should be drawn</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p><code>Tile</code> contains the following methods:</p>
-<div class="ulist">
-<ul>
-<li>
-<p>constructor with parameters for <code>word</code> and <code>count</code>. <code>isVisible</code> should be true initially. The size should be a function of the count. Above, we use the formula <code>3 * count + 8</code>, where 8 is the minimum font size. The width and height should be computed using the font size and word.</p>
-</li>
-<li>
-<p><code>intersects(Tile)</code> method. This method returns true if the given tile intersects this tile and false otherwise.</p>
-</li>
-<li>
-<p><code>draw(debug)</code> method. If <code>debug</code> is true, draws both the text and the bounding box. If <code>debug</code> is false, just draw the text.</p>
-</li>
-<li>
-<p><code>getCount</code> method (Accessor). Returns the count associated with this tile.</p>
-</li>
-<li>
-<p><code>getSize</code> method (Accessor). Returns the font size of this tile.</p>
-</li>
-<li>
-<p><code>getWord</code> method (Accessor). Returns the word of this tile.</p>
-</li>
-<li>
-<p><code>getWidth</code> method (Accessor).  Returns the width of this tile.</p>
-</li>
-<li>
-<p><code>getHeight</code> method (Accessor).  Returns the height of this tile.</p>
-</li>
-<li>
-<p><code>getX</code> method (Accessor). Returns the x coordinate of this tile.</p>
-</li>
-<li>
-<p><code>getY</code> method (Accessor). Returns the y coordinate of this tile.</p>
-</li>
-<li>
-<p><code>setXY(float,float)</code> method (Mutator). Sets the value of x and y for this tile.</p>
-</li>
-<li>
-<p><code>setVisible(boolean)</code> method (Mutator). Sets whether this tile should be visible of not</p>
-</li>
-<li>
-<p><code>getVisible</code> method (Accessor).  Returns whether this tile should be visible or not</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
+<p>To see whether the complex number \((x,y)\) diverges, we simply need a loop that repeatedly computes \(z^2 + c\). If we expand the
+complex number multiplication of \(z = x + y*i\), z will change each iteration based on the following algorith. To test for divergence, we check whether z goes
+out of the bounds of 4*4. If z does go out of bounds, we assign it a color based on how quickly it "escaped" the distance 4*4. If after MAX iterations, z is still
+smaller than 4*4, it belongs to the set and we color it black.</p>
 </div>
 <div class="paragraph">
-<p>3) In setup, load the file "word-counts.txt" and initialize an array of Tile, one for each line in the file.</p>
-</div>
-<div class="paragraph">
-<p>4) In setup, print the first 10 tiles from the file to the console. Implement your print to console in the function <code>printTiles(Tile[],int)</code>.</p>
-</div>
-<div class="paragraph">
-<p>5) In setup, sort the tiles based on the counts in descending order, from largest count to smallest. Implement your sorting algorithm in <code>sortByCount</code>. Print the first 10 tiles after sorting using <code>printTiles</code>.</p>
-</div>
-<div class="paragraph">
-<p>6) In setup, compute (x,y) positions for the N largest tiles. Choose random positions for these tiles such that it doesn&#8217;t overlap with previously placed words. When looking for an open spot to place a word, you might not find one. Implement a max number of times to look for a random spot to place a word. If none is found, print a message to the console and hide that tile (call <code>setVisible(false)</code>) so it is not drawn. Below is psuedocode for this algorithm</p>
+<p>The last thing we need to draw the set is the region of values for x and y that bound the set.
+X should vary from -2.0 to 0.47. Y should vary from -1.12 to 1.12. Here is the full algorithm.
+Assume that the image width and height are the same, e.g. square images.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-java" data-lang="java">// Algorithm for placeTiles(tiles, N)
-for the first N tile in tiles
-    x,y = generate a random point on the canvas
-    tile.setXY(x,y)
-    numTries = 100
-    while intersectsPreviousTiles(tile, tiles) and numTries &gt; 0
-        x,y = generate a random point on the canvas
-        tile.setXY(x,y)
-        numTries = numTries - 1
+<pre class="highlight"><code>for each row in the image
+   for each col in the image
+      xfrac = row / image_size
+      yfrac = col / image_size
+      x0 = xmin + xfrac * (xmax - xmin)
+      y0 = ymin + yfrac * (ymax - ymin)
 
-    if numTries &lt;= 0
-        tile.setVisible(false)</code></pre>
+      x = 0
+      y = 0
+      iter = 0
+      while (iter &lt; MAX &amp;&amp; x*x + y*y &lt; 2*2)
+        xtmp = x*x - y*y + x0
+        y = 2*x*y + y0
+        x = xtmp
+
+      if (iter &lt; MAX) // escaped
+        color = palette[iter]
+      else
+        color = black
+
+      write color to image at location (row,col)</code></pre>
 </div>
+</div>
+<h3 id="_palette" class="discrete">Palette</h3>
+<div class="paragraph">
+<p>The palette should contain the same number of colors as MAX iterations.
+Use <code>ppm_pixel</code> to represent colors in the pallet. You can either generate
+random colors or compute a base color and jitter it e.g.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="imageblock">
+<div class="content">
+<img src="img/mandelbrot-random.gif" alt="mandelbrot random">
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>for each palette color
+  red = rand() % 255
+  green = rand() % 255
+  blue = rand() % 255</code></pre>
+</div>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="imageblock">
+<div class="content">
+<img src="img/mandelbrot-jitter.gif" alt="mandelbrot jitter">
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>basered = rand() % 255
+basegreen = rand() % 255
+baseblue = rand() % 255
+for each palette color
+  red = basered + rand() % 100 - 50
+  green = basegreen + rand() % 100 - 50
+  blue = baseblue + rand() % 100 - 50</code></pre>
+</div>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_single">1. Single</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>In the file, <code>single_mandelbrot</code>, compute a program that outputs a PPM image of the mandelbrot
+set. You have been given basecode that initializes the following values from command line arguments. This code uses the <a href="https://www.geeksforgeeks.org/getopt-function-in-c-to-parse-command-line-arguments/">getopt function</a>.</p>
 </div>
 <div class="paragraph">
-<p>7) In draw, draw all the tiles. Pass the global variable, <code>drawDebug</code>, to each tile&#8217;s draw function to determine whether bounding boxes should be shown.</p>
-</div>
-<div class="paragraph">
-<p>8) In keyPressed, implement the following commands</p>
+<p>Arguments:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>'d' key: toggle the global variable, <code>drawDebug</code></p>
+<p><code>-s &lt;size&gt;</code> the image width and height</p>
 </li>
 <li>
-<p>'r' key: call <code>placeTiles</code> to create a new arrangement of tiles</p>
+<p><code>-l &lt;xmin&gt;</code> the leftmost coordinate, e.g. minimum x value</p>
 </li>
 <li>
-<p>'+' key: increase the number N of words used in the cloud. Don&#8217;t allow N to be larger than the number of tiles. Call <code>placeTiles</code> to recompute the cloud.</p>
+<p><code>-r &lt;xmax&gt;</code> the rightmost coordinate, e.g. maximum x value</p>
 </li>
 <li>
-<p>'-' key: decrease the number N of words used in the cloud. Don&#8217;t allow N to be smaller than 1.  Call <code>placeTiles</code> to recompute the cloud.</p>
+<p><code>-t &lt;ymin&gt;</code> the topmost coordinate, e.g. minimum y value</p>
+</li>
+<li>
+<p><code>-b &lt;ymax&gt;</code> the bottommost coordinate, e.g. maximum y value</p>
 </li>
 </ul>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_starter_code">3. Starter code</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>You have basecode for this assignment. Check dropbox.</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_what_to_hand_in">4. What to hand-in</h2>
-<div class="sectionbody">
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>The complete program (Don&#8217;t forget your header comment!)</p>
-</li>
-<li>
-<p>A brief write-up with your name, course and assignment number and a few sentences about anything you found challenging about the assignment.</p>
-</li>
-</ol>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_submission_guidelines">5. Submission guidelines</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Submit your program (entire sketch directory), write-up, and image as an electronic copy in the folder marked A05 in your dropbox folder.</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_hints_and_advice">6. Hints and advice</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>This assignment ties together several concepts from previous assignments in a non-trivial way!</p>
-</div>
-<div class="paragraph">
-<p>If you don&#8217;t know where to start, here is a recommended approach</p>
-</div>
-<div class="paragraph">
-<p>1) Implement the Tile class first. Some methods, such as <code>intersects</code> and <code>draw</code> can be implemented later, but you should implement the constructor, accessors, and mutators. The base code outlines what these are.</p>
-</div>
-<div class="paragraph">
-<p>2) Load in the file into an array of <code>Tile</code>. This is similar to assignment 07. For each line, parse the line into <code>word</code> and <code>count</code> and use these values to create new <code>Tile</code> objects.</p>
-</div>
-<div class="paragraph">
-<p>3) Implement the function <code>printTiles</code>. This function should loop through your array of tiles and print the word and count for each. Below is the console output when n is 10.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-java" data-lang="java">dixon:2
-year:1
-evolved:1
-hall:5
-undergoing:2
-building:2
-near:2
-welcome:2
-brand:1
-13:1</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>4) Implement the function <code>sortByCount</code>. Then call <code>printTiles</code> again (with N = 10) to check that your sort is working, you should get</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-java" data-lang="java">park:27
-love:21
-sculpture:16
-plaza:15
-city:13
-philadelphia:10
-kennedy:9
-john:9
-art:6
-designed:6</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>5) Implement <code>placeTiles</code> but don&#8217;t worry about intersection testing. Draw all your words with random positions. Make sure the bounds around each word is correct and that words have good relative sizes.</p>
-</div>
-<div class="paragraph">
-<p><span class="image"><img src="img/Asst9-IntersectingTiles.png" alt="Asst9 IntersectingTiles" width="200px"></span></p>
-</div>
-<div class="paragraph">
-<p>6) Enhance your cloud so that words do not overlap. Implement <code>isClear</code> and <code>Tile.intersects</code>. Your intersection algorithm will need to be modified from the one we used for the video game to account for the following case:</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="img/NewIntersectionCase.png" alt="NewIntersectionCase" width="100px">
+<img src="img/A09.png" alt="A09" height="400">
 </div>
 </div>
 <div class="paragraph">
-<p>An easy way to deal with the above situation is to consider the cases where we know two boxes <strong>do not</strong> intersect.</p>
+<p>When you run your program, you should get the output such as the following</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>$ <strong>make single_mandelbrot</strong>
+$ <strong>./single_mandelbrot</strong>
+Generating mandelbrot with size 480x480
+  X range = [-2.0000,0.4700]
+  Y range = [-1.1200,1.1200]
+Computed mandelbrot set (480x480) in 0.323261 seconds
+Writing file: mandelbrot-480-1649001071.ppm</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Requirements and hints:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>If a tile&#8217;s left side (e.g x position) is to the right of us (e.g. greater than mX + mWidth), then we don&#8217;t intersect</p>
+<p>You should re-use your PPM functions from A06. If you use a 2D array of arrays, be sure to modify and commit <code>read_ppm.h</code>!</p>
 </li>
 <li>
-<p>If a tile&#8217;s top side (e.g. y position) is below us (e.g. greater than mY + mHeight), then we don&#8217;t intersect</p>
+<p>Allocate an array of pixels using malloc and then save the final image using <code>write_ppm</code>.</p>
 </li>
 <li>
-<p>If a tile&#8217;s right side (e.g. x+width) is to the left of us (e.g. less than mX), then we don&#8217;t intersect</p>
+<p>You should output the number of seconds needed to compute the image. Use this <a href="https://github.com/BrynMawr-CS223-S22/class-examples/blob/main/lec17/matrix.c">class example, matrix.c</a> for an example.</p>
 </li>
 <li>
-<p>If a tile&#8217;s bottom side (e.g. y+height) is to above us (e.g. less than mY), then we don&#8217;t intersect</p>
+<p>Your output filename should have the format <code>mandelbrot-&lt;size&gt;-&lt;timestamp&gt;.png</code>. The timestamp can be obtained by calling <code>time(0)</code>.</p>
+</li>
+<li>
+<p>Set a random seed to ensure that the color palette is different each time, e.g. <code>srand(time(0))</code></p>
+</li>
+<li>
+<p>In your <code>README.adoc</code>, call <code>single_mandelbrot</code> with sizes of 100, 400, 800, 1000, and 2000. Record the number of seconds it takes to compute each image.</p>
+</li>
+<li>
+<p>(Optional) Experiment with visualizing other regions of the mandelbrot set. For example, if you run with <code>./single_mandelbrot -s 480 -l -0.02524993 -r 0.00975 -b -0.8172 -t -0.79725</code>, you get the following image</p>
 </li>
 </ul>
 </div>
+<div class="imageblock">
+<div class="content">
+<img src="img/mandelbrot-480-subregion.png" alt="mandelbrot 480 subregion">
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_multiple">2. Multiple</h2>
+<div class="sectionbody">
 <div class="paragraph">
-<p>Implement the above rules in <code>Tile.intersects</code>.</p>
+<p>In the file, <code>multi_mandelbrot</code>, compute a program that outputs a PPM image of
+the mandelbrot set using multiple processes spawned with <code>fork()</code>.  Your
+basecode implements the same command line arguments in with <code>single_mandelbrot</code>.</p>
 </div>
 <div class="paragraph">
-<p>7) Once you have a basic cloud drawing, implement the keyboard controls</p>
+<p>Your program should use <code>shared memory</code> to split the computation of the image across
+4 child processes. After each child completes, the parent process should save the
+result to a file using <code>write_ppm</code>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>$ <strong>./multi_mandelbrot</strong>
+Generating mandelbrot with size 480x480
+  Num processes = 4
+  X range = [-2.0000,0.4700]
+  Y range = [-1.1200,1.1200]
+Launched child process: 9150
+Launched child process: 9151
+9150) Sub-image block: cols (0, 240) to rows (0,240)
+9151) Sub-image block: cols (240, 480) to rows (0,240)
+Launched child process: 9152
+9152) Sub-image block: cols (0, 240) to rows (240,480)
+Launched child process: 9153
+9153) Sub-image block: cols (240, 480) to rows (240,480)
+Child process complete: 9150
+Child process complete: 9152
+Child process complete: 9151
+Child process complete: 9153
+Computed mandelbrot set (480x480) in 0.152178 seconds
+Writing file: multi-mandelbrot-480-1649001405.ppm</code></pre>
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="img/A09-multi.png" alt="A09 multi" height="400">
+</div>
 </div>
 <div class="paragraph">
-<p><strong>Gotchas and more advice</strong></p>
+<p>Requirements and hints:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>Be careful about what draw mode you use for your tiles. This writeup assumes that we are using corner mode.</p>
+<p>You should re-use your PPM functions from A06. If you use a 2D array of arrays, be sure to modify and commit <code>read_ppm.h</code>!</p>
 </li>
 <li>
-<p>Start by drawing only 2 or 3 words</p>
+<p>Allocate an array of pixels using <code>shared memory</code> and then save the final image using <code>write_ppm</code>. Use the example from class as a reference.</p>
 </li>
 <li>
-<p>When looking for an open spot to place a word, you might not find one (infinite loop!). Implement a max number of times to look for a random spot to place a word. If none is found, print a message to the console and hide that tile so it is not drawn.</p>
+<p>Print the pids and work tasks for each child.</p>
+</li>
+<li>
+<p>Refactor the code from <code>single_mandelbrot</code> to compute the mandelbrot set using a function. Then re-use the same function in both <code>single_mandelbrot.c</code> and <code>multi_mandelbrot.c</code></p>
+</li>
+<li>
+<p>Use <code>fork()</code> to create 4 child processes and <code>wait()</code> to wait for each to complete.</p>
+</li>
+<li>
+<p>You should output the number of seconds needed to compute the image. Use this <a href="https://github.com/BrynMawr-CS223-S22/class-examples/blob/main/lec17/matrix.c">class example, matrix.c</a> for an example.</p>
+</li>
+<li>
+<p>Your output filename should have the format <code>multi-mandelbrot-&lt;size&gt;-&lt;timestamp&gt;.png</code>. The timestamp can be obtained by calling <code>time(0)</code>.</p>
+</li>
+<li>
+<p>Set a random seed to ensure that the color palette is different each time, e.g. <code>srand(time(0))</code></p>
+</li>
+<li>
+<p>In your <code>README.adoc</code>, call <code>single_mandelbrot</code> with sizes of 100, 400, 800, 1000, and 2000. Record the number of seconds it takes to compute each image.</p>
 </li>
 </ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_submit_your_work">3. Submit your work</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Submit both your code, images, <strong>and</strong> a brief report containing your results in your README.</p>
+</div>
+<div class="paragraph">
+<p>1) Push your code work to github</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>$ git status
+$ git add .
+$ git status
+$ git commit -m "assignment complete"
+$ git status
+$ git push
+$ git status</code></pre>
+</div>
 </div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2022-01-19 14:40:35 -0500
+Last updated 2022-04-03 12:21:20 -0400
 </div>
 </div>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  messageStyle: "none",
+  tex2jax: {
+    inlineMath: [["\\(", "\\)"]],
+    displayMath: [["\\[", "\\]"]],
+    ignoreClass: "nostem|nolatexmath"
+  },
+  asciimath2jax: {
+    delimiters: [["\\$", "\\$"]],
+    ignoreClass: "nostem|noasciimath"
+  },
+  TeX: { equationNumbers: { autoNumber: "none" } }
+})
+MathJax.Hub.Register.StartupHook("AsciiMath Jax Ready", function () {
+  MathJax.InputJax.AsciiMath.postfilterHooks.Add(function (data, node) {
+    if ((node = data.script.parentNode) && (node = node.parentNode) && node.classList.contains("stemblock")) {
+      data.math.root.display = "block"
+    }
+    return data
+  })
+})
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js?config=TeX-MML-AM_HTMLorMML"></script>
 </body>
 </html>

@@ -105,16 +105,17 @@ No meetings this week!
 |March 29,31 anchor:week11[]
 |*The operating system* 
 
-* Read: link:https://diveintosystems.org/singlepage/[Chapter 13] 
+* Read: link:https://diveintosystems.org/singlepage/[Chapter 13, skip section 13.3] 
 * **Jam 04**: Mar 31 link:studyguide4.html[Study Guide 4]
 * link:assts/asst08.html[Assignment 08]
 
 //-----------------------------
 |12
 |April 5,7 anchor:week12[]
-|*The operating system* 
+|*Inter-process communication, Threads I* 
 
-* Read: link:https://diveintosystems.org/singlepage/[Chapter 13] 
+* Read: link:https://diveintosystems.org/singlepage/[Chapter 13.4-13.6, Chapter 14] 
+* link:assts/asst09.html[Assignment 09]
 * **Jam 04 Redux**: April 14
 
 //-----------------------------
@@ -123,14 +124,15 @@ No meetings this week!
 |*Threads* 
 
 * Read: link:https://diveintosystems.org/singlepage/[Chapter 14] 
-* **Jam 05**: April 14
+* link:assts/asst10.html[Assignment 10]
+* **Jam 05**: April 14, link:studyguide5.html[Study Guide 5]
 
 //-----------------------------
 |14
 |April 19,21 anchor:week14[]
-|*Threads* 
+|*Code Optimization* 
 
-* Read: link:https://diveintosystems.org/singlepage/[Chapter 14] 
+* Read: link:https://diveintosystems.org/singlepage/[Chapter 12] 
 * **Jam 05 Redux**: April 21
 
 //-----------------------------

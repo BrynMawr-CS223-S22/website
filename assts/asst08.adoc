@@ -4,6 +4,7 @@ include::header.adoc[]
 :Author Initials: ASN
 :Date:    2020-08-15
 :Revision: 0.1
+:stem: latexmath
 
 = {title}
 
@@ -147,7 +148,7 @@ In README.adoc, under the section titled "Fragmentation" in your document, answe
 
 = Submit your work
 
-Submit both your code *and* a brief report containing your results in README.md.
+Submit both your code *and* a brief report containing your results in your README.
 
 1) Push your code work to github
 
