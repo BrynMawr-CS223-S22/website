@@ -115,7 +115,7 @@ No meetings this week!
 |*Inter-process communication, Threads I* 
 
 * Read: link:https://diveintosystems.org/singlepage/[Chapter 13.4-13.6, Chapter 14] 
-* link:assts/asst09.html[Assignment 09]
+* link:assts/asst09.html[Assignment 09]: Part 1 due April 8
 * **Jam 04 Redux**: April 14
 
 //-----------------------------
@@ -124,8 +124,8 @@ No meetings this week!
 |*Threads* 
 
 * Read: link:https://diveintosystems.org/singlepage/[Chapter 14] 
-* link:assts/asst10.html[Assignment 10]
-* **Jam 05**: April 14, link:studyguide5.html[Study Guide 5]
+* link:assts/asst09.html[Assignment 09]: Part 2 due April 15
+* Lab will be office hours
 
 //-----------------------------
 |14
@@ -133,13 +133,15 @@ No meetings this week!
 |*Code Optimization* 
 
 * Read: link:https://diveintosystems.org/singlepage/[Chapter 12] 
-* **Jam 05 Redux**: April 21
+* link:assts/asst10.html[Assignment 10]: Due April 22
+* **Jam 05**: April 21, link:studyguide5.html[Study Guide 5]
 
 //-----------------------------
 |15
 |April 26,28 anchor:week15[]
 |*C++* 
 
+* **Jam 05 Redux**: April 28
 
 |===
 

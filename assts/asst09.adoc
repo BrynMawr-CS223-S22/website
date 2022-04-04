@@ -8,7 +8,7 @@ include::header.adoc[]
 
 = {title}
 
-Due Friday, April 8, before midnight
+Due in two parts -- Friday, April 8 and Friday April 15 -- before midnight
 
 The goals for this assignment are:
 
@@ -91,6 +91,8 @@ for each palette color
 :sectnums:
 = Single
 
+*This is due Friday April 8, before midnight*
+
 In the file, `single_mandelbrot`, compute a program that outputs a PPM image of the mandelbrot 
 set. You have been given basecode that initializes the following values from command line arguments. This code uses the link:https://www.geeksforgeeks.org/getopt-function-in-c-to-parse-command-line-arguments/[getopt function].
 
@@ -130,6 +132,8 @@ Requirements and hints:
 image::mandelbrot-480-subregion.png[]
 
 = Multiple
+
+*This is due Friday April 15, before midnight*
 
 In the file, `multi_mandelbrot`, compute a program that outputs a PPM image of
 the mandelbrot set using multiple processes spawned with `fork()`.  Your
