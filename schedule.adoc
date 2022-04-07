@@ -47,7 +47,7 @@
 
 * Read: link:https://diveintosystems.org/singlepage/[Chapter 4.1-4.3] 
 * link:assts/asst03.html[Assignment 03]
-* **Code Jam 01**: Feb 10 link:studyguide1.html[Study Guide]
+* **Code Jam 01**: Feb 10 link:studyguide1.html[Study Guide], link:assts/J01.pdf[Jam 01]
 
 //-----------------------------
 |5
@@ -65,7 +65,7 @@
 
 * Read: link:https://diveintosystems.org/singlepage/[Section 5.1, Chapter 6] 
 * link:assts/asst05.html[Assignment 05]
-* **Code Jam 02**: Feb 24 link:studyguide2.html[Study Guide 2]
+* **Code Jam 02**: Feb 24 link:studyguide2.html[Study Guide 2] link:assts/J02.pdf[Jam 02]
 
 //-----------------------------
 |7
@@ -89,7 +89,7 @@ No meetings this week!
 |*Memory I* 
 
 * Read: link:https://diveintosystems.org/singlepage/[Chapter 11.1-11.3] 
-* **Jam 03**: Mar 15 link:studyguide3.html[Study Guide 3]
+* **Jam 03**: Mar 15 link:studyguide3.html[Study Guide 3] link:assts/J03.pdf[Jam 03]
 
 //-----------------------------
 |10
@@ -106,7 +106,7 @@ No meetings this week!
 |*The operating system* 
 
 * Read: link:https://diveintosystems.org/singlepage/[Chapter 13, skip section 13.3] 
-* **Jam 04**: Mar 31 link:studyguide4.html[Study Guide 4]
+* **Jam 04**: Mar 31 link:studyguide4.html[Study Guide 4] link:assts/J04.pdf[Jam 04]
 * link:assts/asst08.html[Assignment 08]
 
 //-----------------------------
