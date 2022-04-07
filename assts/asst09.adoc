@@ -49,6 +49,7 @@ for each row in the image
         xtmp = x*x - y*y + x0
         y = 2*x*y + y0
         x = xtmp
+        iter++
 
       if (iter < MAX) // escaped
         color = palette[iter]
