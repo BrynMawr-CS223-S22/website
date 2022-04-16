@@ -125,7 +125,7 @@ Requirements and hints:
 * You should re-use your PPM functions from A06. If you use a 2D array of arrays, be sure to modify and commit `read_ppm.h`!
 * Allocate an array of pixels using malloc and then save the final image using `write_ppm`.
 * You should output the number of seconds needed to compute the image. Use this link:https://github.com/BrynMawr-CS223-S22/class-examples/blob/main/lec17/matrix.c[class example, matrix.c] for an example. 
-* Your output filename should have the format `mandelbrot-<size>-<timestamp>.png`. The timestamp can be obtained by calling `time(0)`.
+* Your output filename should have the format `mandelbrot-<size>-<timestamp>.ppm`. The timestamp can be obtained by calling `time(0)`.
 * Set a random seed to ensure that the color palette is different each time, e.g. `srand(time(0))` 
 * In your `README.adoc`, call `single_mandelbrot` with sizes of 100, 400, 800, 1000, and 2000. Record the number of seconds it takes to compute each image.
 * (Optional) Experiment with visualizing other regions of the mandelbrot set. For example, if you run with `./single_mandelbrot -s 480 -l -0.02524993 -r 0.00975 -b -0.8172 -t -0.79725`, you get the following image
@@ -177,7 +177,7 @@ Requirements and hints:
 * Refactor the code from `single_mandelbrot` to compute the mandelbrot set using a function. Then re-use the same function in both `single_mandelbrot.c` and `multi_mandelbrot.c`
 * Use `fork()` to create 4 child processes and `wait()` to wait for each to complete.
 * You should output the number of seconds needed to compute the image. Use this link:https://github.com/BrynMawr-CS223-S22/class-examples/blob/main/lec17/matrix.c[class example, matrix.c] for an example. 
-* Your output filename should have the format `multi-mandelbrot-<size>-<timestamp>.png`. The timestamp can be obtained by calling `time(0)`.
+* Your output filename should have the format `multi-mandelbrot-<size>-<timestamp>.ppm`. The timestamp can be obtained by calling `time(0)`.
 * Set a random seed to ensure that the color palette is different each time, e.g. `srand(time(0))` 
 * In your `README.adoc`, call `single_mandelbrot` with sizes of 100, 400, 800, 1000, and 2000. Record the number of seconds it takes to compute each image.
 
