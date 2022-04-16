@@ -202,21 +202,18 @@ computing each step. Each algorithm should be its own start_routine for your thr
 
       x = 0
       y = 0
-      iter = 0
-      while (iter &lt; MAX)
+      while (x*x + y*y &lt; 2*2)
         xtmp = x*x - y*y + x0
         y = 2*x*y + y0
         x = xtmp
 
-        yrow = round((height - 1) * (y - ymin)/(ymax - ymax))
-        xcol = round((width - 1) * (x - xmin)/(xmax - xmax))
-        if (yrow &lt; 0 || yrow &gt;= height) continue; // out of range
-        if (xcol &lt; 0 || xcol &gt;= width) continue; // out of range
+        yrow = round(size * (y - ymin)/(ymax - ymax))
+        xcol = round(size * (x - xmin)/(xmax - xmax))
+        if (yrow &lt; 0 || yrow &gt;= size) continue; // out of range
+        if (xcol &lt; 0 || xcol &gt;= size) continue; // out of range
 
         increment count at (yrow, xcol)
-        update max count
-
-        iter++</code></pre>
+        update max count</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -353,7 +350,7 @@ $ git status</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2022-04-16 17:06:43 -0400
+Last updated 2022-04-16 17:19:07 -0400
 </div>
 </div>
 <script type="text/x-mathjax-config">

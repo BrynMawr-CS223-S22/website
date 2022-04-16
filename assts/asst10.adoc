@@ -118,21 +118,18 @@ for each row in the image
 
       x = 0
       y = 0
-      iter = 0
-      while (iter < MAX) 
+      while (x*x + y*y < 2*2)
         xtmp = x*x - y*y + x0
         y = 2*x*y + y0
         x = xtmp
 
-        yrow = round((height - 1) * (y - ymin)/(ymax - ymax))
-        xcol = round((width - 1) * (x - xmin)/(xmax - xmax))
-        if (yrow < 0 || yrow >= height) continue; // out of range
-        if (xcol < 0 || xcol >= width) continue; // out of range
+        yrow = round(size * (y - ymin)/(ymax - ymax))
+        xcol = round(size * (x - xmin)/(xmax - xmax))
+        if (yrow < 0 || yrow >= size) continue; // out of range
+        if (xcol < 0 || xcol >= size) continue; // out of range
 
         increment count at (yrow, xcol) 
         update max count
-
-        iter++
 ----
 
 **Step 3: Compute colors**
