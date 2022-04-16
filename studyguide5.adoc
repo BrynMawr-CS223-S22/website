@@ -1,0 +1,158 @@
+include::header.adoc[]
+
+:title: Study Guide 4
+:Author Initials: ASN
+:Date:    2020-08-15
+:Revision: 0.1
+
+= {title}
+
+Code Jams are open book. 40 minutes in lab.
+
+Topics:
+
+Everything from link:studyguide4.html[Study Guide 4], plus
+
+* Compiling and linking
+* Memory hierarchy, primary and secondary storage, caches, temporal and spatial locality
+* Advanced pointers, pointer arithmetic, void*, function pointers, pass by pointer
+* Implementations of malloc and free. sbrk()
+* The operating system, interrupts, traps, processes, virtual memory, zombies
+* fork(), wait(), pid, ps
+* Interprocess communication: signals, pipes, shared memory
+* Threads
+
+= Practice questions
+
+[discrete]
+= Compiling and linking
+
+1) Short answers
+
+* What is the difference between compiling and linking?
+* What is a library? When would you use one?
+* What are differences between an application and a library?
+* What is the difference between static and dynamic libraries? Why might you want to use one over the other?
+* What does the pre-processor do?
+* What is the purpose of compiling and linking?
+
+2) Ann-marie has the following error. What type of error is it (compile, link, runtime, or logical)? How can she fix it?
+
+[source]
+----
+----
+
+2) Tymothy would like to create a library for creating color pallettes. The
+functions in their library would have the following APIs. 
+
+[source]
+----
+struct ppm_pixel {
+  union {
+    struct {
+      unsigned char red;
+      unsigned char green;
+      unsigned char blue;
+    };
+    unsigned char colors[3];
+  };
+};
+
+// Creates and initializes a pallet with the given number of random colors
+struct ppm_pixel* create_pallette(int size);
+
+// Frees the memory associated with the given pallette
+void delete_pallette(struct ppm_pixel* pallette);
+----
+
+* What commands does Tymothy need to call in order to create the library?
+* How might Tymothy implement the given functions?
+* Are the commands for building a library different
+* What is the difference between a header file (.h) and an implementation file (*.c)? 
+* How can Tymothy use the functions in their library? Write a program that tests the pallet function.
+
+[discrete]
+== Advanced pointers
+
+1) Draw a stack diagram for the following program.
+
+
+
+2) Fix the error in the following program.
+
+
+
+3) What is the output of the following program? (func pointer)
+
+
+[discrete]
+== Memory
+
+1) Short answers
+
+* What is the memory hierarchy?
+* Why do computers have a memory hierachy?
+* What is a cache hit? A cache miss?
+* What are some examples of primary storage?
+* What are some examples of secondary storage?
+* What is locality and what impact does it have on performance? 
+
+2) In the following code, which variables have temporal locality? spatial locality?
+
+[source]
+----
+----
+
+3) Does the following program have good locality? Why or why not?
+
+[source]
+----
+----
+
+[discrete]
+== The operating system and processes
+
+1) Short answer
+
+* What is the operating system?
+* What is the BIOS or UEFI for?
+* What is virtual address space (VAS)? Why is it useful?
+* What is a process? 
+* What is the difference between an interrupt and a trap?
+* Why do we need interrupts and traps?
+* Why do we need special mechanisms, such as pipes or sockets, to communicate between processes?
+* How can you kill a process using `ps` 
+* What states can a process be in?
+* What is a zombie process?
+* Why might we want to register a single handler for the SIGKILL or SIGSEGV signal?
+* When does the OS send the SIGSEGV signal?
+* What are the differences between shared memory, signals and pipes?
+
+2) The following program creates a zombie process. Why?
+
+[source]
+----
+----
+
+3) Draw the parent/child relationships for the following program.
+
+[source]
+----
+----
+
+
+4) What are the possible outputs of this program?
+
+[source]
+----
+----
+
+5) Which parts of the following program run concurrently? 
+
+[source]
+----
+----
+
+[discrete]
+== Threads
+
