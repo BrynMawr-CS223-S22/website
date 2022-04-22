@@ -77,7 +77,7 @@ Computing the Buddhabrot set requires three steps:
 * Third, you must turn the counts from step 2 into a color. The final colors should be written to a 2D array of ppm_pixel (either flat or an array of arrays) and then written. 
 
 Each of the above steps can be parallelized using threads. The second step will require a mutex to ensure that the counts are set correctly. Below are suggested algorithms for 
-computing each step. Each algorithm should be its own start_routine for your threads.
+computing each step. 
 
 **Step 1: Determine mandelbrot set membership**
 [source]
@@ -151,6 +151,23 @@ for each row in the image
 
       write color to image at location (row,col)    
 ----
+
+Each thread should compute the three steps on a quadrant of the image. Below 
+is a suggested outline for your thread's start routine.
+
+[source]
+----
+void * start(void* data) {
+
+  // perform step 1
+  // perform step 2
+
+  // use a thread barrier to wait for all threads to finish steps 1 and 2
+  // perform step 3
+
+}
+----
+
 
 
 [source,subs="quotes"]

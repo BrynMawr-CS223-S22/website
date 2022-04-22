@@ -157,7 +157,7 @@ visiting it while we calculate whether or not it belongs to the mandelbrot set.<
 </div>
 <div class="paragraph">
 <p>Each of the above steps can be parallelized using threads. The second step will require a mutex to ensure that the counts are set correctly. Below are suggested algorithms for
-computing each step. Each algorithm should be its own start_routine for your threads.</p>
+computing each step.</p>
 </div>
 <div class="paragraph">
 <p><strong>Step 1: Determine mandelbrot set membership</strong></p>
@@ -236,6 +236,23 @@ for each row in the image
       color.blue = value * 255
 
       write color to image at location (row,col)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Each thread should compute the three steps on a quadrant of the image. Below
+is a suggested outline for your thread&#8217;s start routine.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>void * start(void* data) {
+
+  // perform step 1
+  // perform step 2
+
+  // use a thread barrier to wait for all threads to finish steps 1 and 2
+  // perform step 3
+
+}</code></pre>
 </div>
 </div>
 <div class="listingblock">
@@ -350,7 +367,7 @@ $ git status</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2022-04-20 16:47:54 -0400
+Last updated 2022-04-22 08:47:16 -0400
 </div>
 </div>
 <script type="text/x-mathjax-config">
