@@ -123,8 +123,8 @@ for each row in the image
         y = 2*x*y + y0
         x = xtmp
 
-        yrow = round(size * (y - ymin)/(ymax - ymax))
-        xcol = round(size * (x - xmin)/(xmax - xmax))
+        yrow = round(size * (y - ymin)/(ymax - ymin))
+        xcol = round(size * (x - xmin)/(xmax - xmin))
         if (yrow < 0 || yrow >= size) continue; // out of range
         if (xcol < 0 || xcol >= size) continue; // out of range
 

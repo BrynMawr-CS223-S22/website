@@ -207,8 +207,8 @@ computing each step.</p>
         y = 2*x*y + y0
         x = xtmp
 
-        yrow = round(size * (y - ymin)/(ymax - ymax))
-        xcol = round(size * (x - xmin)/(xmax - xmax))
+        yrow = round(size * (y - ymin)/(ymax - ymin))
+        xcol = round(size * (x - xmin)/(xmax - xmin))
         if (yrow &lt; 0 || yrow &gt;= size) continue; // out of range
         if (xcol &lt; 0 || xcol &gt;= size) continue; // out of range
 
@@ -367,7 +367,7 @@ $ git status</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2022-04-22 08:47:16 -0400
+Last updated 2022-04-23 12:19:28 -0400
 </div>
 </div>
 <script type="text/x-mathjax-config">
