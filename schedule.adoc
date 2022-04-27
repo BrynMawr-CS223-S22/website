@@ -134,14 +134,16 @@ No meetings this week!
 
 * Read: link:https://diveintosystems.org/singlepage/[Chapter 12] 
 * link:assts/asst10.html[Assignment 10]: Due April 22
-* **Jam 05**: April 21, link:studyguide5.html[Study Guide 5]
+* **Jam 05**: April 21, link:studyguide5.html[Study Guide 5], link:assts/Jam05.pdf[Jam05]
 
 //-----------------------------
 |15
 |April 26,28 anchor:week15[]
-|*C++* 
+|*Code Optimization, C++* 
 
 * **Jam 05 Redux**: April 28
+* link:studyguide-final.html[Final Study Guide]
+
 
 |===
 

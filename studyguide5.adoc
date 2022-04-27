@@ -321,7 +321,7 @@ Short answers
 
 1) Write a multi-threaded program (4 threads) that computes the average of a list of numbers. You can assume that the size of the list can be evenly divided by 4.
 
-2) The following multi-threaded program simulates a farmer and a chicken. But it's not working correctly. What is going on and how can we fix it?
+2) The following multi-threaded program simulates two bank accounts. But it's not working correctly. What is going on and how can we fix it?
 
 [source]
 ----

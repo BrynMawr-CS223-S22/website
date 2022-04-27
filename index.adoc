@@ -15,6 +15,7 @@ Instructor: link:https://www.cs.brynmawr.edu/~alinen[Aline Normoyle]
 [.anns]
 * Current Agenda: link:#week15[Week15]
 * Assignment resubmits due May 4th!
+* Final exam is self-scheduled. link:studyguide-final.html[Final Study Guide]
 
 == Course Info
 
