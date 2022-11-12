@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="generator" content="Asciidoctor 2.0.17">
+<meta name="generator" content="Asciidoctor 2.0.16">
 <title>Systems Programming</title>
 <link rel="stylesheet" href="style/front.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -17,6 +17,7 @@
 <ul class="sectlevel1">
 <li><a href="#_course_info">Course Info</a>
 <ul class="sectlevel2">
+<li><a href="#_course_preview">Course Preview</a></li>
 <li><a href="#_meeting_times">Meeting Times</a></li>
 </ul>
 </li>
@@ -41,27 +42,75 @@
 <div class="paragraph">
 <p>Instructor: <a href="https://www.cs.brynmawr.edu/~alinen">Aline Normoyle</a></p>
 </div>
-<div class="ulist anns">
-<ul>
-<li>
-<p>Current Agenda: <a href="#week15">Week15</a></p>
-</li>
-<li>
-<p>Assignment resubmits due May 4th!</p>
-</li>
-<li>
-<p>Final exam is self-scheduled. <a href="studyguide-final.html">Final Study Guide</a></p>
-</li>
-</ul>
-</div>
 </div>
 </div>
 <div class="sect1">
 <h2 id="_course_info">Course Info</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p><strong>Welcome to CS223: Systems Programming</strong>!
-The primary goal of this course is to develop skills for writing programs that are  "hardware-aware" and capable of interacting directly with the operating system.</p>
+<p><strong>Welcome to CS223: Systems Programming</strong>!</p>
+</div>
+<div class="paragraph">
+<p>Systems programming provides a foundation for the implementation of programs and
+toolkits that serve as infrastructure for other software, such as compilers,
+operating systems, networking APIs, and graphics engines.  Topics include
+pointers, bit representations of data, x86_64 assembly, memory management,
+processes, and threads.  In this class, students will gain hands-on experience
+implementing low-level algorithms and data structures using C.  Furthermore,
+students will build technical skills related to makefiles, interactive
+debugging, version control, and command-line shell interaction. C++ and STL
+will be introduced at the end of the course.</p>
+</div>
+<div class="sect2">
+<h3 id="_course_preview">Course Preview</h3>
+<div class="paragraph">
+<p>You will write C programs for most of your assignments, working with linked lists, arrays, bitwise operators, and files.
+We will also work at the bit-level with images in PPM format. Below are several examples.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<div class="title">With steganography, we can hide secret messages inside images.</div>
+<p><span class="image"><img src="img/monalisa.png" alt="monalisa" width="400px"></span></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
+<div class="title">Rock, paper, scissors game</div>
+<div class="content">
+<pre class="highlight"><code>$ <strong>make rps</strong>
+gcc rpc.c -o rps
+$ <strong>./rps</strong>
+Welcome to Rock, Paper, Scissors!
+How many rounds do you want to play? <strong>2</strong>
+
+Which do you choose? rock, paper, or scissors? <strong>paper</strong>
+AI chose paper
+AI score: 0, Player score: 1
+
+Which do you choose? rock, paper, or scissors? <strong>paper</strong>
+AI chose rock
+Paper covers rock
+AI score: 0, Player score: 2
+Player wins!</code></pre>
+</div>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<div class="title">Computing the Mandelbrot set using multiple processes</div>
+<p><span class="image"><img src="img/mandelbrot-jitter.gif" alt="mandelbrot jitter" width="400px"></span></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<div class="title">Computing the Buddhabrot probability distribution using multiple threads</div>
+<p><span class="image"><img src="img/buddhabrot-2000-1650142988.png" alt="buddhabrot 2000 1650142988" width="400px"></span></p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
 </div>
 <div class="sect2">
 <h3 id="_meeting_times">Meeting Times</h3>
@@ -160,7 +209,7 @@ on lecture content, worksheets, and assignments.</p>
 <p>Read: <a href="https://diveintosystems.org/singlepage/">Chapter 1</a></p>
 </li>
 <li>
-<p><a href="assts/asst00.html">Assignment 00</a></p>
+<p><a href="assts/asst00.html">Assignment 00: Hello, CS223!</a></p>
 </li>
 <li>
 <p><a href="http://linuxcommand.org/lc3_learning_the_shell.php">Learning the shell</a></p>
@@ -192,7 +241,7 @@ on lecture content, worksheets, and assignments.</p>
 <p>Read: <a href="https://diveintosystems.org/singlepage/">Chapter 2</a></p>
 </li>
 <li>
-<p><a href="assts/asst01.html">Assignment 01</a></p>
+<p><a href="assts/asst01.html">Assignment 01: Learn to C!</a></p>
 </li>
 <li>
 <p><a href="https://pythontutor.com/c.html#mode=edit">C Tutor</a></p>
@@ -221,7 +270,7 @@ on lecture content, worksheets, and assignments.</p>
 <p>Read: <a href="http://svslibrary.pbworks.com/f/Data+Structures+and+Algorithm+Analysis+in+C+-+Mark+Allen+Weiss.pdf">Data Structures in C, Mark Allen Weiss, Chpt 3 and 4</a></p>
 </li>
 <li>
-<p><a href="assts/asst02.html">Assignment 02</a></p>
+<p><a href="assts/asst02.html">Assignment 02: If you malloc something, set it free.</a></p>
 </li>
 <li>
 <p>Lab: Office hours</p>
@@ -241,7 +290,7 @@ on lecture content, worksheets, and assignments.</p>
 <p>Read: <a href="https://diveintosystems.org/singlepage/">Chapter 4.1-4.3</a></p>
 </li>
 <li>
-<p><a href="assts/asst03.html">Assignment 03</a></p>
+<p><a href="assts/asst03.html">Assignment 03: Watch where you point!</a></p>
 </li>
 <li>
 <p><strong>Code Jam 01</strong>: Feb 10 <a href="studyguide1.html">Study Guide</a>, <a href="assts/J01.pdf">Jam 01</a></p>
@@ -261,7 +310,7 @@ on lecture content, worksheets, and assignments.</p>
 <p>Read: <a href="https://diveintosystems.org/singlepage/">Chapter 4.4-4.9</a></p>
 </li>
 <li>
-<p><a href="assts/asst04.html">Assignment 04</a></p>
+<p><a href="assts/asst04.html">Assignment 04: Don&#8217;t be afraid to ASCII.</a></p>
 </li>
 <li>
 <p><strong>Jam Redux 01</strong>: Feb 17</p>
@@ -281,7 +330,7 @@ on lecture content, worksheets, and assignments.</p>
 <p>Read: <a href="https://diveintosystems.org/singlepage/">Section 5.1, Chapter 6</a></p>
 </li>
 <li>
-<p><a href="assts/asst05.html">Assignment 05</a></p>
+<p><a href="assts/asst05.html">Assignment 05: Give a little bit.</a></p>
 </li>
 <li>
 <p><strong>Code Jam 02</strong>: Feb 24 <a href="studyguide2.html">Study Guide 2</a> <a href="assts/J02.pdf">Jam 02</a></p>
@@ -301,7 +350,7 @@ on lecture content, worksheets, and assignments.</p>
 <p>Read: <a href="https://diveintosystems.org/singlepage/">Chapter 7 (7.1-7.3,7.5,7.10), 10</a></p>
 </li>
 <li>
-<p><a href="assts/asst06.html">Assignment 06</a></p>
+<p><a href="assts/asst06.html">Assignment 06: Secret messages.</a></p>
 </li>
 <li>
 <p><strong>Jam 02 Redux</strong>: Mar 3</p>
@@ -348,7 +397,7 @@ on lecture content, worksheets, and assignments.</p>
 <p>Read: <a href="https://diveintosystems.org/singlepage/">Chapter 11.5, Malloc Handout</a></p>
 </li>
 <li>
-<p><a href="assts/asst07.html">Assignment 07</a></p>
+<p><a href="assts/asst07.html">Assignment 07: Some assembly required.</a></p>
 </li>
 <li>
 <p><strong>Jam 03 Redux</strong>: Mar 24</p>
@@ -371,7 +420,7 @@ on lecture content, worksheets, and assignments.</p>
 <p><strong>Jam 04</strong>: Mar 31 <a href="studyguide4.html">Study Guide 4</a> <a href="assts/J04.pdf">Jam 04</a></p>
 </li>
 <li>
-<p><a href="assts/asst08.html">Assignment 08</a></p>
+<p><a href="assts/asst08.html">Assignment 08: Hold onto your memories.</a></p>
 </li>
 </ul>
 </div></div></td>
@@ -388,7 +437,7 @@ on lecture content, worksheets, and assignments.</p>
 <p>Read: <a href="https://diveintosystems.org/singlepage/">Chapter 13.4-13.6, Chapter 14</a></p>
 </li>
 <li>
-<p><a href="assts/asst09.html">Assignment 09</a>: Part 1 due April 8</p>
+<p><a href="assts/asst09.html">Assignment 09a: Many processes make light work.</a>: Part 1 due April 8</p>
 </li>
 <li>
 <p><strong>Jam 04 Redux</strong>: April 14</p>
@@ -408,7 +457,7 @@ on lecture content, worksheets, and assignments.</p>
 <p>Read: <a href="https://diveintosystems.org/singlepage/">Chapter 14</a></p>
 </li>
 <li>
-<p><a href="assts/asst09.html">Assignment 09</a>: Part 2 due April 15</p>
+<p><a href="assts/asst09.html">Assignment 09b: Many processes make light work</a>: Part 2 due April 15</p>
 </li>
 <li>
 <p>Lab will be office hours</p>
@@ -428,7 +477,7 @@ on lecture content, worksheets, and assignments.</p>
 <p>Read: <a href="https://diveintosystems.org/singlepage/">Chapter 12</a></p>
 </li>
 <li>
-<p><a href="assts/asst10.html">Assignment 10</a>: Due April 22</p>
+<p><a href="assts/asst10.html">Assignment 10: Follow the threads</a>: Due April 22</p>
 </li>
 <li>
 <p><strong>Jam 05</strong>: April 21, <a href="studyguide5.html">Study Guide 5</a>, <a href="assts/Jam05.pdf">Jam05</a></p>
@@ -663,7 +712,7 @@ Services website. (<a href="http://www.brynmawr.edu/access-services/" class="bar
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2022-04-27 13:17:40 -0400
+Last updated 2022-11-12 14:24:59 -0500
 </div>
 </div>
 </body>

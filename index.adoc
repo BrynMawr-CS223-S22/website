@@ -12,18 +12,57 @@ include::header.adoc[]
 
 Instructor: link:https://www.cs.brynmawr.edu/~alinen[Aline Normoyle]
 
-[.anns]
-* Current Agenda: link:#week15[Week15]
-* Assignment resubmits due May 4th!
-* Final exam is self-scheduled. link:studyguide-final.html[Final Study Guide]
-
 == Course Info
 
 **Welcome to CS223: Systems Programming**! 
-The primary goal of this course is to develop skills for writing programs that are  "hardware-aware" and capable of interacting directly with the operating system. 
+
+
+Systems programming provides a foundation for the implementation of programs and
+toolkits that serve as infrastructure for other software, such as compilers,
+operating systems, networking APIs, and graphics engines.  Topics include
+pointers, bit representations of data, x86_64 assembly, memory management,
+processes, and threads.  In this class, students will gain hands-on experience
+implementing low-level algorithms and data structures using C.  Furthermore,
+students will build technical skills related to makefiles, interactive
+debugging, version control, and command-line shell interaction. C++ and STL
+will be introduced at the end of the course.
 
 // http://svslibrary.pbworks.com/f/Data+Structures+and+Algorithm+Analysis+in+C+-+Mark+Allen+Weiss.pdf
 // http://cslabcms.nju.edu.cn/problem_solving/images/c/cc/The_C_Programming_Language_%282nd_Edition_Ritchie_Kernighan%29.pdf
+
+=== Course Preview
+
+You will write C programs for most of your assignments, working with linked lists, arrays, bitwise operators, and files. 
+We will also work at the bit-level with images in PPM format. Below are several examples.
+
+[cols="1a,1a"]
+|===
+|.With steganography, we can hide secret messages inside images.
+image:monalisa.png[width=400px]
+|.Rock, paper, scissors game
+[source,subs="quotes"]
+----
+$ **make rps**
+gcc rpc.c -o rps
+$ **./rps**
+Welcome to Rock, Paper, Scissors!
+How many rounds do you want to play? **2**
+
+Which do you choose? rock, paper, or scissors? **paper**
+AI chose paper
+AI score: 0, Player score: 1
+
+Which do you choose? rock, paper, or scissors? **paper**
+AI chose rock
+Paper covers rock
+AI score: 0, Player score: 2
+Player wins!
+----
+|.Computing the Mandelbrot set using multiple processes 
+image:mandelbrot-jitter.gif[width=400px]
+|.Computing the Buddhabrot probability distribution using multiple threads
+image:buddhabrot-2000-1650142988.png[width=400px]
+|===
 
 === Meeting Times
 

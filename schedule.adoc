@@ -12,7 +12,7 @@
 | *Hello C* 
 
 * Read: link:https://diveintosystems.org/singlepage/[Chapter 1] 
-* link:assts/asst00.html[Assignment 00]
+* link:assts/asst00.html[Assignment 00: Hello, CS223!]
 * link:http://linuxcommand.org/lc3_learning_the_shell.php[Learning the shell]
 * link:https://github.com/BrynMawr-CS223-S22/git-workshop[Github workshop] and link:https://github.com/BrynMawr-CS223-S22/git-workshop/blob/main/SSHSetup.md[Setting up SSH keys for Github]
 * Topics: Programming at the command line, From Java to C 
@@ -25,7 +25,7 @@
 
 * Topics: Function stacks, scope, dynamically-allocated memory (malloc/free), heap
 * Read: link:https://diveintosystems.org/singlepage/[Chapter 2] 
-* link:assts/asst01.html[Assignment 01]
+* link:assts/asst01.html[Assignment 01: Learn to C!]
 * link:https://pythontutor.com/c.html#mode=edit[C Tutor]
 * Lab: Vim workshop
 
@@ -37,7 +37,7 @@
 * Topics: GDB, Valgrind, Pointer-based data structures, More I/O
 * Read: link:https://diveintosystems.org/singlepage/[Chapter 3] 
 * Read: link:http://svslibrary.pbworks.com/f/Data+Structures+and+Algorithm+Analysis+in+C+-+Mark+Allen+Weiss.pdf[Data Structures in C, Mark Allen Weiss, Chpt 3 and 4]
-* link:assts/asst02.html[Assignment 02]
+* link:assts/asst02.html[Assignment 02: If you malloc something, set it free.]
 * Lab: Office hours
 
 //-----------------------------
@@ -46,7 +46,7 @@
 |*Binary and Data Representation I* 
 
 * Read: link:https://diveintosystems.org/singlepage/[Chapter 4.1-4.3] 
-* link:assts/asst03.html[Assignment 03]
+* link:assts/asst03.html[Assignment 03: Watch where you point!]
 * **Code Jam 01**: Feb 10 link:studyguide1.html[Study Guide], link:assts/J01.pdf[Jam 01]
 
 //-----------------------------
@@ -55,7 +55,7 @@
 |*Binary and Data Representation II* 
 
 * Read: link:https://diveintosystems.org/singlepage/[Chapter 4.4-4.9] 
-* link:assts/asst04.html[Assignment 04]
+* link:assts/asst04.html[Assignment 04: Don't be afraid to ASCII.]
 * **Jam Redux 01**: Feb 17
 
 //-----------------------------
@@ -64,7 +64,7 @@
 |*Computer architecture* 
 
 * Read: link:https://diveintosystems.org/singlepage/[Section 5.1, Chapter 6] 
-* link:assts/asst05.html[Assignment 05]
+* link:assts/asst05.html[Assignment 05: Give a little bit.]
 * **Code Jam 02**: Feb 24 link:studyguide2.html[Study Guide 2] link:assts/J02.pdf[Jam 02]
 
 //-----------------------------
@@ -73,7 +73,7 @@
 |*Assembly* 
 
 * Read: link:https://diveintosystems.org/singlepage/[Chapter 7 (7.1-7.3,7.5,7.10), 10] 
-* link:assts/asst06.html[Assignment 06]
+* link:assts/asst06.html[Assignment 06: Secret messages.]
 * **Jam 02 Redux**: Mar 3
 
 //-----------------------------
@@ -97,7 +97,7 @@ No meetings this week!
 |*Memory II*
 
 * Read: link:https://diveintosystems.org/singlepage/[Chapter 11.5, Malloc Handout] 
-* link:assts/asst07.html[Assignment 07]
+* link:assts/asst07.html[Assignment 07: Some assembly required.]
 * **Jam 03 Redux**: Mar 24
 
 //-----------------------------
@@ -107,7 +107,7 @@ No meetings this week!
 
 * Read: link:https://diveintosystems.org/singlepage/[Chapter 13, skip section 13.3] 
 * **Jam 04**: Mar 31 link:studyguide4.html[Study Guide 4] link:assts/J04.pdf[Jam 04]
-* link:assts/asst08.html[Assignment 08]
+* link:assts/asst08.html[Assignment 08: Hold onto your memories.]
 
 //-----------------------------
 |12
@@ -115,7 +115,7 @@ No meetings this week!
 |*Inter-process communication, Threads I* 
 
 * Read: link:https://diveintosystems.org/singlepage/[Chapter 13.4-13.6, Chapter 14] 
-* link:assts/asst09.html[Assignment 09]: Part 1 due April 8
+* link:assts/asst09.html[Assignment 09a: Many processes make light work.]: Part 1 due April 8
 * **Jam 04 Redux**: April 14
 
 //-----------------------------
@@ -124,7 +124,7 @@ No meetings this week!
 |*Threads* 
 
 * Read: link:https://diveintosystems.org/singlepage/[Chapter 14] 
-* link:assts/asst09.html[Assignment 09]: Part 2 due April 15
+* link:assts/asst09.html[Assignment 09b: Many processes make light work]: Part 2 due April 15
 * Lab will be office hours
 
 //-----------------------------
@@ -133,7 +133,7 @@ No meetings this week!
 |*Code Optimization* 
 
 * Read: link:https://diveintosystems.org/singlepage/[Chapter 12] 
-* link:assts/asst10.html[Assignment 10]: Due April 22
+* link:assts/asst10.html[Assignment 10: Follow the threads]: Due April 22
 * **Jam 05**: April 21, link:studyguide5.html[Study Guide 5], link:assts/Jam05.pdf[Jam05]
 
 //-----------------------------
